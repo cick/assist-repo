@@ -1,0 +1,16 @@
+Origin: CallAssist Repo
+Label: CallAssist
+Suite: stable
+Codename: stable
+Architectures: iphoneos-arm64
+Components: main
+Description: 顶栏时间Assit（CallAssistStatusBar）等越狱插件的分发源。
+Date: Sat, 31 Oct 2026 14:42:42 +0000
+MD5Sum:
+ 231e2a9760d3b0f0898dc15b4804facf 2273 Packages
+ bcd9e16c0561ef8026f3001c4614b6e8 1439 Packages.gz
+ 7ce1d6d3092f7f18e889aec0e91980cc 1478 Packages.bz2
+SHA256:
+ 3ccc514af7318edad70cb8f2fedf92fcb65d8b414f666a88fe53497061747833 2273 Packages
+ 104eef0fd3fbe1092d6589d4d3f3e286e43000b4117a9d2e3645983622e93e88 1439 Packages.gz
+ 40a978fc612e1692317c3d76cabff2f0eb0aafb074aa3809a5b1174a8cc906a9 1478 Packages.bz2

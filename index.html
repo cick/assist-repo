@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CallAssist 越狱源</title>
+<style>
+  :root { --bg:#0f1020; --card:#1a1c2e; --fg:#e8e8f0; --muted:#9aa0b5; --acc:#8a5cf6; --acc2:#3a7bd5; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"SF Pro","Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+         background:linear-gradient(160deg,#0f1020,#161a30); color:var(--fg); min-height:100vh; }
+  .wrap { max-width:680px; margin:0 auto; padding:48px 20px 64px; }
+  header { display:flex; align-items:center; gap:18px; margin-bottom:8px; }
+  header img { width:84px; height:84px; border-radius:20px; box-shadow:0 8px 30px rgba(138,92,246,.35); }
+  h1 { font-size:26px; margin:0; letter-spacing:.3px; }
+  .sub { color:var(--muted); margin:4px 0 0; font-size:14px; }
+  .card { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:20px; margin-top:22px; }
+  .pkg { display:flex; gap:14px; align-items:flex-start; }
+  .pkg .icon { width:56px; height:56px; border-radius:14px; flex:0 0 auto; background:linear-gradient(135deg,var(--acc2),var(--acc)); display:flex; align-items:center; justify-content:center; font-size:26px; }
+  .pkg h2 { margin:0 0 4px; font-size:18px; }
+  .pkg .ver { color:var(--acc); font-weight:600; }
+  .pkg .desc { color:var(--muted); font-size:13.5px; line-height:1.55; margin-top:6px; }
+  .btns { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  a.btn { text-decoration:none; padding:12px 18px; border-radius:12px; font-weight:600; font-size:14px;
+          background:linear-gradient(135deg,var(--acc2),var(--acc)); color:#fff; box-shadow:0 6px 18px rgba(138,92,246,.35); }
+  a.btn.ghost { background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--fg); box-shadow:none; }
+  .hint { color:var(--muted); font-size:12.5px; margin-top:18px; line-height:1.6; }
+  code { background:rgba(255,255,255,.07); padding:2px 6px; border-radius:6px; font-size:12.5px; word-break:break-all; }
+  footer { color:var(--muted); font-size:12px; text-align:center; margin-top:36px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img id="repoicon" src="icon.png" alt="icon" onerror="this.style.display='none'">
+    <div>
+      <h1>CallAssist 越狱源</h1>
+      <p class="sub" id="repo-sub">顶栏时间Assit 等越狱插件分发源</p>
+    </div>
+  </header>
+
+  <div class="card">
+    <div class="pkg">
+      <div class="icon">🕐</div>
+      <div>
+        <h2>顶栏时间Assit <span class="ver">v0.9.98</span></h2>
+        <div class="desc">仿「电话助手」状态栏与图标模块的越狱插件：状态栏时间接管、天气/网速悬浮窗、
+          停靠小图标 7 个动画主题（小眼睛 / 星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心）。
+          Dopamine / rootless，iOS 15–16。</div>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a class="btn" id="btn-sileo" href="#">在 Sileo 添加源</a>
+      <a class="btn ghost" id="btn-cydia" href="#">在 Cydia 添加源</a>
+      <a class="btn ghost" id="btn-zebra" href="#">在 Zebra 添加源</a>
+    </div>
+  </div>
+
+  <p class="hint">
+    添加源地址（在客户端「添加源」里粘贴）：<br>
+    <code id="repo-url">https://your-domain.example/callassist-repo/</code>
+  </p>
+  <p class="hint">
+    本页按钮会自动按当前访问域名拼接链接。把整个 <code>callassist-repo/</code> 目录作为静态站点托管（GitHub Pages / Cloudflare Pages / 任意 Nginx）即可。
+  </p>
+
+  <footer>仅供学习研究 · 请在 24 小时内自行删除</footer>
+</div>
+
+<script>
+  // 自动用当前访问地址拼出“添加源”链接
+  (function () {
+    var base = location.origin + location.pathname.replace(/index\.html$/, "");
+    if (!base.endsWith("/")) base += "/";
+    document.getElementById("repo-url").textContent = base;
+    document.getElementById("btn-sileo").href  = "sileo://source/" + base;
+    document.getElementById("btn-cydia").href  = "cydia://url/https://cydia.saurik.com/api/share#?source=" + encodeURIComponent(base);
+    document.getElementById("btn-zebra").href  = "zbra://sources/add/" + base;
+  })();
+</script>
+</body>
+</html>

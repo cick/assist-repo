@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+生成越狱源（APT flat layout）所需的
+    Packages / Packages.gz / Packages.bz2 / Release
+纯 Python 实现，不依赖 dpkg-scanpackages。
+
+用法：
+    1. 把 .deb 文件放进 ./debs/ 目录
+    2. 运行 `python3 gen_repo.py`
+    3. 把整个目录（含 Packages*、Release、debs/、icon.png、index.html）上传到任意静态托管
+
+说明：
+    - 兼容 Cydia / Sileo / Zebra / Installer 的 flat layout
+    - 自动解析每个 deb 的 control，计算 Filename / Size / MD5sum / SHA256
+    - 去掉非标准的 Changelog 字段，保持 Packages 干净
+"""
+import os
+import io
+import gzip
+import bz2
+import hashlib
+import tarfile
+import datetime
+
+REPO = os.path.dirname(os.path.abspath(__file__))
+DEBS_DIR = os.path.join(REPO, "debs")
+PKG_PATH = os.path.join(REPO, "Packages")
+
+# ── 源的元信息（按需修改）──────────────────────────────────────────────
+ORIGIN = "CallAssist Repo"
+LABEL = "CallAssist"
+SUITE = "stable"
+CODENAME = "stable"
+COMPONENTS = "main"
+ARCHS = "iphoneos-arm64"
+DESCRIPTION = "顶栏时间Assit（CallAssistStatusBar）等越狱插件的分发源。"
+
+
+def read_ar(path):
+    """极简 ar 解析，取出各成员字节。"""
+    with open(path, "rb") as f:
+        data = f.read()
+    assert data[:8] == b"!<arch>\n", "不是 .deb（ar）文件: " + path
+    members = {}
+    off = 8
+    while off + 60 <= len(data):
+        hdr = data[off:off + 60]
+        name = hdr[0:16].decode("latin-1").strip().strip("/").strip()
+        size = int(hdr[48:58].decode("latin-1").strip() or "0")
+        off += 60
+        content = data[off:off + size]
+        off += size
+        if size % 2 == 1:
+            off += 1  # ar 奇数长度会补一个换行
+        members[name] = content
+    return members
+
+
+def control_of_deb(deb_path):
+    members = read_ar(deb_path)
+    ctar = members.get("control.tar.gz") or members.get("control.tar.xz")
+    if ctar is None:
+        raise RuntimeError("deb 内没有 control 归档: " + deb_path)
+    if ctar[:2] == b"\x1f\x8b":
+        tf = tarfile.open(fileobj=io.BytesIO(ctar), mode="r:gz")
+    else:
+        tf = tarfile.open(fileobj=io.BytesIO(ctar), mode="r:xz")
+    ctrl = None
+    for m in tf.getmembers():
+        if m.name in ("./control", "control"):
+            ctrl = tf.extractfile(m).read().decode("utf-8")
+            break
+    if ctrl is None:
+        raise RuntimeError("control 归档内没有 control 文件: " + deb_path)
+    return ctrl
+
+
+def parse_control(text):
+    fields = {}
+    order = []
+    cur = None
+    buf = []
+    for line in text.split("\n"):
+        if line == "":
+            continue
+        if line[0] in (" ", "\t"):          # 续行
+            if cur:
+                buf.append(line[1:])
+            continue
+        if ":" in line:                      # 新字段
+            if cur:
+                fields[cur] = "\n".join(buf).strip("\n")
+                order.append(cur)
+            key, _, val = line.partition(":")
+            cur = key.strip()
+            buf = [val.strip()]
+    if cur:
+        fields[cur] = "\n".join(buf).strip("\n")
+        order.append(cur)
+    return fields, order
+
+
+def main():
+    debs = sorted(f for f in os.listdir(DEBS_DIR) if f.endswith(".deb"))
+    assert debs, "debs/ 目录里没有任何 .deb 文件"
+    entries = []
+    for fn in debs:
+        full = os.path.join(DEBS_DIR, fn)
+        fields, order = parse_control(control_of_deb(full))
+        # 去掉非标准字段，保持 Packages 干净（Changelog 过长且各客户端不展示）
+        for drop in ("Changelog",):
+            if drop in fields:
+                del fields[drop]
+                order.remove(drop)
+        raw = open(full, "rb").read()
+        fields["Filename"] = "debs/" + fn
+        fields["Size"] = str(len(raw))
+        fields["MD5sum"] = hashlib.md5(raw).hexdigest()
+        fields["SHA256"] = hashlib.sha256(raw).hexdigest()
+        for extra in ("Filename", "Size", "MD5sum", "SHA256"):
+            if extra not in order:
+                order.append(extra)
+        entries.append((fields, order))
+
+    # ── 写 Packages（明文）─────────────────────────────────────────────
+    blocks = []
+    for fields, order in entries:
+        blocks.append("\n".join(f"{k}: {fields[k]}" for k in order))
+    packages_text = "\n\n".join(blocks) + "\n"
+    with open(PKG_PATH, "w", encoding="utf-8") as f:
+        f.write(packages_text)
+    with open(PKG_PATH, "rb") as f:
+        raw_pkg = f.read()
+
+    # ── 压缩 ───────────────────────────────────────────────────────────
+    with gzip.open(os.path.join(REPO, "Packages.gz"), "wb") as f:
+        f.write(raw_pkg)
+    with open(os.path.join(REPO, "Packages.bz2"), "wb") as f:
+        f.write(bz2.compress(raw_pkg, 9))
+
+    # ── Release ────────────────────────────────────────────────────────
+    now = datetime.datetime.now(datetime.timezone.utc)
+    date = now.strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+    def hsh(p):
+        r = open(p, "rb").read()
+        return hashlib.md5(r).hexdigest(), hashlib.sha256(r).hexdigest(), len(r)
+
+    files = [("Packages", PKG_PATH),
+             ("Packages.gz", os.path.join(REPO, "Packages.gz")),
+             ("Packages.bz2", os.path.join(REPO, "Packages.bz2"))]
+    md5, sha, sz = [], [], []
+    for name, p in files:
+        m, s, n = hsh(p)
+        md5.append(f" {m} {n} {name}")
+        sha.append(f" {s} {n} {name}")
+        sz.append(f" {n} {name}")
+
+    release = (
+        f"Origin: {ORIGIN}\n"
+        f"Label: {LABEL}\n"
+        f"Suite: {SUITE}\n"
+        f"Codename: {CODENAME}\n"
+        f"Architectures: {ARCHS}\n"
+        f"Components: {COMPONENTS}\n"
+        f"Description: {DESCRIPTION}\n"
+        f"Date: {date}\n"
+        f"MD5Sum:\n" + "\n".join(md5) + "\n"
+        f"SHA256:\n" + "\n".join(sha) + "\n"
+    )
+    with open(os.path.join(REPO, "Release"), "w", encoding="utf-8") as f:
+        f.write(release)
+
+    print(f"OK：{len(entries)} 个包 → Packages / Packages.gz / Packages.bz2 / Release")
+    for fn in debs:
+        print("   ·", fn)
+
+
+if __name__ == "__main__":
+    main()
