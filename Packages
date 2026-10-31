@@ -29,7 +29,7 @@ Description: 仿「电话助手」状态栏与图标模块的越狱插件，仅�
 .
 ━━━━━━━━  声明  ━━━━━━━━
 本插件为逆向学习产物，请于 24 小时内自行删除，请勿用于商业用途。
-Filename: debs/com.dev.callassiststatusbar_0.9.98+debug_iphoneos-arm64.deb
+Filename: debs/com.dev.callassiststatusbar_0.9.98_iphoneos-arm64.deb
 Size: 743274
 MD5sum: 4cb4c1a70f88de7fb5acd7f53dfff919
 SHA256: 20247d9a3a919f6e4bc076f9f821f702ce45881ffafdd89626ba9fcab7444d0e
