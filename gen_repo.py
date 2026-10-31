@@ -36,6 +36,12 @@ COMPONENTS = "main"
 ARCHS = "iphoneos-arm64"
 DESCRIPTION = "顶栏时间Assit（CallAssistStatusBar）等越狱插件的分发源。"
 
+# ── 详情页（Depiction）───────────────────────────────────────────────
+# 这个地址要和最终托管的根 URL 一致（结尾不要带 /）。
+# 客户端点开包详情时会加载这个 HTML，里面含截图、使用介绍、更新日志。
+REPO_BASE_URL = "https://cick.github.io/assist-repo"
+DEPICTION_PATH = "depictions/com.dev.callassiststatusbar.html"
+
 
 def read_ar(path):
     """极简 ar 解析，取出各成员字节。"""
@@ -118,7 +124,9 @@ def main():
         fields["Size"] = str(len(raw))
         fields["MD5sum"] = hashlib.md5(raw).hexdigest()
         fields["SHA256"] = hashlib.sha256(raw).hexdigest()
-        for extra in ("Filename", "Size", "MD5sum", "SHA256"):
+        # 详情页：客户端点开包时加载的 HTML（含截图 / 使用介绍 / 更新日志）
+        fields["Depiction"] = REPO_BASE_URL.rstrip("/") + "/" + DEPICTION_PATH.lstrip("/")
+        for extra in ("Filename", "Size", "MD5sum", "SHA256", "Depiction"):
             if extra not in order:
                 order.append(extra)
         entries.append((fields, order))
