@@ -1,0 +1,87 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "tabs": [
+    {
+      "tabname": "详情",
+      "views": [
+        {
+          "class": "DepictionSubheaderView",
+          "title": "顶栏时间 Assist"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "接管状态栏时间显示，并提供悬浮窗、停靠小图标、动画主题与天气小组件。支持 Dopamine 等 rootless 越狱（iOS 15–16）。依赖 mobilesubstrate、preferenceloader。"
+        },
+        {
+          "class": "DepictionScreenshotsView",
+          "screenshots": [
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/shot-1-format.jpg",
+              "accessibilityText": "状态栏时间格式"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/shot-2-float.jpg",
+              "accessibilityText": "悬浮时间窗与停靠小图标"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/shot-3-eye.jpg",
+              "accessibilityText": "眼睛动画与形象"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/shot-4-widget.jpg",
+              "accessibilityText": "天气小组件样式"
+            }
+          ]
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 8
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "使用介绍"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "**1 · 状态栏时间格式**\n先打开「时间格式总开关」，从 17 种内置格式里选一个，或打开「自定格式」自己写格式串；刘海 / 灵动岛机型可开「模块跟随灵动」。\n\n**2 · 悬浮时间窗 & 停靠小图标**\n打开「悬浮时间窗」后屏幕出现可拖动的时间气泡；开启「双击停靠小图标」后，气泡上双击收起成边缘小图标，点一下弹回。\n\n**3 · 动画主题与眼睛**\n形象共 7 种：小眼睛 / 星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心。选小眼睛时显示眼睛大小、眨眼闭合幅度、眨眼频率、动画速度及 10 种眼动效；选其它形象只显示该形象自己的设置。\n\n**4 · 天气小组件**\n在天气设置里挑选组件样式（胶囊、双栏、大卡渐变、逐小时、极光、雷达、15 天等）。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 8
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "怎么关闭悬浮窗"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "在悬浮时间窗上「连点三下」可临时关闭；「连点四下」直接关闭悬浮窗模式（状态栏恢复原生时间）。遇到异常请注销（respring）或把对应总开关关一下再开。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 8
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.98",
+          "text": "修复「点击果冻主题当场死机 / 崩溃」；新增 6 个造型主题（星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心），每个主题独立配置且设置页按主题动态显示；霓虹升级为彩色霓虹；「关闭」动效移到列表末尾。"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.97",
+          "text": "新增 5 个动画主题；新增眼睛大小 / 眨眼闭合幅度 / 眨眼频率三个可调滑块（与原有动画速度相乘）。"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.96",
+          "text": "修复横屏全屏 App 内小图标丢失、竖屏网速窗不显示；新增眼球动效与速度设置。"
+        }
+      ]
+    }
+  ]
+}
