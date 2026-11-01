@@ -90,17 +90,24 @@ def parse_control(text):
     for line in text.split("\n"):
         if line == "":
             continue
-        if line[0] in (" ", "\t"):          # 续行
+        if line[0:1] in (" ", "\t"):          # 规范续行：以空格/tab 开头
             if cur:
-                buf.append(line[1:])
+                buf.append(line)              # 保留整行（含前导空格，符合 Debian 续行规范）
             continue
-        if ":" in line:                      # 新字段
+        if ":" in line:                       # 新字段
             if cur:
                 fields[cur] = "\n".join(buf).strip("\n")
                 order.append(cur)
             key, _, val = line.partition(":")
             cur = key.strip()
             buf = [val.strip()]
+        else:
+            # 容错：非空格开头、又不含冒号 → 当作当前字段的续行（补齐一个前导空格）。
+            # 修复部分严格解析器（如 Sileo）把无前导空格的续行误判为新 stanza，
+            # 从而把 Filename / Size / SHA256 等后续字段吞掉、导致 "Can't find a
+            # source to download" 的问题。
+            if cur:
+                buf.append(" " + line)
     if cur:
         fields[cur] = "\n".join(buf).strip("\n")
         order.append(cur)
