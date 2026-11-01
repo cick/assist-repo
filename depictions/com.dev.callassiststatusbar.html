@@ -2,151 +2,128 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>顶栏时间 Assist · 详情</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>顶栏时间 Assist</title>
 <style>
-  :root{
-    --bg:#0f1115; --card:#171a21; --card2:#1d212b; --fg:#e9edf5; --muted:#9aa3b2;
-    --accent:#7b5cff; --accent2:#36c6ff; --line:#272c38; --ok:#3fd07f;
+  body {
+    background: #fff;
+    color: #000;
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding-bottom: 24px;
+    -webkit-font-smoothing: antialiased;
   }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{margin:0;background:linear-gradient(180deg,#0c0e12,#0f1115 240px);color:var(--fg);
-    font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;padding:0 0 56px}
-  .wrap{max-width:680px;margin:0 auto;padding:0 16px}
-  header{padding:34px 16px 22px;text-align:center;
-    background:radial-gradient(120% 120% at 50% 0%,rgba(123,92,255,.22),transparent 60%)}
-  header .ic{width:84px;height:84px;border-radius:20px;margin:0 auto 14px;display:block;
-    box-shadow:0 8px 30px rgba(123,92,255,.35)}
-  header h1{margin:0;font-size:24px;font-weight:700;letter-spacing:.3px}
-  header .sub{margin:6px 0 0;color:var(--muted);font-size:13px}
-  .badge{display:inline-block;margin-top:12px;padding:4px 12px;border-radius:999px;
-    background:rgba(54,198,255,.14);color:var(--accent2);font-size:12px;font-weight:600}
-  section{background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:18px 16px;margin:16px 0}
-  h2{margin:0 0 12px;font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
-  h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-  p{margin:8px 0;color:#cfd6e4}
-  .muted{color:var(--muted)}
-  .shot{margin:14px 0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card2)}
-  .shot img{display:block;width:100%;height:auto}
-  .shot .cap{padding:10px 12px;font-size:13px;color:var(--muted);
-    border-top:1px solid var(--line);background:var(--card)}
-  .shot .cap b{color:var(--fg);font-weight:600}
-  ul{margin:8px 0;padding-left:20px}
-  li{margin:6px 0;color:#cfd6e4}
-  li b{color:var(--fg)}
-  .tip{background:rgba(63,208,127,.08);border:1px solid rgba(63,208,127,.25);
-    border-radius:12px;padding:12px 14px;color:#bfe9d1;font-size:13px;margin-top:10px}
-  .ver{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
-  .ver:last-child{border-bottom:0}
-  .ver .v{flex:0 0 78px;font-weight:700;color:var(--accent2);font-size:14px}
-  .ver .d{flex:1;color:#cfd6e4;font-size:13.5px}
-  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px;padding:0 16px}
-  footer a{color:var(--accent2);text-decoration:none}
-  .pill{display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:8px;
-    color:var(--muted);font-size:12px;margin:2px 4px 2px 0}
+  header {
+    padding: 26px 16px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+  }
+  header img {
+    width: 72px; height: 72px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  }
+  header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+  header p  { margin: 4px 0 0; color: #8a8a8a; font-size: 13px; }
+  main { padding: 0 16px; }
+  h2[role="header"] {
+    font-size: 17px; font-weight: 700;
+    margin: 22px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e3e3e3;
+  }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 0 0 10px; }
+  p  { margin: 0 0 10px; }
+  .muted { color: #8a8a8a; }
+  .shot {
+    margin: 12px 0;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f7f7f7;
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot .cap { padding: 8px 12px; font-size: 12.5px; color: #555; border-top: 1px solid #e3e3e3; }
+  .shot .cap b { color: #000; }
+  a[role="button"] {
+    display: block;
+    text-align: center;
+    background: #f2f2f2;
+    color: #0a84ff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 11px;
+    border-radius: 10px;
+    margin: 8px 0;
+  }
 </style>
 </head>
 <body>
 <header>
-  <img class="ic" src="https://cick.github.io/assist-repo/icon.png" alt="icon">
+  <img src="https://cick.github.io/assist-repo/icon.png" alt="icon">
   <h1>顶栏时间 Assist</h1>
-  <p class="sub">CallAssistStatusBar · iOS 15–16 状态栏增强 · rootless</p>
-  <span class="badge">v0.9.98</span>
+  <p>CallAssistStatusBar · iOS 15–16 · rootless</p>
 </header>
 
-<div class="wrap">
+<main id="content">
+  <h2 role="header">Description</h2>
+  <ul>
+    <li>
+      <p>顶栏时间 Assist 接管 iOS 状态栏时间显示，并整合悬浮窗、边缘停靠小图标、动画主题与天气小组件，所有开关即时生效。仅供学习研究，不含任何激活 / 授权逻辑。</p>
+      <p class="muted">特性：</p>
+      <p>• 状态栏时间格式：17 种内置格式 + 自定义，支持中英文、锁屏显示、跟随灵动岛<br>
+         • 悬浮时间窗 &amp; 边缘停靠小图标（双击收起 / 单击弹回）<br>
+         • 7 种形象动画（小眼睛 / 星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心），各自独立配置<br>
+         • 天气小组件：胶囊 / 双栏 / 大卡渐变 / 逐小时 / 极光 / 雷达 / 15 天 等</p>
+    </li>
+  </ul>
 
-  <section>
-    <h2><span class="dot"></span>这是什么</h2>
-    <p>顶栏时间 Assist 接管你的状态栏时间显示，并提供一组悬浮窗、停靠小图标、动画主题与天气小组件。
-    它把「状态栏时间格式」「悬浮时间窗」「边缘停靠小图标」「眼睛 / 形象动画」「天气小组件」整合到一个设置入口，
-    所有开关即时生效，少数需要「注销 / respring」的会在说明里标注。</p>
-    <p class="muted">依赖：mobilesubstrate、preferenceloader。支持 Dopamine 等 rootless 越狱。</p>
-  </section>
+  <h2 role="header">Screenshots</h2>
+  <div class="shot">
+    <img src="https://cick.github.io/assist-repo/depictions/assets/shot-1-format.jpg" alt="状态栏时间格式">
+    <div class="cap"><b>① 状态栏时间格式</b> · 17 种内置格式 + 自定义，支持中英文、锁屏显示、跟随灵动岛。</div>
+  </div>
+  <div class="shot">
+    <img src="https://cick.github.io/assist-repo/depictions/assets/shot-2-float.jpg" alt="悬浮时间窗与停靠小图标">
+    <div class="cap"><b>② 悬浮时间窗与停靠小图标</b> · 双击收起成边缘小图标，点一下弹回；位置可选上 / 下 / 左 / 右 / 自由，支持横屏跟随。</div>
+  </div>
+  <div class="shot">
+    <img src="https://cick.github.io/assist-repo/depictions/assets/shot-3-eye.jpg" alt="眼睛动画与形象">
+    <div class="cap"><b>③ 眼睛动画与形象</b> · 眼睛大小 / 眨眼幅度 / 眨眼频率 / 动画速度可调；10 种眼动效。</div>
+  </div>
+  <div class="shot">
+    <img src="https://cick.github.io/assist-repo/depictions/assets/shot-4-widget.jpg" alt="天气小组件样式">
+    <div class="cap"><b>④ 天气小组件样式</b> · 胶囊 / 双栏 / 大卡渐变 / 逐小时 / 极光 / 雷达 / 15 天 等十余种任选。</div>
+  </div>
 
-  <section>
-    <h2><span class="dot"></span>界面一览</h2>
+  <h2 role="header">Compatibility</h2>
+  <ul>
+    <li><p>iOS 15 – 16 · rootless（Dopamine 等）<br>依赖：mobilesubstrate、preferenceloader。</p></li>
+  </ul>
 
-    <div class="shot">
-      <img src="https://cick.github.io/assist-repo/depictions/assets/shot-1-format.jpg" alt="状态栏时间格式">
-      <div class="cap"><b>① 状态栏时间格式</b> · 17 种内置格式 + 自定义；支持中英文切换、锁屏显示、跟随灵动岛；可单独调宽度、字体与位置。</div>
-    </div>
+  <h2 role="header">What's new? (v0.9.98)</h2>
+  <ul>
+    <li>
+      <p>• 修复「点击果冻主题当场死机 / 崩溃」<br>
+         • 新增 6 个造型主题（星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心），各自独立配置<br>
+         • 霓虹升级为彩色霓虹<br>
+         • 「关闭」动效移到列表末尾</p>
+    </li>
+  </ul>
 
-    <div class="shot">
-      <img src="https://cick.github.io/assist-repo/depictions/assets/shot-2-float.jpg" alt="悬浮时间窗与停靠小图标">
-      <div class="cap"><b>② 悬浮时间窗与停靠小图标</b> · 在悬浮时间窗上「双击」可收起成屏幕边缘的小图标（显示当前时间），点一下弹回；位置可选 上 / 下 / 左 / 右 / 自由，并支持横屏跟随旋转。</div>
-    </div>
+  <h2 role="header">使用说明</h2>
+  <ul>
+    <li>
+      <p><b>关闭悬浮窗：</b>在悬浮时间窗上「连点三下」可临时关闭；「连点四下」直接关闭悬浮窗模式。遇到异常请注销（respring）或把对应总开关关一下再开。</p>
+    </li>
+  </ul>
 
-    <div class="shot">
-      <img src="https://cick.github.io/assist-repo/depictions/assets/shot-3-eye.jpg" alt="眼睛动画设置">
-      <div class="cap"><b>③ 眼睛动画与形象</b> · 眼睛大小、眨眼闭合幅度、眨眼频率、动画速度均可调；动效含 灵动 / 凝视 / 眨眼 / 好奇 / 星光 / 心跳 / 波浪 / 霓虹 / 果冻 / 关闭。</div>
-    </div>
-
-    <div class="shot">
-      <img src="https://cick.github.io/assist-repo/depictions/assets/shot-4-widget.jpg" alt="天气小组件样式">
-      <div class="cap"><b>④ 天气小组件样式</b> · 胶囊 / 双栏 / 中长四项 / 大卡渐变 / 逐小时 / 彩云 / 极光 / 仪表 / 雷达 / 15 天 等十余种样式任选。</div>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="dot"></span>使用介绍</h2>
-
-    <p><b>1 · 状态栏时间格式</b></p>
-    <ul>
-      <li>先打开 <b>「时间格式总开关」</b>（无论用内置还是自定义都必须开）。</li>
-      <li>从 17 种内置格式里选一个（如「格式十六」显示 时辰 + 公历 + 农历 + 节气倒数）。</li>
-      <li>想要更花哨就打开 <b>「自定格式」</b> 自己写格式串；想要更细的位置 / 大小 / 背景控制，打开 <b>「时间独立模块」</b>（改完需注销生效）。</li>
-      <li>刘海 / 灵动岛机型可开 <b>「模块跟随灵动」</b>，时间会自动贴到灵动岛左侧并留出间距。</li>
-    </ul>
-
-    <p><b>2 · 悬浮时间窗 & 停靠小图标</b></p>
-    <ul>
-      <li>打开 <b>「悬浮时间窗」</b> 后，屏幕会出现一个可拖动的时间气泡。</li>
-      <li>开启 <b>「双击停靠小图标」</b>：在气泡上<b>双击</b>→ 收起成边缘小图标；<b>点一下</b>小图标 → 弹回气泡。</li>
-      <li>停靠位置：上 / 下 / 左 / 右 / 自由；开启 <b>「横屏显示模式」</b> 后，横过来内容自动转正。</li>
-    </ul>
-
-    <p><b>3 · 动画主题与眼睛</b></p>
-    <ul>
-      <li><b>形象选择</b>：小眼睛 / 星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心，共 7 种，默认是小眼睛。</li>
-      <li>选「小眼睛」时，下方显示眼睛专属设置：<b>眼睛大小、眨眼闭合幅度、眨眼频率、动画速度</b>，以及 10 种眼动效。</li>
-      <li>选其它形象时，只显示该形象自己的设置（如星舰的航速 / 配色、猫咪的活跃度 / 毛色），互不干扰。</li>
-    </ul>
-
-    <p><b>4 · 天气小组件</b></p>
-    <ul>
-      <li>在天气设置里挑选组件样式（胶囊、双栏、大卡渐变、逐小时、极光、雷达、15 天等）。</li>
-      <li>多数样式即时生效；若长时间不刷新，回到设置重开一次总开关即可。</li>
-    </ul>
-
-    <div class="tip">
-      <b>怎么关掉悬浮窗？</b> 在悬浮时间窗上「连点三下」可临时关闭；「连点四下」会直接关闭悬浮窗模式（状态栏恢复原生时间）。
-      遇到显示异常，<b>注销（respring）</b>或把对应总开关关一下再开即可恢复。
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="dot"></span>更新日志</h2>
-    <div class="ver"><div class="v">v0.9.98</div><div class="d">
-      修复「点击果冻主题当场死机 / 崩溃」；新增 <b>6 个造型主题</b>（星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心），每个主题有独立配置且设置页按主题动态显示；
-      霓虹升级为<b>彩色霓虹</b>；「关闭」动效移到列表末尾。
-    </div></div>
-    <div class="ver"><div class="v">v0.9.97</div><div class="d">
-      新增 5 个动画主题；新增 <b>眼睛大小 / 眨眼闭合幅度 / 眨眼频率</b> 三个可调滑块（与原有动画速度相乘）。
-    </div></div>
-    <div class="ver"><div class="v">v0.9.96</div><div class="d">
-      修复横屏全屏 App（如王者）内小图标丢失、竖屏网速窗不显示；新增眼球动效与速度设置。
-    </div></div>
-    <p class="muted" style="margin-top:12px">更早版本持续修复横屏停靠、坐标空间、动画抖动等问题。</p>
-  </section>
-
-  <footer>
-    由 CallAssist Repo 分发 · 源地址 <a href="https://cick.github.io/assist-repo/">cick.github.io/assist-repo</a><br>
-    <span class="pill">iOS 15–16</span><span class="pill">rootless</span><span class="pill">Dopamine</span>
-  </footer>
-
-</div>
+  <h2 role="header">Other</h2>
+  <ul>
+    <li><a href="https://cick.github.io/assist-repo/" target="_blank" role="button">访问源主页</a></li>
+  </ul>
+</main>
 </body>
 </html>
