@@ -3,7 +3,7 @@
   "class": "DepictionTabView",
   "tabs": [
     {
-      "tabname": "详情",
+      "tabname": "Details",
       "views": [
         {
           "class": "DepictionSubheaderView",
@@ -57,11 +57,12 @@
         {
           "class": "DepictionMarkdownView",
           "markdown": "在悬浮时间窗上「连点三下」可临时关闭；「连点四下」直接关闭悬浮窗模式（状态栏恢复原生时间）。遇到异常请注销（respring）或把对应总开关关一下再开。"
-        },
-        {
-          "class": "DepictionSpacerView",
-          "spacing": 8
-        },
+        }
+      ]
+    },
+    {
+      "tabname": "Changelog",
+      "views": [
         {
           "class": "DepictionHeaderView",
           "title": "更新日志"
@@ -72,9 +73,17 @@
           "text": "修复「点击果冻主题当场死机 / 崩溃」；新增 6 个造型主题（星舰 / 猫咪 / 机器人 / 水母 / 幽灵 / 爱心），每个主题独立配置且设置页按主题动态显示；霓虹升级为彩色霓虹；「关闭」动效移到列表末尾。"
         },
         {
+          "class": "DepictionSpacerView",
+          "spacing": 6
+        },
+        {
           "class": "DepictionTableTextView",
           "title": "v0.9.97",
           "text": "新增 5 个动画主题；新增眼睛大小 / 眨眼闭合幅度 / 眨眼频率三个可调滑块（与原有动画速度相乘）。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 6
         },
         {
           "class": "DepictionTableTextView",
