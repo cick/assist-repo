@@ -30,8 +30,8 @@ Description: 仿「电话助手」状态栏与图标模块的越狱插件，仅�
  ━━━━━━━━  声明  ━━━━━━━━
  本插件为逆向学习产物，请于 24 小时内自行删除，请勿用于商业用途。
 Filename: debs/com.dev.callassiststatusbar_0.9.140_iphoneos-arm64.deb
-Size: 1131538
-MD5sum: 052e7547f292a73a4b5f9bd61ff2aaa5
-SHA256: 2a0eef9deac324815a7c2a3942271d6fde36be04b8be46a4a6626cebd423b1eb
+Size: 1151416
+MD5sum: b2c4232bb965976bb6d2b860fcba5193
+SHA256: 29e33c88ff2b1a8f4cdccca39f970f26173c4020495908594a79d1c9053e90d4
 Depiction: https://cick.github.io/assist-repo/depictions/com.dev.callassiststatusbar.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.callassiststatusbar.sileo.json
