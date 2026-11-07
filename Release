@@ -5,12 +5,12 @@ Codename: stable
 Architectures: iphoneos-arm64
 Components: main
 Description: 顶栏时间Assit（CallAssistStatusBar）等越狱插件的分发源。
-Date: Sun, 01 Nov 2026 14:40:12 +0000
+Date: Sat, 07 Nov 2026 11:42:27 +0000
 MD5Sum:
- 7228190b69e072c2f3ca6aab9b6ed696 2481 Packages
- a1fdc9f3a064f249c57066a51a9ffab2 1498 Packages.gz
- 75e0cf66cf1cc591e11c7205a9a51771 1560 Packages.bz2
+ 3aeb9db0d22075d5be683ecf65b421cf 2504 Packages
+ 61dffcc6720183906839abfbf9308a8a 1514 Packages.gz
+ 5b9a9681c3cefd5ad89baaf8e9f93848 1567 Packages.bz2
 SHA256:
- 591620756c256bf024aa11dd64ee48508f1a32fd37e286577438d91b43d573db 2481 Packages
- 4cf244c50efc1b16f1d79446a5a000f6e68ac757ce49d3a0dd485d124abb4a4d 1498 Packages.gz
- 7e78c911e411e81cbfc46b556b7062a90211493da4690a67797ad4877352216b 1560 Packages.bz2
+ 2e2f4f94af6e255263a59d18728d36a8991fe21c9a73e3b011064197c9ba42e5 2504 Packages
+ 968e0fa63c083eefbf4f7f134a6d31fc8a5cb99404906add1a2dc1bac3b4d85d 1514 Packages.gz
+ 1993011f207e35b222d068bf8bba0cc24e4de895814787e2f283f2e6c9226559 1567 Packages.bz2
