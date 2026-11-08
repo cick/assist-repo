@@ -1,6 +1,6 @@
 Package: com.dev.callassiststatusbar
 Name: 顶栏时间Assit
-Version: 0.9.142
+Version: 0.9.143
 Architecture: iphoneos-arm64
 Maintainer: AssitDev <dev@example.com>
 Section: Tweaks
@@ -29,9 +29,9 @@ Description: 仿「电话助手」状态栏与图标模块的越狱插件，仅�
  .
  ━━━━━━━━  声明  ━━━━━━━━
  本插件为逆向学习产物，请于 24 小时内自行删除，请勿用于商业用途。
-Filename: debs/com.dev.callassiststatusbar_0.9.142_iphoneos-arm64.deb
-Size: 1141812
-MD5sum: 4b3a2eceb8207df7e8baea9c92358cf4
-SHA256: 3b4dd4f34e928d8597b0502d83e717707202f5d835f97b9f4936a359c5528a98
+Filename: debs/com.dev.callassiststatusbar_0.9.143_iphoneos-arm64.deb
+Size: 1132444
+MD5sum: 443665ae14009b3e6350c1b1bb2a988d
+SHA256: ae7325f8e5c2ceaefc14999130c20b64b852f0439e917d61d3a817014d898f4f
 Depiction: https://cick.github.io/assist-repo/depictions/com.dev.callassiststatusbar.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.callassiststatusbar.sileo.json
