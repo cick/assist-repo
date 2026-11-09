@@ -28,24 +28,37 @@ DEBS_DIR = os.path.join(REPO, "debs")
 PKG_PATH = os.path.join(REPO, "Packages")
 
 # ── 源的元信息（按需修改）──────────────────────────────────────────────
-ORIGIN = "CallAssist Repo"
-LABEL = "CallAssist"
+ORIGIN = "Assist Repo"
+LABEL = "Assist"
 SUITE = "stable"
 CODENAME = "stable"
 COMPONENTS = "main"
 ARCHS = "iphoneos-arm64"
-DESCRIPTION = "顶栏时间Assit（CallAssistStatusBar）等越狱插件的分发源。"
+DESCRIPTION = "顶栏时间Assit（CallAssistStatusBar）、钉钉助手等越狱插件的分发源。"
 
 # ── 详情页（Depiction）───────────────────────────────────────────────
-# 这个地址要和最终托管的根 URL 一致（结尾不要带 /）。
+# 地址要和最终托管的根 URL 一致（结尾不要带 /）。
 # 客户端点开包详情时会加载这个 HTML，里面含截图、使用介绍、更新日志。
 REPO_BASE_URL = "https://cick.github.io/assist-repo"
-DEPICTION_PATH = "depictions/com.dev.callassiststatusbar.html"
 
-# Sileo 原生详情页（JSON）。Sileo 对 HTML Depiction 渲染很差，
-# 但对原生 SileoDepiction 支持很好（能正常显示图片 + 描述）。
-# 同时保留上面的 HTML 版（Cydia / Zebra 用），Sileo 会优先用这一份。
-SILEO_DEPICTION_PATH = "depictions/com.dev.callassiststatusbar.sileo.json"
+# 详情页按「包名」自动匹配，文件存在才会写进 Packages：
+#   depictions/<package>.html        → Depiction（Cydia / Zebra）
+#   depictions/<package>.sileo.json  → SileoDepiction（Sileo 原生，渲染更好）
+# 这样新增包时不用改代码，丢一个 HTML 进去就行；没有详情页的包也不会
+# 被错误地指到别的包的详情页上。
+DEPICTION_DIR = "depictions"
+
+
+def depiction_fields(pkg):
+    """返回该包可用的详情页字段（没有对应文件则不返回对应键）。"""
+    out = {}
+    html = f"{DEPICTION_DIR}/{pkg}.html"
+    sileo = f"{DEPICTION_DIR}/{pkg}.sileo.json"
+    if os.path.exists(os.path.join(REPO, html)):
+        out["Depiction"] = REPO_BASE_URL.rstrip("/") + "/" + html
+    if os.path.exists(os.path.join(REPO, sileo)):
+        out["SileoDepiction"] = REPO_BASE_URL.rstrip("/") + "/" + sileo
+    return out
 
 
 def read_ar(path):
@@ -137,11 +150,12 @@ def main():
         fields["MD5sum"] = hashlib.md5(raw).hexdigest()
         fields["SHA256"] = hashlib.sha256(raw).hexdigest()
         # 详情页：客户端点开包时加载的 HTML（含截图 / 使用介绍 / 更新日志）
-        fields["Depiction"] = REPO_BASE_URL.rstrip("/") + "/" + DEPICTION_PATH.lstrip("/")
-        # Sileo 原生详情页（JSON）。Sileo 优先用这份，能正常渲染图片 + 描述。
-        fields["SileoDepiction"] = REPO_BASE_URL.rstrip("/") + "/" + SILEO_DEPICTION_PATH.lstrip("/")
+        for k, v in depiction_fields(fields.get("Package", "")).items():
+            fields[k] = v
+            if k not in order:
+                order.append(k)
         for extra in ("Filename", "Size", "MD5sum", "SHA256", "Depiction", "SileoDepiction"):
-            if extra not in order:
+            if extra in fields and extra not in order:
                 order.append(extra)
         entries.append((fields, order))
 

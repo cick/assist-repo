@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>钉钉助手</title>
+<style>
+  body {
+    background: #fff; color: #000;
+    font: 14px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    margin: 0; padding-bottom: 28px; -webkit-font-smoothing: antialiased;
+  }
+  header { padding: 26px 16px 20px; text-align: center; border-bottom: 1px solid #e3e3e3; }
+  header .ico {
+    width: 72px; height: 72px; margin: 0 auto 12px; border-radius: 16px;
+    background: linear-gradient(135deg, #2f7cf6, #12b5ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; box-shadow: 0 4px 14px rgba(47,124,246,.30);
+  }
+  header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+  header p  { margin: 4px 0 0; color: #8a8a8a; font-size: 13px; }
+  main { padding: 0 16px; }
+  h2 {
+    font-size: 17px; font-weight: 700; margin: 24px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid #e3e3e3;
+  }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 20px; }
+  li { margin: 0 0 8px; }
+  .muted { color: #8a8a8a; }
+  .ver { color: #2f7cf6; font-weight: 600; }
+  .card {
+    background: #f7f8fa; border: 1px solid #e6e8ec; border-radius: 12px;
+    padding: 14px 16px; margin: 12px 0;
+  }
+  .card b { font-weight: 600; }
+  code {
+    background: #eef1f5; border-radius: 5px; padding: 1px 5px;
+    font-size: 12.5px; word-break: break-all;
+  }
+  .warn {
+    background: #fff8e6; border: 1px solid #ffe2a8; border-radius: 12px;
+    padding: 12px 14px; margin: 14px 0; font-size: 13px; color: #7a5a00;
+  }
+  footer { margin-top: 26px; text-align: center; color: #a0a0a0; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="ico">⏰</div>
+  <h1>钉钉助手</h1>
+  <p>定时自动打卡 · 多时间段 · 秒级精度</p>
+</header>
+
+<main>
+  <h2>功能</h2>
+  <ul>
+    <li><b>多时间点</b>：早上上班、晚上下班各设一条，最多 8 条；每条可单独开关，左滑删除。</li>
+    <li><b>精确到秒</b>：时 / 分 / 秒三列滚轮，到点后 0.25 秒内拉起钉钉。</li>
+    <li><b>自动点击</b>：自动进入「工作台 → 考勤打卡」，点中圆形打卡按钮（含 H5 / 小程序页面的 JS 点击）。</li>
+    <li><b>只点一次</b>：点中即冻结，进入拍照 / 填备注环节后不再重复点击，留给你手工完成。</li>
+    <li><b>结果验证</b>：只有页面真的出现「打卡成功 / 已打卡」才记成功，绝不假报。</li>
+    <li><b>桌面悬浮球</b>：单击＝拉起并打一次卡；长按＝只打开钉钉。可拖动、松手吸附边缘。</li>
+    <li><b>多企业</b>：账号挂多个企业时，自动识别「选择打卡企业」弹层并按设置序号点选。</li>
+  </ul>
+
+  <h2>安装</h2>
+  <div class="card">
+    <p><b>1.</b> 在 Sileo / Zebra / Cydia 添加源<br>
+       <code>https://cick.github.io/assist-repo/</code></p>
+    <p><b>2.</b> 安装 <b>钉钉助手</b>（会自动装好设置页与点击器模块）。</p>
+    <p><b>3.</b> 装完无需手动操作：包内 postinst 会结束钉钉进程，下次打开钉钉时点击器自动注入。</p>
+    <p class="muted">若单独更新了「钉钉点击器」包，同样会在下次启动钉钉时生效。</p>
+  </div>
+
+  <h2>使用</h2>
+  <ul>
+    <li>打开 <b>设置 → 钉钉助手</b>，打开「启用定时打卡」。</li>
+    <li>在「打卡时间」里点任一条，拨动时 / 分 / 秒三列滚轮，改完自动保存；点「＋ 添加时间」可加第二条。</li>
+    <li>右侧开关可单独暂停某一条；向左滑动可删除。</li>
+    <li>「重复」选工作日或每天；「默认打卡企业」多企业账号按序号选。</li>
+    <li>不确定能否点中时，先点「立即测试」或双击悬浮球跑一遍，再点「查看调试日志」看每一步。</li>
+  </ul>
+
+  <h2>版本</h2>
+  <p>当前 <span class="ver">0.9.21.1</span></p>
+  <div class="card">
+    <p><b>0.9.21.1</b> — 修复悬浮球点击后桌面卡顿：弃用会同步阻塞约 10 秒的启动接口，改为异步启动 + 后台队列，主线程不再做同步 IPC。</p>
+    <p><b>0.9.21.0</b> — 修复「点了悬浮球，钉钉只起进程不切前台」。</p>
+    <p><b>0.9.20.0</b> — 时间精确到秒；悬浮球绿标改为「真打上才变绿」；多时间点取「此刻到点的那一条」。</p>
+    <p><b>0.9.19.0</b> — 多定时列表（早 / 晚各一条），单条开关、左滑删除。</p>
+    <p><b>0.9.18.x</b> — 设置页配置真正生效；打卡按钮精准定位（排除状态卡 / 入口卡片 / 底栏 Tab）。</p>
+  </div>
+
+  <div class="warn">
+    <b>说明</b>：本插件为逆向学习产物，仅供个人研究使用，请勿用于规避公司考勤制度。
+    设备设了密码 / Face ID 时，钉钉被拉起后仍会停在锁屏后台，只能解锁后补打 —— 这属于系统限制，插件无法绕过。
+  </div>
+
+  <footer>仅供学习研究 · 请在 24 小时内自行删除</footer>
+</main>
+</body>
+</html>

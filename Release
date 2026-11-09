@@ -1,16 +1,16 @@
-Origin: CallAssist Repo
-Label: CallAssist
+Origin: Assist Repo
+Label: Assist
 Suite: stable
 Codename: stable
 Architectures: iphoneos-arm64
 Components: main
-Description: 顶栏时间Assit（CallAssistStatusBar）等越狱插件的分发源。
-Date: Sun, 08 Nov 2026 03:33:25 +0000
+Description: 顶栏时间Assit（CallAssistStatusBar）、钉钉助手等越狱插件的分发源。
+Date: Mon, 09 Nov 2026 23:41:53 +0000
 MD5Sum:
- 8664289718e00c8eb89a0b4fa3a9b460 2484 Packages
- 8c5d5c3db703803afdad0dcab7a0e945 1500 Packages.gz
- abc1ac6ce47d8f8ebe6821a1cc68db78 1571 Packages.bz2
+ 0b96153dfb01e2673cdfc9a3e2c05855 4177 Packages
+ b623ce811c063d25774fb20fcf50d9dc 2188 Packages.gz
+ 3a4beaaacc44f62f10622c04eb0a2da4 2223 Packages.bz2
 SHA256:
- 4a856edf106215393ca5cc821a291ae905dfe7c1958b0a879df9138ea6952abc 2484 Packages
- 7e7487282dc8a429db4327dff013d69de3a0e3a6f62fcc156b4ccd115d155968 1500 Packages.gz
- 662309e2a8d7cded2898b6c2446bbb8560aaa508ffc98142a657815599d2d5d1 1571 Packages.bz2
+ 054a806d7a21118f1b4abbbc547d07e2fe879d5d6cd38010c18f22c4c56a1591 4177 Packages
+ 3fe828d233533561dd98c216ed556189408cb74e8d357280de875a028fd40302 2188 Packages.gz
+ d0939b19e3263b06c7bf83f535a907917aed555907841375f3d059c303888673 2223 Packages.bz2
