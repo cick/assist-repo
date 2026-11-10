@@ -7,20 +7,22 @@ Priority: optional
 Depends: firmware (>= 15.0), mobilesubstrate (>= 0.9.5000), preferenceloader
 Conflicts: com.assitdev.qujiankuaima
 Replaces: com.assitdev.qujiankuaima
-Description: 【roothide 隐根专用包，请勿与无根版同时安装】把散落在短信、微信、菜鸟、丰巢等通知里的取件码，自动收进一个悬浮球里。通知到达时在本机解析取件码/取餐码/货架号，按驿站归类去重，桌面悬浮球一点即看，点一下复制、左滑标记已取，支持手动添加与剪贴板识别。数据只存在本机，不联网、不上传。
- 本包为 arm64e 原生 roothide 构建；无根（rootless）用户请装「取件快码 Assit」标准包。
- 功能：自动抓取通知中的取件码 / 取餐码 / 货架号；按驿站归类去重；悬浮球角标与待取清单；复制、标记已取、批量清理；手动添加与剪贴板识别；自定义匹配关键词与保留天数；超期高亮提醒。
- 隐私：全部解析与存储都在本机完成，不请求网络、不上传任何内容。
+Description: 【roothide 隐根专用包】按原帖截图还原的取件聚合面板：三个身份码 + 六个查件入口。
+ 身份码：淘宝 / 拼多多 / 京东（驿站扫码出示或订单内查看）；查件入口：淘宝 / 拼多多 / 京东 / 抖音 / 快手 / 得物的待取包裹与订单物流。
+ 点一下直达对应 App，每个入口的跳转链接都能在设置里自定义；未安装对应 App 时提供网页版兜底。
+ v2.0.0 起提供桌面 App（uicache 注册，不依赖注入即可使用）+ SpringBoard 悬浮球 + iOS 设置页，App 内可查看插件注入自检状态。
+ 跳转使用各 App 的 URL Scheme，具体「身份码 / 待取」深链由厂商决定，设置里可自行填完整链接。
+ 本包为 arm64e 原生 roothide 构建；无根用户请装标准包，两包互斥。
 Architecture: iphoneos-arm64e
-Version: 1.0.1
-Installed-Size: 152
+Version: 2.0.0
+Installed-Size: 296
 Icon: https://cick.github.io/assist-repo/icons/com.assitdev.qujiankuaima.roothide.png
 Depiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.roothide.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.roothide.sileo.json
-Filename: debs/com.assitdev.qujiankuaima.roothide_1.0.1_iphoneos-arm64e.deb
-Size: 37884
-MD5sum: 10f6511dc34978f9dfe132f57db10ca4
-SHA256: 90d0cf4b4da5c25d1d1ca39121654e01b128cdfc193edfe2c1d567b1a117b34b
+Filename: debs/com.assitdev.qujiankuaima.roothide_2.0.0_iphoneos-arm64e.deb
+Size: 55838
+MD5sum: b4015112e6dbc1337987baf59658a577
+SHA256: 82bb6e89f0be249fc5b78b6fe75ee84e224b18d0dd5517635d14f325f75dd4af
 
 Package: com.assitdev.qujiankuaima
 Name: 取件快码 Assit
@@ -29,20 +31,22 @@ Author: AssitDev
 Section: Tweaks
 Priority: optional
 Depends: firmware (>= 15.0), mobilesubstrate (>= 0.9.5000), preferenceloader
-Description: 把散落在短信、微信、菜鸟、丰巢等通知里的取件码，自动收进一个悬浮球里。通知到达时在本机解析取件码/取餐码/货架号，按驿站归类去重，桌面悬浮球一点即看，点一下复制、左滑标记已取，支持手动添加与剪贴板识别。数据只存在本机，不联网、不上传。
- 功能：自动抓取通知中的取件码 / 取餐码 / 货架号；按驿站归类去重；悬浮球角标与待取清单；复制、标记已取、批量清理；手动添加与剪贴板识别；自定义匹配关键词与保留天数；超期高亮提醒。
- 本包为 rootless 无根版（iOS 15 – 16，Dopamine / palera1n）；roothide 隐根环境请改装「取件快码 Assit · 隐根」。源码不含硬编码 /var/jb 路径，同一份源码可产出两种包。
- 隐私：全部解析与存储都在本机完成，不请求网络、不上传任何内容。
+Description: 按原帖截图还原的取件聚合面板：三个身份码 + 六个查件入口，桌面 App 与悬浮球双入口。
+ 身份码：淘宝 / 拼多多 / 京东（驿站扫码出示或订单内查看）；查件入口：淘宝 / 拼多多 / 京东 / 抖音 / 快手 / 得物的待取包裹与订单物流。
+ 点一下直达对应 App，每个入口的跳转链接都能在设置里自定义；未安装对应 App 时提供网页版兜底。
+ v2.0.0 起提供桌面 App（uicache 注册，不依赖注入即可使用）+ SpringBoard 悬浮球 + iOS 设置页，App 内可查看插件注入自检状态。
+ 跳转使用各 App 的 URL Scheme，具体「身份码 / 待取」深链由厂商决定，设置里可自行填完整链接。
+ 本包为 rootless 无根版（Dopamine / palera1n）；隐根环境请改装「取件快码 Assit · 隐根」。
 Architecture: iphoneos-arm64
-Version: 1.0.1
-Installed-Size: 152
+Version: 2.0.0
+Installed-Size: 296
 Icon: https://cick.github.io/assist-repo/icons/com.assitdev.qujiankuaima.png
 Depiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.sileo.json
-Filename: debs/com.assitdev.qujiankuaima_1.0.1_iphoneos-arm64.deb
-Size: 37402
-MD5sum: d58f222a7bcd75eb5a972110e3cf3ecd
-SHA256: a38f77caad899c896f46814d13ad020133d0a404d8b63138f8ae385f41b1a334
+Filename: debs/com.assitdev.qujiankuaima_2.0.0_iphoneos-arm64.deb
+Size: 55342
+MD5sum: 1b93858561707a6eab5e5e21b8a1354f
+SHA256: 33983d009439abafd0995f46c9e78d2ee0ff474bd1cfb56df12961bc0236ece8
 
 Package: com.dev.callassiststatusbar
 Name: 顶栏时间Assit

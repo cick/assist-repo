@@ -1,83 +1,57 @@
 # 取件快码 Assit — 源码
 
-**Author: AssitDev** · 包名 `com.assitdev.qujiankuaima` · v1.0.1
+**Author: AssitDev** · 包名 `com.assitdev.qujiankuaima` · v2.0.0
 
-一个 iOS 越狱插件：把散落在短信 / 微信 / 菜鸟 / 丰巢等通知里的取件码，
-在本机解析后收进桌面悬浮球，按驿站归类，点一下复制。
+按原帖截图重做的**取件聚合面板**：三个身份码 + 六个查件入口 + 设置页。
+一个 deb 里同时提供**桌面 App**、**SpringBoard 悬浮球**和 **iOS 设置页**，
+主入口是桌面 App —— 不依赖 tweak 注入是否成功，装完就能看到、点开就能用。
 
 ## 功能
 
 | 模块 | 说明 |
 |---|---|
-| 自动抓码 | Hook `BBServer -publishBulletin:…`（SpringBoard），把通知标题/副标题/正文拼起来跑正则 |
-| 解析规则 | `取件码/取餐码/货架号/口令/验证码` + 自定义关键词；三段式货架号 `3-2-1056`；`凭 XXXX 取件`；驿站语境里的 4–8 位纯数字兜底 |
-| 归类去重 | 识别菜鸟、丰巢、中通/圆通/申通/韵达/极兔、邮政、京东、顺丰、美团/饿了么等；提取地址；同码 + 同驿站去重 |
-| 悬浮球 | 可拖动吸附、待取数量角标、点开面板、长按隐藏、透明度可调 |
-| 列表面板 | 待取 / 已取 / 设置三页；点条目复制；左滑标记已取 / 删除；搜索；超 24h 高亮 |
-| 补录 | 手动添加、剪贴板识别 |
-| 提醒 | 新码到达时顶部横幅 4 秒 |
-| 设置 | 总开关、悬浮球、自动抓码、横幅、保留天数(1–90)、透明度、自定义关键词 |
-| 存储 | `~/Library/Application Support/QujianKuaiMa/codes.plist`，**不联网、不上传** |
+| 三个身份码 | 淘宝 / 拼多多（驿站扫码出示）、京东（订单内查看） |
+| 六个查件入口 | 淘宝待取、拼多多待取（查看待取包裹）；京东 / 抖音 / 快手 / 得物待取（查看订单物流） |
+| 跳转 | 各 App 的 URL Scheme；`设置` 里可为每个入口填完整深链；未装对应 App 时可复制链接 / 打开网页版 |
+| 桌面 App | `QujianKuaiMa.app`，`postinst` 用 `uicache` 注册；UIKit 纯代码界面，按截图布局 |
+| 悬浮球 | 注入 SpringBoard 的可拖动「码」球，点击 `qujiankuaima://` 唤起 App |
+| 设置 | App 内设置页 + iOS「设置」里的 PreferenceLoader 页，共享同一份 `NSUserDefaults` domain |
+| 注入自检 | tweak 在 `%ctor` 写标记文件，App 设置页显示 dylib 有没有被加载 |
 
-## 目录
+## 目录结构
 
 ```
-Makefile                 构建配置（rootless / roothide 两种 scheme）
-control                  无根包的 control
-control.roothide         隐根包的 control（不同包名 / 架构 / Conflicts）
-build.sh                 一键构建
-Tweak.xm                 Logos hook：BBServer 通知 + SpringBoard 启动
-QKMCommon.h              公共接口
-QKMPrefs.m               设置（NSUserDefaults suite）
-QKMParser.m              本机正则解析
-QKMStore.m               本机 plist 存储 / 去重 / 过期清理
-QKMUI.m                  悬浮球、面板、设置、横幅（纯公开 UIKit）
-QujianKuaiMa.plist       MobileSubstrate filter: com.apple.springboard
-include/CydiaSubstrate/  构建用转发头（解决本机 theos arm64e 找不到声明的问题）
-mod/roothide/            项目自带的 roothide scheme 模块（源自 roothide/theos，MIT）
-roothide.entitlements    隐根构建所需签名权益
+Makefile / build.sh / build_app.sh   构建（App 由 build_app.sh 用 xcrun clang 编译并 ldid 签名）
+QKMConfig.h/.m                      9 个入口定义、偏好读写、注入标记（App 与 tweak 共用）
+app/                                桌面 App：main.m / QKMRootViewController.m / Info.plist / 图标
+Tweak.m                             SpringBoard 注入端（普通 constructor，不 hook 任何私有 selector）
+QKMBubble.h/.m                      悬浮球视图
+layout/Applications/...              App 产物目录（构建时生成，已 gitignore）
+layout/DEBIAN/postinst              uicache 注册 + cfprefsd 刷新 + Respring
+layout/Library/PreferenceLoader/     iOS 设置页 plist 与图标
+mod/roothide/                       本机 theos 缺的 roothide scheme 模块
+include/CydiaSubstrate/             arm64e 构建所需的 substrate 头转发
 ```
 
 ## 构建
 
-需要 Xcode + theos（`THEOS` 环境变量，默认 `~/theos`）。
+需要 Xcode + theos（默认 `$THEOS` 或 `~/theos`）+ `ldid`。
 
 ```bash
-bash build.sh             # 无根：packages/..._iphoneos-arm64.deb
-bash build.sh roothide    # 隐根：packages/...roothide_1.0.1_iphoneos-arm64e.deb
+bash build.sh            # 无根 rootless → *_2.0.0_iphoneos-arm64.deb
+bash build.sh roothide   # 隐根 roothide → *_2.0.0_iphoneos-arm64e.deb
 ```
 
-等价的原生命令：
+两个方案都先跑 `build_app.sh` 编译桌面 App，再由 theos 编译 tweak 并连同 `layout/` 一起打进 deb。
+源码不含硬编码的 `/var/jb`，前缀全部交给 theos 的 package scheme 处理。
 
-```bash
-make clean && make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-make clean && make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide \
-     THEOS_MODULE_PATH="$(pwd)/mod"
-```
+## 实现要点与已知限制
 
-> 官方 `roothide/theos` 自带 `roothide` scheme 模块，用它构建时不需要
-> `THEOS_MODULE_PATH`；本项目自带一份，是为了在普通 theos 上也能产出隐根包。
-
-## 为什么一份源码能出两种包
-
-- **没有任何硬编码的 `/var/jb` / `/Library/MobileSubstrate` 路径**：
-  所有文件读写走 `NSHomeDirectory()` 和 `NSUserDefaults`，都是系统真实路径。
-- 路径前缀完全由 theos 的 scheme 模块决定：
-  `rootless` → `/var/jb/...`（arm64）；
-  `roothide` → 无前缀、`@loader_path/.jbroot` 解析动态库（arm64e）。
-- 隐根构建会带上 `roothide.entitlements`（`platform-application`、
-  `no-sandbox`、`AppBundles`、`AppDataContainers`）。
-
-## 两个包的关系
-
-| 包名 | 环境 | 架构 | 说明 |
-|---|---|---|---|
-| `com.assitdev.qujiankuaima` | rootless 无根 | iphoneos-arm64 | 标准包，名称「取件快码 Assit」 |
-| `com.assitdev.qujiankuaima.roothide` | roothide 隐根 | iphoneos-arm64e | 原生包，名称「取件快码 Assit · 隐根」 |
-
-两者 `Conflicts` 互斥，安装时包管理器会自动替换，**只装与环境对应的那一个**。
-
-## 说明
-
-本插件为个人学习研究产物，仅供自有设备使用。代码为原创实现，
-不包含任何第三方 App 的代码、资源或签名，也不涉及激活 / 授权绕过。
+- 早期版本（1.0.x）把功能猜成了「通知抓码 + 悬浮球清单」，方向错误，已被 2.0.0 整体替换。
+- 原来 hook `SpringBoard -applicationDidFinishLaunching:` 依赖不稳定的私有 selector，
+  在部分 iOS 15/16 上不会被系统调用；2.0.0 改用普通 `constructor`，不 hook 任何方法。
+- 各厂商「身份码 / 待取包裹」页的 URL Scheme 深链路径不公开、会随版本变化，
+  默认只填 App 首页 scheme，完整深链由使用者在设置里自行填写 —— 这是刻意保留的可配置性，
+  插件不读取账号信息、不抓包、不联网。
+- App 统一编译 arm64（A12+ 的普通 App 进程可运行），roothide 包里的 tweak 为 arm64e 原生。
+- 二进制为本地编译验证，未在真机越狱环境实测。

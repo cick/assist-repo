@@ -19,7 +19,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>开关</string>
+			<string>运行状态</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -27,21 +27,7 @@
 			<key>defaults</key>
 			<string>com.assitdev.qujiankuaima</string>
 			<key>key</key>
-			<string>enabled</string>
-			<key>default</key>
-			<true/>
-			<key>label</key>
-			<string>启用插件</string>
-			<key>PostNotification</key>
-			<string>com.assitdev.qujiankuaima.prefsChanged</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>defaults</key>
-			<string>com.assitdev.qujiankuaima</string>
-			<key>key</key>
-			<string>bubbleVisible</string>
+			<string>bubbleEnabled</string>
 			<key>default</key>
 			<true/>
 			<key>label</key>
@@ -53,103 +39,153 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>抓码</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>defaults</key>
-			<string>com.assitdev.qujiankuaima</string>
-			<key>key</key>
-			<string>autoCapture</string>
-			<key>default</key>
-			<true/>
-			<key>label</key>
-			<string>自动抓取通知</string>
-			<key>PostNotification</key>
-			<string>com.assitdev.qujiankuaima.prefsChanged</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>defaults</key>
-			<string>com.assitdev.qujiankuaima</string>
-			<key>key</key>
-			<string>bannerEnabled</string>
-			<key>default</key>
-			<true/>
-			<key>label</key>
-			<string>新码横幅提醒</string>
-			<key>PostNotification</key>
-			<string>com.assitdev.qujiankuaima.prefsChanged</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>defaults</key>
-			<string>com.assitdev.qujiankuaima</string>
-			<key>key</key>
-			<string>customKeywords</string>
-			<key>default</key>
-			<string></string>
-			<key>label</key>
-			<string>自定义关键词</string>
-			<key>placeholder</key>
-			<string>逗号分隔，可留空</string>
-			<key>PostNotification</key>
-			<string>com.assitdev.qujiankuaima.prefsChanged</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>外观与清理</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>defaults</key>
-			<string>com.assitdev.qujiankuaima</string>
-			<key>key</key>
-			<string>bubbleAlpha</string>
-			<key>default</key>
-			<real>0.92</real>
-			<key>min</key>
-			<real>0.35</real>
-			<key>max</key>
-			<real>1.0</real>
-			<key>label</key>
-			<string>悬浮球透明度</string>
-			<key>showValue</key>
-			<true/>
-			<key>PostNotification</key>
-			<string>com.assitdev.qujiankuaima.prefsChanged</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>defaults</key>
-			<string>com.assitdev.qujiankuaima</string>
-			<key>key</key>
-			<string>keepDays</string>
-			<key>default</key>
-			<integer>7</integer>
-			<key>label</key>
-			<string>保留天数 (1-90)</string>
-			<key>keyboard</key>
-			<string>numbers</string>
-			<key>PostNotification</key>
-			<string>com.assitdev.qujiankuaima.prefsChanged</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
+			<string>身份码链接</string>
 			<key>footerText</key>
-			<string>取件快码 Assit v1.0.1 · Author AssitDev
+			<string>留空即使用默认值。可填各 App 内「身份码」页的完整 URL Scheme 深链。</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_id_taobao</string>
+			<key>label</key>
+			<string>淘宝身份码</string>
+			<key>placeholder</key>
+			<string>taobao://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_id_pdd</string>
+			<key>label</key>
+			<string>拼多多身份码</string>
+			<key>placeholder</key>
+			<string>pinduoduo://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_id_jd</string>
+			<key>label</key>
+			<string>京东身份码</string>
+			<key>placeholder</key>
+			<string>openapp.jdmobile://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>查件入口链接</string>
+			<key>footerText</key>
+			<string>留空即使用默认值。可填各 App「待取包裹 / 订单物流」页的完整深链。</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_q_taobao</string>
+			<key>label</key>
+			<string>淘宝待取</string>
+			<key>placeholder</key>
+			<string>taobao://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_q_pdd</string>
+			<key>label</key>
+			<string>拼多多待取</string>
+			<key>placeholder</key>
+			<string>pinduoduo://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_q_jd</string>
+			<key>label</key>
+			<string>京东待取</string>
+			<key>placeholder</key>
+			<string>openapp.jdmobile://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_q_douyin</string>
+			<key>label</key>
+			<string>抖音待取</string>
+			<key>placeholder</key>
+			<string>snssdk1128://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_q_kuaishou</string>
+			<key>label</key>
+			<string>快手待取</string>
+			<key>placeholder</key>
+			<string>kwai://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>url_q_dewu</string>
+			<key>label</key>
+			<string>得物待取</string>
+			<key>placeholder</key>
+			<string>dewu://</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>关于</string>
+			<key>footerText</key>
+			<string>取件快码 Assit v2.0.0 · Author AssitDev
 
-插件主入口是桌面右侧的「码」悬浮球，点开可查看 / 复制 / 标记已取，面板第三页也有同样的设置项。所有解析与存储都在本机完成，不联网、不上传。
-
-若设置里看不到本页：请确认已安装 PreferenceLoader 与 ElleKit，然后在 Dopamine 中点「重启 SpringBoard」。</string>
+桌面「取件快码」App 是主入口，点开即可使用，不依赖插件注入；悬浮球由注入 SpringBoard 的 dylib 提供，需要 ElleKit 与插件注入开启。两处设置共享同一份偏好。</string>
 		</dict>
 	</array>
 </dict>

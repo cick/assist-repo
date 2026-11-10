@@ -2,7 +2,7 @@
   "minVersion": "0.1",
   "class": "DepictionTabView",
   "headerImage": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-banner.jpg",
-  "tintColor": "#1E69EB",
+  "tintColor": "#4DBFAA",
   "tabs": [
     {
       "tabname": "详情",
@@ -10,25 +10,25 @@
       "views": [
         {
           "class": "DepictionSubheaderView",
-          "title": "取件码，一只悬浮球就够了",
+          "title": "三个身份码 · 六个查件入口",
           "useBoldText": true,
-          "useMargins": true
+          "useBottomMargin": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "短信、微信、菜鸟、丰巢、取餐通知里的取件码散落各处。**取件快码 Assit** 在通知到达时于本机解析出取件码 / 取餐码 / 货架号，按驿站归类去重，收进桌面悬浮球；到店点开就能看，点一下复制，左滑标记已取。",
-          "useMargins": true
+          "markdown": "按原帖截图 1:1 还原的**取件聚合面板**：三个身份码（淘宝 / 拼多多 / 京东）、六个查件入口（淘宝 / 拼多多 / 京东 / 抖音 / 快手 / 得物），点一下直达对应 App。\n\nv2.0.0 起主入口是**桌面 App**，不依赖插件注入就能用；悬浮球与 iOS 设置页是可选增强。",
+          "useRawFormat": true
         },
         {
           "class": "DepictionScreenshotsView",
           "screenshots": [
             {
               "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-1.png",
-              "accessibilityText": "待取清单与悬浮球"
+              "accessibilityText": "主界面：三个身份码与六个查件入口"
             },
             {
               "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-2.png",
-              "accessibilityText": "新码横幅与设置页"
+              "accessibilityText": "设置页：入口链接与注入自检"
             }
           ],
           "itemSize": "{160, 284.6}",
@@ -41,12 +41,21 @@
         },
         {
           "class": "DepictionHeaderView",
-          "title": "它做什么"
+          "title": "这次按原帖截图重做"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "• **自动抓码**：Hook SpringBoard 通知投递，识别「取件码：A8274」「货架 3-2-1056」「凭 668812 取件」等写法，支持自定义关键词。\n• **按驿站归类**：识别菜鸟驿站、丰巢、各家快递、美团 / 饿了么，提取地址，同码同驿站自动去重。\n• **悬浮球 + 角标**：可拖动吸附，红点显示待取数量；点一下展开面板，长按可临时隐藏。\n• **待取清单**：点条目即复制，左滑标记已取 / 恢复 / 删除；超 24 小时未取橙色高亮。\n• **手动补录**：可手动添加，或「粘贴识别」从剪贴板一次抓出所有码。\n• **新码横幅**：抓到新码时屏幕顶部弹 4 秒提示。\n• **设置**：总开关、悬浮球、自动抓码、横幅、保留天数、透明度、自定义关键词，全在面板内完成。",
-          "useMargins": true
+          "markdown": "之前那版是读不到原帖时按「通知抓码」猜的，方向错了。这一版从界面到功能按截图重做，并把主入口改成独立 App，避免「装成功却什么也看不到」。",
+          "useRawFormat": true
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "功能"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "- **三个身份码**：淘宝 / 拼多多（驿站扫码出示）、京东（订单内查看）\n- **六个查件入口**：淘宝待取、拼多多待取（查看待取包裹）；京东 / 抖音 / 快手 / 得物待取（查看订单物流）\n- 每个入口的跳转链接都能在「设置」里改成完整深链\n- 桌面 App + SpringBoard 悬浮球 + iOS 设置页，三处共享偏好\n- 没装对应 App 或链接失效时，可复制链接 / 打开网页版\n- App 设置页里可查看「插件注入」自检状态",
+          "useRawFormat": true
         },
         {
           "class": "DepictionHeaderView",
@@ -54,17 +63,26 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "1. 安装后注销 / Respring，桌面右侧出现「码」悬浮球。\n2. 收到取件短信或 App 通知，码自动进列表并弹横幅。\n3. 到店点开悬浮球 → 点一下码即复制 → 取完左滑标记已取。\n4. 调整规则进面板第三页「设置」。\n\n> **装完看不到？** 这是 tweak 插件，不是独立 App，桌面不会有应用图标。入口有两个：iOS「设置」→ 取件快码 Assit，以及桌面右侧的「码」悬浮球。\n>\n> 两个都没有时依次检查：① 已安装 **ElleKit** 与 **PreferenceLoader**；② Dopamine 里「插件注入 / Tweak Injection」已开启；③ 在 Dopamine 点一次**重启 SpringBoard**；④ Sileo 已安装里确认包名与版本为 1.0.1；⑤ 无根版与「· 隐根」版互斥，只装一个。",
-          "useMargins": true
+          "markdown": "1. Sileo 升级到 **2.0.0**，安装脚本自动 `uicache` 注册桌面 App 并 Respring\n2. 桌面出现绿色「码」图标，点开就是主界面\n3. 点入口直达对应 App；「设置」里可改链接、开关悬浮球\n4. 注入正常时桌面还有「码」悬浮球，点一下唤起 App",
+          "useRawFormat": true
         },
         {
           "class": "DepictionHeaderView",
-          "title": "兼容性"
+          "title": "装完看不到？"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**iOS 15 – 16**，注入 `com.apple.springboard`。\n• **无根 rootless**（Dopamine / palera1n）：装本包，架构 `iphoneos-arm64`，路径 `/var/jb/…`。\n• **隐根 roothide**：改装本源的「取件快码 Assit · 隐根」，架构 `iphoneos-arm64e`，原生构建、无 `/var/jb` 前缀。\n\n两个包互斥，只装与环境对应的那一个。源码不硬编码越狱根路径，文件读写只走 `NSHomeDirectory()` 与 `NSUserDefaults`。",
-          "useMargins": true
+          "markdown": "**桌面图标没出现**：确认已装 2.0.0 → 在 Dopamine 点「重启 SpringBoard」→ 仍不行可在终端执行 `uicache -p /var/jb/Applications/QujianKuaiMa.app`，或用 Dopamine 设置里的「刷新越狱应用」。\n\n**悬浮球没出现**：确认 `ElleKit` 已装、Dopamine「插件注入」已开启；App 设置页的注入自检会说明 dylib 有没有加载。\n\n> 桌面 App 能打开就说明功能已经到位，悬浮球只是可选快捷入口。",
+          "useRawFormat": true
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "关于跳转链接"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "默认填的是各 App 的 URL Scheme（打开首页）：`taobao://`、`pinduoduo://`、`openapp.jdmobile://`、`snssdk1128://`、`kwai://`、`dewu://`。\n\n各厂商「身份码 / 待取包裹」页的深链路径不公开且会变，设置里可以自己填完整链接，填了就直达。插件不读取账号信息、不主动联网。",
+          "useRawFormat": true
         },
         {
           "class": "DepictionSeparatorView"
@@ -72,7 +90,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "1.0.1"
+          "text": "2.0.0"
         },
         {
           "class": "DepictionTableTextView",
@@ -82,12 +100,12 @@
         {
           "class": "DepictionTableTextView",
           "title": "支持环境",
-          "text": "rootless 无根 / roothide 隐根"
+          "text": "rootless 无根 · arm64（Dopamine / palera1n）"
         },
         {
           "class": "DepictionTableTextView",
           "title": "隐私",
-          "text": "本机解析，不联网、不上传"
+          "text": "本机处理 · 不联网"
         }
       ]
     },
@@ -97,14 +115,14 @@
       "views": [
         {
           "class": "DepictionSubheaderView",
-          "title": "1.0.1",
+          "title": "2.0.0",
           "useBoldText": true,
-          "useMargins": true
+          "useBottomMargin": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "### 1.0.1\n\n- 新增 iOS「设置」里的 **取件快码 Assit** 设置页（PreferenceLoader）：总开关、悬浮球、自动抓码、横幅、保留天数、透明度、自定义关键词。\n- 修复悬浮球初始化依赖不稳定的 SpringBoard 私有生命周期方法，导致部分 iOS 版本上「装了但桌面什么都没有」的问题；改为注入后多时间点兜底挂载。\n- 设置改动通过 Darwin 通知即时同步到 SpringBoard，无需手动注销。\n- 安装脚本自动刷新偏好缓存并 Respring；依赖补充 `preferenceloader`。\n\n---\n\n首个版本。通知自动抓码、按驿站归类去重、悬浮球与待取清单、复制 / 标记已取 / 删除、手动添加与剪贴板识别、新码横幅、完整设置页。同时提供 rootless 与 roothide 两种原生包。",
-          "useMargins": true
+          "markdown": "### 2.0.0\n\n- **按原帖截图重做功能**：三个身份码 + 六个查件入口 + 设置页，替换掉方向错误的「通知抓码」实现\n- 新增**桌面 App**（`QujianKuaiMa.app`，uicache 注册），不依赖 tweak 注入即可使用\n- 悬浮球改为点击唤起 App；新增 App 内「插件注入」自检\n- 每个入口的跳转链接可在 App 设置页 / iOS 设置页自定义，带网页版兜底\n- 全新绿色图标、横幅与界面示意图\n\n---\n\n### 1.0.1 / 1.0.0\n\n早期版本（通知抓码方向），已被 2.0.0 取代。",
+          "useRawFormat": true
         }
       ]
     },
@@ -118,8 +136,8 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "所有解析、归类、存储都在本机完成，记录保存在 `~/Library/Application Support/QujianKuaiMa/codes.plist`。插件不请求网络权限、不上传内容、不读取其它 App 沙盒、不修改原通知。卸载即删除本机记录。",
-          "useMargins": true
+          "markdown": "全部功能在本机完成，不采集、不上传任何数据；界面与图标均为重绘，未使用原帖素材。",
+          "useRawFormat": true
         },
         {
           "class": "DepictionHeaderView",
@@ -127,8 +145,8 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "本插件为个人学习研究产物，仅供自己设备使用，请勿用于商业用途。",
-          "useMargins": true
+          "markdown": "本插件为个人学习研究产物，仅供自己设备使用，请勿用于商业用途。\n\nAuthor **AssitDev** · Assist Repo",
+          "useRawFormat": true
         }
       ]
     }

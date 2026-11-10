@@ -14,15 +14,16 @@
 | `com.dev.dingtalkclicker` | 钉钉点击器（独立版） | 0.9.21.1 | 只含点击器本体，与助手内置的是同一个二进制；供检查注入 / 单独修复用 |
 | `com.hang.zzzj` | 转转筛选 | 0.0.39 | 转转 App 悬浮球：自动翻页抓全搜索结果，按机型 / 内存 / 电池 / 系统 / 成色筛选 + 价格排序 |
 | `com.hang.zlj` | 找靓机筛选 | 0.0.18 | 找靓机 App 悬浮球：搜索列表拉全，使用痕迹与验机报告同源，筛选 + 价格排序 |
-| `com.assitdev.qujiankuaima` | 取件快码 Assit | 1.0.1 | 通知里自动抓出取件 / 取餐 / 货架码，按驿站归类进悬浮球；**rootless 无根**，`iphoneos-arm64` |
-| `com.assitdev.qujiankuaima.roothide` | 取件快码 Assit · 隐根 | 1.0.1 | 同一份源码的 **roothide 原生**构建，`iphoneos-arm64e`，包内无 `/var/jb` 前缀 |
+| `com.assitdev.qujiankuaima` | 取件快码 Assit | 2.0.0 | 按原帖截图重做的取件聚合面板：三个身份码 + 六个查件入口；**桌面 App**（不依赖注入）+ 悬浮球 + 设置页；**rootless 无根**，`iphoneos-arm64` |
+| `com.assitdev.qujiankuaima.roothide` | 取件快码 Assit · 隐根 | 2.0.0 | 同一份源码的 **roothide 原生**构建，`iphoneos-arm64e`，包内无 `/var/jb` 前缀 |
 
 > ⚠️ **取件快码的两个包互斥**（已声明 `Conflicts`），只装与你越狱环境对应的那一个：
 > 无根装标准包，隐根装「· 隐根」包。源码见 [`source/QujianKuaiMa/`](source/QujianKuaiMa/README.md)，
-> 是**完整可编译**的 Theos 工程（`bash build.sh` / `bash build.sh roothide`），
-> 与原帖软件只有功能思路上的对应，代码、图标、描述均为原创。
+> 是**完整可编译**的 Theos 工程（`bash build.sh` / `bash build.sh roothide`）。
 >
-> **v1.0.1**：补上 iOS「设置」里的插件设置页（PreferenceLoader）与安装自动 Respring，并修复了部分 iOS 版本上悬浮球不初始化的问题。装完仍看不到时，确认 ElleKit / PreferenceLoader 已安装，并在 Dopamine 里点一次「重启 SpringBoard」。
+> **v2.0.0**：按原帖截图重做功能（三个身份码 / 六个查件入口 / 设置），主入口改为**桌面 App**，
+> 由 `postinst` 里的 `uicache` 注册，不依赖 tweak 注入即可使用；悬浮球与 iOS 设置页为可选增强。
+> 界面、图标、代码均为重绘 / 原创，未使用原帖素材。
 
 > 点击器包与「钉钉助手」写的是同一个文件（`DynamicLibraries/DingTalkClicker.dylib`），
 > 所以**两者的版本号必须一致**：助手升到新版本后，点击器包也要跟着升，否则会把点击器降回旧版。

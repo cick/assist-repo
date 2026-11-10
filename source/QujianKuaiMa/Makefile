@@ -28,7 +28,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = QujianKuaiMa
 
-QujianKuaiMa_FILES = Tweak.xm QKMParser.m QKMStore.m QKMPrefs.m QKMUI.m
+QujianKuaiMa_FILES = Tweak.m QKMConfig.m QKMBubble.m
 QujianKuaiMa_CFLAGS = -I$(THEOS_PROJECT_DIR)/include -I$(THEOS)/vendor/lib/CydiaSubstrate.framework/Headers -I$(THEOS)/vendor/include -fobjc-arc -Wno-deprecated-declarations -Wno-unused-variable
 QujianKuaiMa_FRAMEWORKS = UIKit Foundation CoreGraphics QuartzCore UserNotifications
 

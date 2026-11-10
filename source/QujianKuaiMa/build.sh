@@ -23,6 +23,9 @@ fi
 
 make clean >/dev/null 2>&1 || true
 
+# 桌面 App 放进 layout/，会随 deb 一起安装（不依赖 tweak 注入）
+bash build_app.sh
+
 if [ "$SCHEME" = "roothide" ]; then
   make package FINALPACKAGE=1 \
        THEOS_PACKAGE_SCHEME=roothide \

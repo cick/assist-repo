@@ -1,7 +1,27 @@
 #!/bin/sh
 # 取件快码 Assit — Author: AssitDev
-# 安装 / 升级后刷新偏好缓存并注销 SpringBoard，
-# 让 dylib 注入、PreferenceLoader 设置项与桌面悬浮球立即生效。
+# 安装 / 升级后注册桌面 App、刷新偏好缓存并注销 SpringBoard。
+APP=""
+for p in /var/jb/Applications/QujianKuaiMa.app /Applications/QujianKuaiMa.app; do
+  [ -d "$p" ] && APP="$p" && break
+done
+# roothide：包内路径映射到随机 jbroot，用 jbroot 命令或全盘查找兜底
+if [ -z "$APP" ] && command -v jbroot >/dev/null 2>&1; then
+  p="$(jbroot 2>/dev/null)/Applications/QujianKuaiMa.app"
+  [ -d "$p" ] && APP="$p"
+fi
+if [ -z "$APP" ]; then
+  APP="$(find /var -maxdepth 9 -type d -name QujianKuaiMa.app 2>/dev/null | head -1)"
+fi
+if [ -n "$APP" ]; then
+  if command -v uicache >/dev/null 2>&1; then
+    uicache -p "$APP" >/dev/null 2>&1 || true
+  elif [ -x /var/jb/usr/bin/uicache ]; then
+    /var/jb/usr/bin/uicache -p "$APP" >/dev/null 2>&1 || true
+  elif command -v jbroot >/dev/null 2>&1 && [ -x "$(jbroot)/usr/bin/uicache" ]; then
+    "$(jbroot)/usr/bin/uicache" -p "$APP" >/dev/null 2>&1 || true
+  fi
+fi
 killall -HUP cfprefsd >/dev/null 2>&1 || true
 killall -9 SpringBoard >/dev/null 2>&1 || true
 exit 0
