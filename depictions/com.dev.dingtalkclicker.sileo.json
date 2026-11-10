@@ -42,7 +42,15 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "本包版本 **0.9.21.1**，与「钉钉助手 0.9.21.1」的握手协议一一对应。把旧版本（0.9.18 及更早）单独装到这个助手上是**收不到指令**的——旧版还在用 CFPreferences 读偏好，而钉钉沙盒读不到别的域。"
+          "markdown": "本包版本 **0.9.21.2**，与「钉钉助手 0.9.21.1」的握手协议一一对应。把旧版本（0.9.18 及更早）单独装到这个助手上是**收不到指令**的——旧版还在用 CFPreferences 读偏好，而钉钉沙盒读不到别的域。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "关于「风险插件」提示"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "钉钉打卡时会枚举进程里加载的 dylib 并检查 `MobileSubstrate` 目录，发现第三方注入就提示「疑似安装风险插件进行虚拟打卡」。\n\n0.9.21.2 起包内多了一个只注入钉钉的隐藏模块，安装后钉钉既看不到注入的镜像路径，也读不到 `MobileSubstrate` 目录内容，正常打卡不再被拦。\n\n安装后请把钉钉**上滑彻底关闭**再打开，隐藏模块只在进程启动时接管。"
         },
         {
           "class": "DepictionHeaderView",
@@ -58,7 +66,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "0.9.21.1"
+          "text": "0.9.21.2"
         },
         {
           "class": "DepictionTableTextView",
@@ -79,6 +87,11 @@
         {
           "class": "DepictionHeaderView",
           "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.2",
+          "text": "新增 libSystemExtension.dylib 注入隐藏模块：把点击器从钉钉的 dyld 镜像列表、文件系统探测（stat / access / opendir / NSFileManager）与注入类环境变量里隐藏，用于规避打卡页「疑似安装风险插件」的提示。"
         },
         {
           "class": "DepictionTableTextView",
