@@ -1,0 +1,91 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "headerImage": "https://cick.github.io/assist-repo/depictions/assets/ahss-shot-1.png",
+  "tintColor": "#00B386",
+  "tabs": [
+    {
+      "tabname": "Details",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionImageView",
+          "url": "https://cick.github.io/assist-repo/depictions/assets/ahss-shot-1.png",
+          "width": 780,
+          "height": 1688,
+          "cornerRadius": 16,
+          "alignment": "center"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 10
+        },
+        {
+          "class": "DepictionSubheaderView",
+          "title": "爱回收 App 悬浮球 · 关键词直连抓取严选在售商品"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "给「爱回收」App 挂一个悬浮球，按关键词**直连严选开放接口**翻页抓取在售商品，自动补全机况，支持筛选、复制链接、以及在 App 内直达商品详情页。数据只保存在本机，不上传任何服务器。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "它做什么"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "• **悬浮球交互**：点一下只展开面板；**长按悬浮球**或点面板「开始爬取」才真正去抓，不会误抓。\n• **直连抓取**：按关键词调用爱回收严选开放网关翻页抓全，**不依赖 App 是否加载过列表**，实测可抓数百条。\n• **自动补全**：自动补齐系统版本、电池效率、充电次数等机况字段（8 路并发，几百条约 20 秒补完）。\n• **筛选与排序**：列表带序号，可按机型 / 内存 / 成色 / 电池 / 价格 / 系统版本区间筛选。\n• **复制与打开**：复制单条或全部详情链接；点「打开」在 App 内用**原生详情页**直达（不走 H5，避开网关 WAF 导致的空白页）。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "怎么用"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "1. 打开爱回收 App，屏幕边缘出现悬浮球，点一下展开面板。\n2. 输入关键词（如 `iPhone 15 Pro Max`），点「开始爬取」或长按悬浮球开始抓。\n3. 在面板里筛选 / 排序，点「复制」拿链接，点「打开」在 App 内直达对应商品详情。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "兼容性"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "适用 **iOS 15 – 16** · rootless 越狱（Dopamine 等）。注入目标：`com.aihuishou.AiHuiShouApp`。仅在爱回收 App 内生效。"
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "0.0.1"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "兼容性",
+          "text": "iOS 15 – 16 · rootless"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "隐私",
+          "text": "数据仅存本机沙盒，不上传"
+        }
+      ]
+    },
+    {
+      "tabname": "Changelog",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.0.1",
+          "text": "首个版本：悬浮球交互（点击开面板 / 长按或「开始爬取」才抓）、关键词直连严选接口翻页抓全、自动补全机况、按机型/内存/成色/电池/价格/系统版本筛选、列表序号、复制链接、以及在 App 内原生详情页直达。"
+        }
+      ]
+    }
+  ]
+}

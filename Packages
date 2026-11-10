@@ -169,3 +169,21 @@ Filename: debs/com.dev.dingtalkclicker_0.9.21.4_iphoneos-arm64.deb
 Size: 104750
 MD5sum: 6d76e0c81e40e3803843cc4e4f5dbeeb
 SHA256: 91e7da4edddc5fd22fc21741f8fde534fd21e61205719505ccfc9853f87c60cc
+
+Package: com.devd.ahss
+Name: 爱回收助手
+Description: 爱回收助手：点击悬浮球只开面板、长按悬浮球或点「开始爬取」才按关键词直连严选接口翻页抓全（不依赖 App 是否加载过列表），自动补全系统版本/电池效率/充电次数等机况，列表带序号，按机型/内存/成色/电池/价格筛选，复制单条或全部详情链接，并可在 App 内直接打开对应商品详情页；数据仅保存在本机沙盒。
+Maintainer: AssitDev <dev@example.com>
+Author: AssitDev
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Architecture: iphoneos-arm64
+Version: 0.0.1
+Installed-Size: 772
+Icon: https://cick.github.io/assist-repo/icons/com.devd.ahss.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.devd.ahss.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.devd.ahss.sileo.json
+Filename: debs/com.devd.ahss_0.0.1_iphoneos-arm64.deb
+Size: 136634
+MD5sum: 2a8d681744b2372d8b9d6af330bfb47d
+SHA256: a182ae7ff8c5181d071f5ee1af5daa5d80404721f17a34483d12d3bf977d4b0b
