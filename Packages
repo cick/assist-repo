@@ -54,7 +54,7 @@ SHA256: 3d1e90e87e87dacc4e25df944467f33616e8c69960b58d4bb32b4c5a00739e9d
 
 Package: com.dev.dingtalkassistant
 Name: 钉钉助手
-Version: 0.9.21.5
+Version: 0.9.21.6
 Architecture: iphoneos-arm64
 Maintainer: AssitDev <dev@example.com>
 Section: Tweaks
@@ -64,10 +64,10 @@ Description: 钉钉定时自动打卡（从「顶栏时间 Assit」拆出的独�
 Icon: https://cick.github.io/assist-repo/icons/com.dev.dingtalkassistant.png
 Depiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkassistant.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkassistant.sileo.json
-Filename: debs/com.dev.dingtalkassistant_0.9.21.5_iphoneos-arm64.deb
-Size: 244544
-MD5sum: a5f67b2d7f3b87c53c252d725717db7f
-SHA256: f351594112a338466411337d606044081d60b550e0025e66af81700a1460e3f5
+Filename: debs/com.dev.dingtalkassistant_0.9.21.6_iphoneos-arm64.deb
+Size: 245040
+MD5sum: 2c98ce6474977209ced8226794968ec4
+SHA256: 2aaa8d4504363a36de34ea1dda83453261fa4f9ab867ede80b16fdb3245fa43c
 
 Package: com.dev.dingtalkclicker
 Name: 钉钉点击器（独立版）
