@@ -66,7 +66,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "0.9.21.2"
+          "text": "0.9.21.3"
         },
         {
           "class": "DepictionTableTextView",
@@ -87,6 +87,11 @@
         {
           "class": "DepictionHeaderView",
           "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.3",
+          "text": "去掉 libc 函数 inline hook：0.9.21.2 在 ElleKit 上会让 opendir 死循环，钉钉启动 19 秒后被 watchdog 杀掉。隐藏改为「改 dyld 镜像表 + swizzle NSFileManager」，不再碰任何函数入口。"
         },
         {
           "class": "DepictionTableTextView",
