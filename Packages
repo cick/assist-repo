@@ -52,7 +52,7 @@ SHA256: 3d1e90e87e87dacc4e25df944467f33616e8c69960b58d4bb32b4c5a00739e9d
 
 Package: com.dev.dingtalkclicker
 Name: 钉钉点击器（独立版）
-Version: 0.9.18
+Version: 0.9.21.1
 Architecture: iphoneos-arm64
 Maintainer: AssitDev <dev@example.com>
 Author: AssitDev
@@ -60,14 +60,17 @@ Section: Tweaks
 Depends: mobilesubstrate
 Replaces: com.dev.dingtalkassistant
 Priority: optional
-Description: 钉钉自动打卡的进程内点击模块（独立安装版，0.9.18 基线）。
- 只含点击器本体：安装后由 MobileSubstrate 在钉钉启动时自动注入，
- 无需修改钉钉 App、无需重签、无需 TrollFools；postinst 会自动结束
- 钉钉进程，下次打开即生效。
- 注意：它与「钉钉助手」deb 内的点击器是同一个文件路径，安装后会
- 覆盖助手自带的新版点击器（0.9.21.1 的触发冻结、结果验证、H5 与小
- 程序 JS 点击都在新版里）。想复原，重装「钉钉助手」即可。
-Filename: debs/com.dev.dingtalkclicker_0.9.18_iphoneos-arm64.deb
-Size: 69480
-MD5sum: 9835fc03045a9feff81fa6927911d607
-SHA256: eb02d3abdf78b7b147ffa05d31fdc0bf6cd6527cb157630ba338e6a34dcd1eb3
+Description: 钉钉自动打卡的进程内点击模块（独立安装版）。
+ 内容与「钉钉助手 0.9.21.1」内置的点击器完全一致（同一个二进制）：
+ 支持触发即冻结、结果验证（只认「打卡成功 / 已打卡」）、H5 与小程序的
+ JS 真实触摸点击、以及和调度器之间的 dta_cmd / dta_status 文件握手。
+ 安装后由 MobileSubstrate 在钉钉启动时自动注入，postinst 会结束钉钉
+ 进程，下次打开即生效；无需修改钉钉 App、无需重签、无需 TrollFools。
+ 注意：它与「钉钉助手」deb 内的点击器是同一个文件路径，安装后即覆盖，
+ 因此本包版本必须与已安装的「钉钉助手」版本一致（当前 0.9.21.1）。
+ 单独使用本包时只有点击能力，没有定时、悬浮球与设置页 —— 那些在
+ 「钉钉助手」里。
+Filename: debs/com.dev.dingtalkclicker_0.9.21.1_iphoneos-arm64.deb
+Size: 97996
+MD5sum: 92b8cfe735ddf71080fdafa7760c2062
+SHA256: d2c4bd06058241221238266f2dfe8f85fdd02aa8616cc380403ee5b43023ca12
