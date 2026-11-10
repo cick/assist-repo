@@ -17,6 +17,7 @@
   .card { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:20px; margin-top:22px; }
   .pkg { display:flex; gap:14px; align-items:flex-start; }
   .pkg .icon { width:56px; height:56px; border-radius:14px; flex:0 0 auto; background:linear-gradient(135deg,var(--acc2),var(--acc)); display:flex; align-items:center; justify-content:center; font-size:26px; }
+  .pkg img.icon { object-fit:cover; box-shadow:0 4px 14px rgba(0,132,255,.28); }
   .pkg h2 { margin:0 0 4px; font-size:18px; }
   .pkg .ver { color:var(--acc); font-weight:600; }
   .pkg .desc { color:var(--muted); font-size:13.5px; line-height:1.55; margin-top:6px; }
@@ -53,7 +54,7 @@
 
   <div class="card">
     <div class="pkg">
-      <div class="icon">⏰</div>
+      <img class="icon" src="icons/com.dev.dingtalkassistant.png" alt="钉钉助手">
       <div>
         <h2>钉钉助手 <span class="ver">v0.9.21.1</span></h2>
         <div class="desc">定时自动打卡：多时间点（早 / 晚各一条，精确到秒）、单条开关与左滑删除、
@@ -64,6 +65,8 @@
   </div>
 
   <div class="card">
+    <img src="depictions/assets/dingtalk-banner.jpg" alt="钉钉助手"
+         style="width:100%;display:block;border-radius:14px;margin-bottom:18px">
     <div class="btns">
       <a class="btn" id="btn-sileo" href="#">在 Sileo 添加源</a>
       <a class="btn ghost" id="btn-cydia" href="#">在 Cydia 添加源</a>

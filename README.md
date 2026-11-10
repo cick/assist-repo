@@ -28,7 +28,9 @@
 Packages / Packages.gz / Packages.bz2   索引（gen_repo.py 自动生成）
 Release                                 源元信息 + 索引校验和
 debs/                                   所有 .deb
+icons/                                  包图标（<包名>.png，gen_repo.py 会自动写 Icon 字段）
 depictions/                             详情页（HTML 给 Cydia/Zebra，*.sileo.json 给 Sileo）
+depictions/assets/                      详情页用图：横幅（16:9）与功能示意图
 index.html                              站点首页
 source/                                 钉钉助手的历史源码存档（不可直接编译，见其中 README）
 ```
@@ -47,7 +49,32 @@ git add -A && git commit -m "release: <package> <version>"
 bash push.sh
 ```
 
-`gen_repo.py` 会自动：解析每个 deb 的 `control`、算 `Filename / Size / MD5sum / SHA256`、去掉非标准的 `Changelog` 字段、并按包名匹配 `depictions/<package>.html` 决定详情页（没有对应文件的包不会挂错详情页）。
+`gen_repo.py` 会自动：解析每个 deb 的 `control`、算 `Filename / Size / MD5sum / SHA256`、去掉非标准的 `Changelog` 字段、按包名匹配 `depictions/<package>.html` 决定详情页（没有对应文件的包不会挂错详情页），并在仓库里存在 `icons/<package>.png` 时写入 `Icon:` 字段。
+
+## 图标与详情页图片
+
+| 文件 | 尺寸 | 用途 |
+|---|---|---|
+| `icons/<package>.png` | 512×512 | 包图标，写进 `Packages` 的 `Icon:`，Sileo / Zebra 列表与详情头部显示 |
+| `depictions/assets/<package>-banner.jpg` | 1920×1080 | 详情页顶部横幅（Sileo 原生页的 `headerImage` + `DepictionImageView`） |
+| `depictions/assets/...-shot-N.png` | 750×1334 | 截图轮播（`DepictionScreenshotsView`，itemSize `{160, 284.6}`） |
+
+新增一个包只要三步：丢 `icons/<package>.png`、丢 `depictions/<package>.sileo.json`、
+丢 `debs/*.deb`，然后跑 `python3 gen_repo.py`。
+
+Sileo 原生详情页（`*.sileo.json`）支持的常用视图：
+
+```jsonc
+{"class":"DepictionImageView",  "url":"…", "width":1920, "height":1080, "cornerRadius":16}
+{"class":"DepictionScreenshotsView", "itemSize":"{160, 284.6}",
+ "screenshots":[{"url":"…","accessibilityText":"…"}]}
+{"class":"DepictionHeaderView",  "title":"小标题"}
+{"class":"DepictionMarkdownView","markdown":"**粗体**、`代码`、多段用 \n\n"}
+{"class":"DepictionTableTextView","title":"版本","text":"0.9.21.1"}
+```
+
+> Sileo 优先用 `SileoDepiction`（JSON，能显示图标 / 横幅 / 截图轮播），
+> HTML 版只在 Cydia / Zebra 里用。两者都要维护，否则不同客户端体验不一致。
 
 ## 打包要点（越狱 deb 踩过的坑）
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>钉钉点击器（独立版）</title>
+<style>
+  body {
+    background: #fff; color: #000;
+    font: 14px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    margin: 0; padding-bottom: 28px; -webkit-font-smoothing: antialiased;
+  }
+  header { padding: 26px 16px 20px; text-align: center; border-bottom: 1px solid #e3e3e3; }
+  header .ico {
+    width: 76px; height: 76px; margin: 0 auto 12px; display: block;
+    border-radius: 18px; box-shadow: 0 6px 18px rgba(0,132,255,.28);
+  }
+  header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+  header p  { margin: 4px 0 0; color: #8a8a8a; font-size: 13px; }
+  main { padding: 0 16px; }
+  h2 {
+    font-size: 17px; font-weight: 700; margin: 24px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid #e3e3e3;
+  }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 20px; }
+  li { margin: 0 0 8px; }
+  .muted { color: #8a8a8a; }
+  .ver { color: #12b886; font-weight: 600; }
+  .hero { display: block; width: 100%; border-radius: 14px; margin: 16px 0 4px; }
+  .card {
+    background: #f7f8fa; border: 1px solid #e6e8ec; border-radius: 12px;
+    padding: 14px 16px; margin: 12px 0;
+  }
+  code {
+    background: #eef1f5; border-radius: 5px; padding: 1px 5px;
+    font-size: 12.5px; word-break: break-all;
+  }
+  .warn {
+    background: #fff8e6; border: 1px solid #ffe2a8; border-radius: 12px;
+    padding: 12px 14px; margin: 14px 0; font-size: 13px; color: #7a5a00;
+  }
+  footer { margin-top: 26px; text-align: center; color: #a0a0a0; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <img class="ico" src="../icons/com.dev.dingtalkclicker.png" alt="钉钉点击器">
+  <h1>钉钉点击器（独立版）</h1>
+  <p>进程内点击模块 · 安装即自动注入</p>
+</header>
+
+<main>
+  <img class="hero" src="assets/dingtalkclicker-banner.jpg" alt="钉钉点击器">
+
+  <p>这个包是「钉钉助手」的<b>点击器部分</b>单独打包，供替换 / 调试使用。
+  安装后由 MobileSubstrate 在钉钉启动时自动注入，<b>不需要改钉钉 IPA、不需要 TrollFools</b>。</p>
+
+  <h2>它做什么</h2>
+  <ul>
+    <li>接收调度器写在 <code>&lt;钉钉沙盒&gt;/Documents/DTA/dta_cmd.plist</code> 的指令</li>
+    <li>自动切到「工作台 → 考勤打卡」，找到圆形打卡按钮并点下去</li>
+    <li>兼容原生、H5、小程序考勤页（注入 JS + 真实触点）</li>
+    <li>点中后立即冻结，并把结果写回 <code>dta_status.plist</code></li>
+  </ul>
+
+  <h2>必须与助手同版本</h2>
+  <p>本包版本 <span class="ver">0.9.21.1</span>，与「钉钉助手 0.9.21.1」的握手协议一一对应。
+  把旧版本（0.9.18 及更早）单独装到这个助手上是<b>收不到指令</b>的 —— 旧版还在用 CFPreferences 读偏好，
+  而钉钉沙盒读不到别的域。</p>
+
+  <h2>安装</h2>
+  <div class="card">
+    <p><b>1.</b> 在 Sileo / Zebra 添加源 <code>https://cick.github.io/assist-repo/</code></p>
+    <p><b>2.</b> 安装本包（会覆盖「钉钉助手」里同路径的点击器，版本一致则无影响）</p>
+    <p><b>3.</b> 把钉钉<b>上滑彻底关闭</b>再打开，让模块重新加载</p>
+  </div>
+
+  <div class="warn">
+    <b>说明</b>：本模块为逆向学习产物，仅供个人研究使用。平时只需要装「钉钉助手」，
+    它自带同版本点击器，不必单独安装本包。
+  </div>
+
+  <footer>仅供学习研究 · 请在 24 小时内自行删除</footer>
+</main>
+</body>
+</html>

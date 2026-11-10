@@ -1,0 +1,91 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "headerImage": "https://cick.github.io/assist-repo/depictions/assets/dingtalkclicker-banner.jpg",
+  "tintColor": "#12B886",
+  "tabs": [
+    {
+      "tabname": "Details",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionImageView",
+          "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalkclicker-banner.jpg",
+          "width": 1920,
+          "height": 1080,
+          "cornerRadius": 16,
+          "alignment": "center"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 10
+        },
+        {
+          "class": "DepictionSubheaderView",
+          "title": "只装点击模块，不含定时与悬浮球"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "这个包是「钉钉助手」的**点击器部分**单独打包，供替换 / 调试使用。安装后由 MobileSubstrate 在钉钉启动时自动注入，**不需要改钉钉 IPA、不需要 TrollFools**。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "它做什么"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "• 接收调度器写在 `<钉钉沙盒>/Documents/DTA/dta_cmd.plist` 的指令\n• 自动切到「工作台 → 考勤打卡」，找到圆形打卡按钮并点下去\n• 兼容原生、H5、小程序考勤页（注入 JS + 真实触点）\n• 点中后立即冻结，并把结果写回 `dta_status.plist`"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "必须与助手同版本"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "本包版本 **0.9.21.1**，与「钉钉助手 0.9.21.1」的握手协议一一对应。把旧版本（0.9.18 及更早）单独装到这个助手上是**收不到指令**的——旧版还在用 CFPreferences 读偏好，而钉钉沙盒读不到别的域。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "装完请做一件事"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "把钉钉**上滑彻底关闭**再打开。安装脚本已经帮你杀过一次进程，但如果你在那之后手动开过钉钉，还是关一次比较稳妥。"
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "0.9.21.1"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "兼容性",
+          "text": "iOS 15 – 16 · rootless"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "配套",
+          "text": "钉钉助手 0.9.21.1"
+        }
+      ]
+    },
+    {
+      "tabname": "Changelog",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.1",
+          "text": "独立包改用与助手 0.9.21.1 配套的点击器；旧 0.9.18 版因协议不兼容已下架。"
+        }
+      ]
+    }
+  ]
+}

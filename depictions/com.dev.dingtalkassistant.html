@@ -12,10 +12,8 @@
   }
   header { padding: 26px 16px 20px; text-align: center; border-bottom: 1px solid #e3e3e3; }
   header .ico {
-    width: 72px; height: 72px; margin: 0 auto 12px; border-radius: 16px;
-    background: linear-gradient(135deg, #2f7cf6, #12b5ff);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 36px; box-shadow: 0 4px 14px rgba(47,124,246,.30);
+    width: 76px; height: 76px; margin: 0 auto 12px; display: block;
+    border-radius: 18px; box-shadow: 0 6px 18px rgba(0,132,255,.28);
   }
   header h1 { margin: 0; font-size: 22px; font-weight: 700; }
   header p  { margin: 4px 0 0; color: #8a8a8a; font-size: 13px; }
@@ -42,17 +40,35 @@
     background: #fff8e6; border: 1px solid #ffe2a8; border-radius: 12px;
     padding: 12px 14px; margin: 14px 0; font-size: 13px; color: #7a5a00;
   }
+  .hero { display: block; width: 100%; border-radius: 14px; margin: 16px 0 4px; }
+  .shots {
+    display: flex; gap: 10px; overflow-x: auto; padding: 10px 0 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .shots img { width: 152px; border-radius: 12px; flex: 0 0 auto; box-shadow: 0 3px 10px rgba(0,0,0,.14); }
+  .lead { color: #444; }
   footer { margin-top: 26px; text-align: center; color: #a0a0a0; font-size: 12px; }
 </style>
 </head>
 <body>
 <header>
-  <div class="ico">⏰</div>
+  <img class="ico" src="../icons/com.dev.dingtalkassistant.png" alt="钉钉助手">
   <h1>钉钉助手</h1>
   <p>定时自动打卡 · 多时间段 · 秒级精度</p>
 </header>
 
 <main>
+  <img class="hero" src="assets/dingtalk-banner.jpg" alt="钉钉助手">
+
+  <div class="shots">
+    <img src="assets/dingtalk-shot-1.png" alt="多个时间点">
+    <img src="assets/dingtalk-shot-2.png" alt="点一次就冻结">
+    <img src="assets/dingtalk-shot-3.png" alt="桌面悬浮球">
+  </div>
+
+  <p class="lead">钉钉助手是一个<b>越狱插件</b>：桌面上的调度器负责看时间，钉钉进程里的点击模块负责按下去。
+  两者通过沙盒内的文件握手，你不需要手动打开 App，也不需要把钉钉挂在后台。</p>
+
   <h2>功能</h2>
   <ul>
     <li><b>多时间点</b>：早上上班、晚上下班各设一条，最多 8 条；每条可单独开关，左滑删除。</li>

@@ -1,0 +1,162 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "headerImage": "https://cick.github.io/assist-repo/depictions/assets/dingtalk-banner.jpg",
+  "tintColor": "#0A84FF",
+  "tabs": [
+    {
+      "tabname": "Details",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionImageView",
+          "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalk-banner.jpg",
+          "width": 1920,
+          "height": 1080,
+          "cornerRadius": 16,
+          "alignment": "center"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 10
+        },
+        {
+          "class": "DepictionSubheaderView",
+          "title": "到点自己打开、自己点，不用再等闹钟提醒"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "钉钉助手是一个**越狱插件**：桌面上的调度器负责看时间，钉钉进程里的点击模块负责按下去。两者通过沙盒内的文件握手，你不需要手动打开 App，也不需要把钉钉挂在后台。"
+        },
+        {
+          "class": "DepictionScreenshotsView",
+          "itemCornerRadius": 14,
+          "itemSize": "{160, 284.6}",
+          "screenshots": [
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalk-shot-1.png",
+              "accessibilityText": "多个时间点：上班 09:00:00、下班 18:00:00，可单独开关"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalk-shot-2.png",
+              "accessibilityText": "点一次就冻结，留给拍照与填备注"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalk-shot-3.png",
+              "accessibilityText": "桌面悬浮球：单击打开钉钉，双击手动打卡"
+            }
+          ]
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "多时间点 · 精确到秒"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "可以添加**多个时间点**，例如 `09:00:00` 上班、`18:00:00` 下班，最多 8 条；每一条都能单独开关，**左滑删除**，不会互相影响。\n\n点时间进入编辑页，用「时 / 分 / 秒」三列滚轮上下拨动，改完自动保存。到点后 **0.25 秒内**拉起钉钉，不再有几十秒的漂移。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "点一次就停"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "命中「上班打卡 / 下班打卡」按钮后**立即冻结**，不会重复点击。接下来拍照、填备注都由你完成，不会被抢焦点，也不会把已经填好的内容清掉。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "桌面悬浮球"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "桌面上的小圆球可以拖到任意位置：\n\n• **单击** → 直接打开钉钉\n• **双击** → 立刻执行一次打卡\n\n不想用时在设置里关掉「显示悬浮球」即可。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "使用步骤"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "1. 安装后打开 `设置 → 钉钉助手`，打开总开关\n2. 在「打卡时间」里添加时间点，逐个拨到你要的时间\n3. 选择要打卡的企业（多企业时按索引选）\n4. 把钉钉**彻底上滑关闭**再打开一次，让点击模块加载\n5. 到点后手机会自动亮屏拉起钉钉并打卡"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "注意"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "• 设备设了密码 / Face ID 时，锁屏状态无法完成点击，请先解锁或关闭锁屏密码\n• 打卡结果以钉钉页面显示为准，插件只负责「点」，不会伪造数据\n• 建议先手动触发一次（双击悬浮球）确认能打到卡，再交给定时"
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "0.9.21.1"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "兼容性",
+          "text": "iOS 15 – 16 · rootless（Dopamine 等）"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "依赖",
+          "text": "mobilesubstrate · preferenceloader"
+        }
+      ]
+    },
+    {
+      "tabname": "Changelog",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.1",
+          "text": "启动钉钉改为异步非阻塞接口，点悬浮球不再卡桌面；日志记录每次启动耗时。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 6
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.0",
+          "text": "拉起钉钉改走系统启动通道，修复「进程起来了但没切到前台」。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 6
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.20.0",
+          "text": "定时支持精确到秒；悬浮球「已打」绿标改为需页面验证才亮；安装即注入，无需手动重启钉钉。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 6
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.19.0",
+          "text": "支持多个时间点：单条开关、左滑删除、时/分 双列滚轮。"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 6
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.18.x",
+          "text": "修复点不到打卡按钮：遍历全部 WebView 注入 JS、完整触摸事件序列、点击后立即冻结。"
+        }
+      ]
+    }
+  ]
+}

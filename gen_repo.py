@@ -61,6 +61,17 @@ def depiction_fields(pkg):
     return out
 
 
+ICON_DIR = "icons"
+
+
+def icon_field(pkg):
+    """包图标：icons/<package>.png 存在时返回远程 URL（Sileo / Zebra 会显示在列表与详情头部）。"""
+    rel = f"{ICON_DIR}/{pkg}.png"
+    if os.path.exists(os.path.join(REPO, rel)):
+        return REPO_BASE_URL.rstrip("/") + "/" + rel
+    return None
+
+
 def read_ar(path):
     """极简 ar 解析，取出各成员字节。"""
     with open(path, "rb") as f:
@@ -149,12 +160,18 @@ def main():
         fields["Size"] = str(len(raw))
         fields["MD5sum"] = hashlib.md5(raw).hexdigest()
         fields["SHA256"] = hashlib.sha256(raw).hexdigest()
+        # 包图标（可选）：仓库里 icons/<package>.png 存在才会写
+        ic = icon_field(fields.get("Package", ""))
+        if ic:
+            fields["Icon"] = ic
+            if "Icon" not in order:
+                order.append("Icon")
         # 详情页：客户端点开包时加载的 HTML（含截图 / 使用介绍 / 更新日志）
         for k, v in depiction_fields(fields.get("Package", "")).items():
             fields[k] = v
             if k not in order:
                 order.append(k)
-        for extra in ("Filename", "Size", "MD5sum", "SHA256", "Depiction", "SileoDepiction"):
+        for extra in ("Filename", "Size", "MD5sum", "SHA256", "Depiction", "SileoDepiction", "Icon"):
             if extra in fields and extra not in order:
                 order.append(extra)
         entries.append((fields, order))

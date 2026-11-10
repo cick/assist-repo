@@ -44,7 +44,9 @@ Maintainer: AssitDev <dev@example.com>
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
 Description: 钉钉定时自动打卡（从「顶栏时间 Assit」拆出的独立助手）。到点自动拉起钉钉并自动点击「打卡」。仅供学习研究。
+Icon: https://cick.github.io/assist-repo/icons/com.dev.dingtalkassistant.png
 Depiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkassistant.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkassistant.sileo.json
 Filename: debs/com.dev.dingtalkassistant_0.9.21.1_iphoneos-arm64.deb
 Size: 230968
 MD5sum: 826a04d81970eb9997f0ee00531746c4
@@ -70,6 +72,9 @@ Description: 钉钉自动打卡的进程内点击模块（独立安装版）。
  因此本包版本必须与已安装的「钉钉助手」版本一致（当前 0.9.21.1）。
  单独使用本包时只有点击能力，没有定时、悬浮球与设置页 —— 那些在
  「钉钉助手」里。
+Icon: https://cick.github.io/assist-repo/icons/com.dev.dingtalkclicker.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkclicker.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkclicker.sileo.json
 Filename: debs/com.dev.dingtalkclicker_0.9.21.1_iphoneos-arm64.deb
 Size: 97996
 MD5sum: 92b8cfe735ddf71080fdafa7760c2062
