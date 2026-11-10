@@ -54,7 +54,7 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "1. 安装后注销 / Respring，桌面右侧出现「码」悬浮球。\n2. 收到取件短信或 App 通知，码自动进列表并弹横幅。\n3. 到店点开悬浮球 → 点一下码即复制 → 取完左滑标记已取。\n4. 调整规则进面板第三页「设置」。",
+          "markdown": "1. 安装后注销 / Respring，桌面右侧出现「码」悬浮球。\n2. 收到取件短信或 App 通知，码自动进列表并弹横幅。\n3. 到店点开悬浮球 → 点一下码即复制 → 取完左滑标记已取。\n4. 调整规则进面板第三页「设置」。\n\n> **装完看不到？** 这是 tweak 插件，不是独立 App，桌面不会有应用图标。入口有两个：iOS「设置」→ 取件快码 Assit，以及桌面右侧的「码」悬浮球。\n>\n> 两个都没有时依次检查：① 已安装 **ElleKit** 与 **PreferenceLoader**；② Dopamine 里「插件注入 / Tweak Injection」已开启；③ 在 Dopamine 点一次**重启 SpringBoard**；④ Sileo 已安装里确认包名与版本为 1.0.1；⑤ 无根版与「· 隐根」版互斥，只装一个。",
           "useMargins": true
         },
         {
@@ -72,7 +72,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "1.0.0"
+          "text": "1.0.1"
         },
         {
           "class": "DepictionTableTextView",
@@ -97,13 +97,13 @@
       "views": [
         {
           "class": "DepictionSubheaderView",
-          "title": "1.0.0",
+          "title": "1.0.1",
           "useBoldText": true,
           "useMargins": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "首个版本。通知自动抓码、按驿站归类去重、悬浮球与待取清单、复制 / 标记已取 / 删除、手动添加与剪贴板识别、新码横幅、完整设置页。同时提供 rootless 与 roothide 两种原生包。",
+          "markdown": "### 1.0.1\n\n- 新增 iOS「设置」里的 **取件快码 Assit** 设置页（PreferenceLoader）：总开关、悬浮球、自动抓码、横幅、保留天数、透明度、自定义关键词。\n- 修复悬浮球初始化依赖不稳定的 SpringBoard 私有生命周期方法，导致部分 iOS 版本上「装了但桌面什么都没有」的问题；改为注入后多时间点兜底挂载。\n- 设置改动通过 Darwin 通知即时同步到 SpringBoard，无需手动注销。\n- 安装脚本自动刷新偏好缓存并 Respring；依赖补充 `preferenceloader`。\n\n---\n\n首个版本。通知自动抓码、按驿站归类去重、悬浮球与待取清单、复制 / 标记已取 / 删除、手动添加与剪贴板识别、新码横幅、完整设置页。同时提供 rootless 与 roothide 两种原生包。",
           "useMargins": true
         }
       ]

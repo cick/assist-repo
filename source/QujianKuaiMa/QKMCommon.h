@@ -28,6 +28,8 @@ FOUNDATION_EXPORT NSString *const QKMKeyDone;
 
 @interface QKMPrefs : NSObject
 + (instancetype)shared;
+/// 设置 App 写入偏好后调用，强制跨进程重新读取 plist
+- (void)reloadFromDisk;
 @property (nonatomic, assign) BOOL enabled;        // 总开关
 @property (nonatomic, assign) BOOL bubbleVisible;  // 悬浮球
 @property (nonatomic, assign) BOOL autoCapture;    // 自动抓码

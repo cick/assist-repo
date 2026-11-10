@@ -1,0 +1,7 @@
+#!/bin/sh
+# 取件快码 Assit — Author: AssitDev
+# 安装 / 升级后刷新偏好缓存并注销 SpringBoard，
+# 让 dylib 注入、PreferenceLoader 设置项与桌面悬浮球立即生效。
+killall -HUP cfprefsd >/dev/null 2>&1 || true
+killall -9 SpringBoard >/dev/null 2>&1 || true
+exit 0

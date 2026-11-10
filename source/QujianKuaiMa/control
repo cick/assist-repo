@@ -1,12 +1,12 @@
 Package: com.assitdev.qujiankuaima
 Name: 取件快码 Assit
-Version: 1.0.0
+Version: 1.0.1
 Architecture: iphoneos-arm64
 Maintainer: AssitDev <dev@example.com>
 Author: AssitDev
 Section: Tweaks
 Priority: optional
-Depends: firmware (>= 15.0), mobilesubstrate (>= 0.9.5000)
+Depends: firmware (>= 15.0), mobilesubstrate (>= 0.9.5000), preferenceloader
 Description: 把散落在短信、微信、菜鸟、丰巢等通知里的取件码，自动收进一个悬浮球里。通知到达时在本机解析取件码/取餐码/货架号，按驿站归类去重，桌面悬浮球一点即看，点一下复制、左滑标记已取，支持手动添加与剪贴板识别。数据只存在本机，不联网、不上传。
  功能：自动抓取通知中的取件码 / 取餐码 / 货架号；按驿站归类去重；悬浮球角标与待取清单；复制、标记已取、批量清理；手动添加与剪贴板识别；自定义匹配关键词与保留天数；超期高亮提醒。
  本包为 rootless 无根版（iOS 15 – 16，Dopamine / palera1n）；roothide 隐根环境请改装「取件快码 Assit · 隐根」。源码不含硬编码 /var/jb 路径，同一份源码可产出两种包。

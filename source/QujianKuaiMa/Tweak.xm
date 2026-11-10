@@ -60,18 +60,40 @@ static void QKMProcessBulletin(id obj) {
 
 %end
 
-%hook SpringBoard
+// v1.0.1：设置页（Preferences.app）写入偏好后会发这条 Darwin 通知。
+// SpringBoard 侧收到后重新读取 defaults 并刷新悬浮球，避免"设置改了没反应"。
+static NSString *const QKMPrefsDarwinNotification = @"com.assitdev.qujiankuaima.prefsChanged";
 
-- (void)applicationDidFinishLaunching:(id)application {
-    %orig;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[QKMStore shared] prune];
-        [[QKMUI shared] setup];
+static void QKMPrefsDidChange(CFNotificationCenterRef center, void *observer,
+                              CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    [[QKMPrefs shared] reloadFromDisk];
+    [[QKMUI shared] setup];
+    [[QKMUI shared] refresh];
+}
+
+// v1.0.1：不再 hook SpringBoard 的私有生命周期 selector。
+// 该 selector 在 iOS 15/16 各版本并不稳定，一旦不存在，Logos 会自己 addMethod，
+// 系统永远不会调用它，悬浮球就再也不会出现（表现就是"装了但什么都没有"）。
+// 改为 dylib 被注入时直接安排挂载，并在多个时间点重试，确保拿得到前台 window。
+static void QKMBootstrap(void) {
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL,
+                                        QKMPrefsDidChange,
+                                        (__bridge CFStringRef)QKMPrefsDarwinNotification,
+                                        NULL,
+                                        CFNotificationSuspensionBehaviorDeliverImmediately);
+        for (NSNumber *delay in @[@0.8, @2.5, @6.0, @12.0]) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay.doubleValue * NSEC_PER_SEC)),
+                           dispatch_get_main_queue(), ^{
+                [[QKMStore shared] prune];
+                [[QKMUI shared] setup];
+            });
+        }
     });
 }
 
-%end
-
 %ctor {
     %init;
+    QKMBootstrap();
 }

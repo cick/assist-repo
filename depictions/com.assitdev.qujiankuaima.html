@@ -34,7 +34,7 @@
 <header>
   <img class="ico" src="../icons/com.assitdev.qujiankuaima.png" alt="取件快码 Assit">
   <h1>取件快码 Assit</h1>
-  <p>取件码，一只悬浮球就够了 · v1.0.0 · AssitDev</p>
+  <p>取件码，一只悬浮球就够了 · v1.0.1 · AssitDev</p>
 </header>
 
 <main>
@@ -57,20 +57,37 @@
     <li><b>待取清单</b>：点条目即复制取件码，左滑可「标记已取 / 恢复待取 / 删除」；超过 24 小时未取的码会橙色高亮。</li>
     <li><b>手动补录</b>：面板底部可手动添加，或「粘贴识别」从剪贴板文本里一次抓出所有码。</li>
     <li><b>新码横幅</b>：抓到新码时在屏幕顶部弹一条 4 秒横幅，不用专门去翻通知。</li>
-    <li><b>设置</b>：总开关、悬浮球、自动抓码、横幅提醒、保留天数（1–90 天）、悬浮球透明度、自定义匹配关键词，全部在插件面板内完成。</li>
+    <li><b>设置</b>：总开关、悬浮球、自动抓码、横幅提醒、保留天数（1–90 天）、悬浮球透明度、自定义匹配关键词，；v1.0.1 起在 iOS「设置」里也能直接改，两处同步。</li>
   </ul>
 
   <img class="shots" src="assets/qujiankuaima-shot-1.png" alt="取件码列表面板">
 
   <h2>怎么用</h2>
   <ol>
-    <li>安装后 <b>注销 / Respring</b>，桌面右侧出现「码」悬浮球。</li>
+    <li><b>v1.0.1 起安装会自动 Respring</b>，桌面右侧出现「码」悬浮球；iOS「设置」里同时出现「取件快码 Assit」设置项。</li>
     <li>之后收到取件短信或 App 通知，码会自动进列表（顶部横幅提示）。</li>
     <li>到店点开悬浮球 → 点一下码即复制 → 取完左滑标记已取。</li>
     <li>需要调整规则，进面板第三页「设置」。</li>
   </ol>
 
   <img class="shots" src="assets/qujiankuaima-shot-2.png" alt="新码横幅与设置页">
+
+  <h2>装完看不到插件？</h2>
+  <div class="card">
+    <p class="muted">这是 <b>tweak 插件</b>，不是独立 App —— 桌面不会有应用图标。它有两个入口：</p>
+    <ol>
+      <li><b>iOS「设置」→ 取件快码 Assit</b>（v1.0.1 起提供 PreferenceLoader 设置页）；</li>
+      <li><b>桌面右侧「码」悬浮球</b>，注入 SpringBoard 成功后出现。</li>
+    </ol>
+    <p class="muted">两个都没有时，按顺序检查：</p>
+    <ol>
+      <li>Sileo 里确认已装 <code>ElleKit</code>（注入器）与 <code>PreferenceLoader</code>（设置页加载器），缺哪个装哪个。</li>
+      <li>打开 Dopamine，确认「插件注入 / Tweak Injection」处于开启状态。</li>
+      <li>在 Dopamine 点 <b>重启 SpringBoard</b>。v1.0.1 的安装脚本会自动做一次，保险起见可以再来一次。</li>
+      <li>Sileo → 已安装里搜「取件快码」，确认包名是 <code>com.assitdev.qujiankuaima</code>、版本 1.0.1。</li>
+      <li>无根版与「· 隐根」版互斥，只装对应环境的那一个。</li>
+    </ol>
+  </div>
 
   <h2>兼容性</h2>
   <ul>
@@ -90,7 +107,7 @@
   插件不请求任何网络权限、不上传任何内容、不读取其它 App 沙盒，也不修改原通知。卸载即删除本机记录。</p>
   <p class="muted">本插件为个人学习研究产物，仅供自己设备使用，请勿用于商业用途。</p>
 
-  <footer>取件快码 Assit v1.0.0 · Author AssitDev · Assist Repo</footer>
+  <footer>取件快码 Assit v1.0.1 · Author AssitDev · Assist Repo</footer>
 </main>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # 取件快码 Assit — 源码
 
-**Author: AssitDev** · 包名 `com.assitdev.qujiankuaima` · v1.0.0
+**Author: AssitDev** · 包名 `com.assitdev.qujiankuaima` · v1.0.1
 
 一个 iOS 越狱插件：把散落在短信 / 微信 / 菜鸟 / 丰巢等通知里的取件码，
 在本机解析后收进桌面悬浮球，按驿站归类，点一下复制。
@@ -44,7 +44,7 @@ roothide.entitlements    隐根构建所需签名权益
 
 ```bash
 bash build.sh             # 无根：packages/..._iphoneos-arm64.deb
-bash build.sh roothide    # 隐根：packages/...roothide_1.0.0_iphoneos-arm64e.deb
+bash build.sh roothide    # 隐根：packages/...roothide_1.0.1_iphoneos-arm64e.deb
 ```
 
 等价的原生命令：

@@ -16,6 +16,18 @@ NSString *const QKMKeyRaw     = @"raw";
 NSString *const QKMKeyDate    = @"date";
 NSString *const QKMKeyDone    = @"done";
 
+static NSDictionary *QKMRegisteredDefaults(void) {
+    return @{
+        @"enabled"       : @YES,
+        @"bubbleVisible" : @YES,
+        @"autoCapture"   : @YES,
+        @"bannerEnabled" : @YES,
+        @"keepDays"      : @7,
+        @"bubbleAlpha"   : @0.92,
+        @"customKeywords": @""
+    };
+}
+
 @implementation QKMPrefs {
     NSUserDefaults *_defaults;
 }
@@ -30,19 +42,17 @@ NSString *const QKMKeyDone    = @"done";
 - (instancetype)init {
     if ((self = [super init])) {
         _defaults = [[NSUserDefaults alloc] initWithSuiteName:QKMPrefsDomain];
-        // 首次运行的默认值
-        NSDictionary *defaults = @{
-            @"enabled"       : @YES,
-            @"bubbleVisible" : @YES,
-            @"autoCapture"   : @YES,
-            @"bannerEnabled" : @YES,
-            @"keepDays"      : @7,
-            @"bubbleAlpha"   : @0.92,
-            @"customKeywords": @""
-        };
-        [_defaults registerDefaults:defaults];
+        [_defaults registerDefaults:QKMRegisteredDefaults()];
     }
     return self;
+}
+
+- (void)reloadFromDisk {
+    [_defaults synchronize];
+    // cfprefsd 会缓存旧值，重建实例才能确保读到 Preferences.app 刚写入的内容
+    _defaults = [[NSUserDefaults alloc] initWithSuiteName:QKMPrefsDomain];
+    [_defaults registerDefaults:QKMRegisteredDefaults()];
+    [[NSNotificationCenter defaultCenter] postNotificationName:QKMSettingsChangedNotification object:nil];
 }
 
 - (NSUserDefaults *)d { return _defaults; }

@@ -5,12 +5,12 @@ Codename: stable
 Architectures: iphoneos-arm64 iphoneos-arm64e
 Components: main
 Description: 顶栏时间Assit、钉钉助手、转转 / 找靓机筛选、取件快码 Assit 等越狱插件的分发源（iOS 15–16 · rootless / roothide）。
-Date: Tue, 10 Nov 2026 15:14:12 +0000
+Date: Tue, 10 Nov 2026 15:45:19 +0000
 MD5Sum:
- 572cf2de44c9ba591021d6585127cbb3 17279 Packages
- 26ee90e9a0a9c04003684be498777246 5109 Packages.gz
- 3e44a21b509a79788d355e8afaa400de 5185 Packages.bz2
+ 09af8f9da7f23118b3ea27d1c912d848 17315 Packages
+ d4bd6a54434cd8ca04ddf246ecd316c0 5103 Packages.gz
+ 5c41235521e242351d0f3d2ded451f8a 5196 Packages.bz2
 SHA256:
- 526d42e2ef20e17bcfbabeae6a0cce6aef16941721a4242949cfb2ac59d9e13d 17279 Packages
- 58448ea69052255288830df52152e313842a65402c0ae1a11fc61d62b09ab17d 5109 Packages.gz
- 53aed0d0c16a6bfbbc725919118bebf2851e19d59952e8c81416ace2a561a687 5185 Packages.bz2
+ 3e1daba8e70711c521dc57d79fdfc7ea41e565599020db9513433153f47928b8 17315 Packages
+ 8315a5336cffed3f3a6c5b89d8e0a1e2218492852db413bd5f275f8929637d99 5103 Packages.gz
+ babc00cee4a28c7c27cecba3caecacc55d60c845cc9790bb6a443b4f6922c9d0 5196 Packages.bz2
