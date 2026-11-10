@@ -43,14 +43,15 @@ Architecture: iphoneos-arm64
 Maintainer: AssitDev <dev@example.com>
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
+Replaces: com.dev.dingtalkclicker
 Description: 钉钉定时自动打卡（从「顶栏时间 Assit」拆出的独立助手）。到点自动拉起钉钉并自动点击「打卡」。仅供学习研究。
 Icon: https://cick.github.io/assist-repo/icons/com.dev.dingtalkassistant.png
 Depiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkassistant.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkassistant.sileo.json
 Filename: debs/com.dev.dingtalkassistant_0.9.21.1_iphoneos-arm64.deb
-Size: 230968
-MD5sum: 826a04d81970eb9997f0ee00531746c4
-SHA256: 3d1e90e87e87dacc4e25df944467f33616e8c69960b58d4bb32b4c5a00739e9d
+Size: 231220
+MD5sum: 92165b4a6c7c14b460c427c2f7c6d4f8
+SHA256: 4e94b7c8816ce6eea94ef93e598cdff5892fd1cbcffa7ed6a284fe3afa9127a4
 
 Package: com.dev.dingtalkassistant
 Name: 钉钉助手
