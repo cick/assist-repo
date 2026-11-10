@@ -93,7 +93,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "0.9.21.6"
+          "text": "0.9.21.1"
         },
         {
           "class": "DepictionTableTextView",
@@ -114,11 +114,6 @@
         {
           "class": "DepictionHeaderView",
           "title": "更新日志"
-        },
-        {
-          "class": "DepictionTableTextView",
-          "title": "v0.9.21.6",
-          "text": "修「更新报错装不上」：0.9.21.5 的 control 拼接更新日志时丢了行首空格，dpkg 把那行当成字段名，报 field name must be followed by colon 后中止安装。本版已修正，并给打包脚本加了格式校验。同时保留安全模式修复（libAppSupport.dylib 给拉起回调整体加异常兜底）。"
         },
         {
           "class": "DepictionTableTextView",
