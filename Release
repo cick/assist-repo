@@ -2,15 +2,15 @@ Origin: Assist Repo
 Label: Assist
 Suite: stable
 Codename: stable
-Architectures: iphoneos-arm64
+Architectures: iphoneos-arm64 iphoneos-arm64e
 Components: main
-Description: 顶栏时间Assit、钉钉助手、转转 / 找靓机筛选等越狱插件的分发源（iOS 15–16 · rootless）。
-Date: Tue, 10 Nov 2026 14:47:29 +0000
+Description: 顶栏时间Assit、钉钉助手、转转 / 找靓机筛选、取件快码 Assit 等越狱插件的分发源（iOS 15–16 · rootless / roothide）。
+Date: Tue, 10 Nov 2026 15:14:12 +0000
 MD5Sum:
- b718f149c6807ef94d55d6a384353e87 13858 Packages
- f5359f02482ed048d8751cc445b40586 4212 Packages.gz
- 22cc2a7e05233b84698fcbc344530289 4336 Packages.bz2
+ 572cf2de44c9ba591021d6585127cbb3 17279 Packages
+ 26ee90e9a0a9c04003684be498777246 5109 Packages.gz
+ 3e44a21b509a79788d355e8afaa400de 5185 Packages.bz2
 SHA256:
- c643a6238371372cb90b6f589071458aed33bd15ef8f2817138a69a0be113275 13858 Packages
- 41ba17e57fc7de9268a93500a65b7eb5d971280573a59663a8eaca5f8f8fd5f7 4212 Packages.gz
- 9a9c87708bac301cc2d5767b087117d68cd66eb568ed90a45766ae7008b1a9f9 4336 Packages.bz2
+ 526d42e2ef20e17bcfbabeae6a0cce6aef16941721a4242949cfb2ac59d9e13d 17279 Packages
+ 58448ea69052255288830df52152e313842a65402c0ae1a11fc61d62b09ab17d 5109 Packages.gz
+ 53aed0d0c16a6bfbbc725919118bebf2851e19d59952e8c81416ace2a561a687 5185 Packages.bz2

@@ -1,0 +1,136 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "headerImage": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-banner.jpg",
+  "tintColor": "#1E69EB",
+  "tabs": [
+    {
+      "tabname": "详情",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionSubheaderView",
+          "title": "取件码，一只悬浮球就够了",
+          "useBoldText": true,
+          "useMargins": true
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "短信、微信、菜鸟、丰巢、取餐通知里的取件码散落各处。**取件快码 Assit** 在通知到达时于本机解析出取件码 / 取餐码 / 货架号，按驿站归类去重，收进桌面悬浮球；到店点开就能看，点一下复制，左滑标记已取。",
+          "useMargins": true
+        },
+        {
+          "class": "DepictionScreenshotsView",
+          "screenshots": [
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-1.png",
+              "accessibilityText": "待取清单与悬浮球"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-2.png",
+              "accessibilityText": "新码横幅与设置页"
+            }
+          ],
+          "itemSize": "{160, 284.6}",
+          "itemCornerRadius": 10,
+          "itemSpacing": 12
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 8
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "它做什么"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "• **自动抓码**：Hook SpringBoard 通知投递，识别「取件码：A8274」「货架 3-2-1056」「凭 668812 取件」等写法，支持自定义关键词。\n• **按驿站归类**：识别菜鸟驿站、丰巢、各家快递、美团 / 饿了么，提取地址，同码同驿站自动去重。\n• **悬浮球 + 角标**：可拖动吸附，红点显示待取数量；点一下展开面板，长按可临时隐藏。\n• **待取清单**：点条目即复制，左滑标记已取 / 恢复 / 删除；超 24 小时未取橙色高亮。\n• **手动补录**：可手动添加，或「粘贴识别」从剪贴板一次抓出所有码。\n• **新码横幅**：抓到新码时屏幕顶部弹 4 秒提示。\n• **设置**：总开关、悬浮球、自动抓码、横幅、保留天数、透明度、自定义关键词，全在面板内完成。",
+          "useMargins": true
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "怎么用"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "1. 安装后注销 / Respring，桌面右侧出现「码」悬浮球。\n2. 收到取件短信或 App 通知，码自动进列表并弹横幅。\n3. 到店点开悬浮球 → 点一下码即复制 → 取完左滑标记已取。\n4. 调整规则进面板第三页「设置」。",
+          "useMargins": true
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "兼容性"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "**iOS 15 – 16**，注入 `com.apple.springboard`。\n• **无根 rootless**（Dopamine / palera1n）：装本包，架构 `iphoneos-arm64`，路径 `/var/jb/…`。\n• **隐根 roothide**：改装本源的「取件快码 Assit · 隐根」，架构 `iphoneos-arm64e`，原生构建、无 `/var/jb` 前缀。\n\n两个包互斥，只装与环境对应的那一个。源码不硬编码越狱根路径，文件读写只走 `NSHomeDirectory()` 与 `NSUserDefaults`。",
+          "useMargins": true
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "1.0.0"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "作者",
+          "text": "AssitDev"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "支持环境",
+          "text": "rootless 无根 / roothide 隐根"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "隐私",
+          "text": "本机解析，不联网、不上传"
+        }
+      ]
+    },
+    {
+      "tabname": "更新日志",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionSubheaderView",
+          "title": "1.0.0",
+          "useBoldText": true,
+          "useMargins": true
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "首个版本。通知自动抓码、按驿站归类去重、悬浮球与待取清单、复制 / 标记已取 / 删除、手动添加与剪贴板识别、新码横幅、完整设置页。同时提供 rootless 与 roothide 两种原生包。",
+          "useMargins": true
+        }
+      ]
+    },
+    {
+      "tabname": "声明",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "隐私"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "所有解析、归类、存储都在本机完成，记录保存在 `~/Library/Application Support/QujianKuaiMa/codes.plist`。插件不请求网络权限、不上传内容、不读取其它 App 沙盒、不修改原通知。卸载即删除本机记录。",
+          "useMargins": true
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "声明"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "本插件为个人学习研究产物，仅供自己设备使用，请勿用于商业用途。",
+          "useMargins": true
+        }
+      ]
+    }
+  ]
+}

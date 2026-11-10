@@ -1,6 +1,15 @@
+# 源码存档
+
+> **`QujianKuaiMa/`（取件快码 Assit）是完整、可直接编译的 Theos 工程**，
+> 与本页下面描述的历史存档不同：它带 `Makefile` / `control` / `build.sh` /
+> `mod/roothide`，`bash build.sh` 出无根包，`bash build.sh roothide` 出隐根包。
+> 细节见 [`QujianKuaiMa/README.md`](QujianKuaiMa/README.md)。
+
+---
+
 # 钉钉助手 · 源码存档
 
-本目录只是**历史源码存档**，不是可直接编译的工程。
+本目录的钉钉助手部分只是**历史源码存档**，不是可直接编译的工程。
 
 ## 现状
 

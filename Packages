@@ -1,3 +1,49 @@
+Package: com.assitdev.qujiankuaima.roothide
+Name: 取件快码 Assit · 隐根
+Maintainer: AssitDev <dev@example.com>
+Author: AssitDev
+Section: Tweaks
+Priority: optional
+Depends: firmware (>= 15.0), mobilesubstrate (>= 0.9.5000)
+Conflicts: com.assitdev.qujiankuaima
+Replaces: com.assitdev.qujiankuaima
+Description: 【roothide 隐根专用包，请勿与无根版同时安装】把散落在短信、微信、菜鸟、丰巢等通知里的取件码，自动收进一个悬浮球里。通知到达时在本机解析取件码/取餐码/货架号，按驿站归类去重，桌面悬浮球一点即看，点一下复制、左滑标记已取，支持手动添加与剪贴板识别。数据只存在本机，不联网、不上传。
+ 本包为 arm64e 原生 roothide 构建；无根（rootless）用户请装「取件快码 Assit」标准包。
+ 功能：自动抓取通知中的取件码 / 取餐码 / 货架号；按驿站归类去重；悬浮球角标与待取清单；复制、标记已取、批量清理；手动添加与剪贴板识别；自定义匹配关键词与保留天数；超期高亮提醒。
+ 隐私：全部解析与存储都在本机完成，不请求网络、不上传任何内容。
+Architecture: iphoneos-arm64e
+Version: 1.0.0
+Installed-Size: 132
+Icon: https://cick.github.io/assist-repo/icons/com.assitdev.qujiankuaima.roothide.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.roothide.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.roothide.sileo.json
+Filename: debs/com.assitdev.qujiankuaima.roothide_1.0.0_iphoneos-arm64e.deb
+Size: 28094
+MD5sum: 03a1235b9f8ce6785089a54ede4b8142
+SHA256: 785e28d14ed137afb7128eb1ffc06a1e28b6cc7e5308fa85123d8fb94f6f2c96
+
+Package: com.assitdev.qujiankuaima
+Name: 取件快码 Assit
+Maintainer: AssitDev <dev@example.com>
+Author: AssitDev
+Section: Tweaks
+Priority: optional
+Depends: firmware (>= 15.0), mobilesubstrate (>= 0.9.5000)
+Description: 把散落在短信、微信、菜鸟、丰巢等通知里的取件码，自动收进一个悬浮球里。通知到达时在本机解析取件码/取餐码/货架号，按驿站归类去重，桌面悬浮球一点即看，点一下复制、左滑标记已取，支持手动添加与剪贴板识别。数据只存在本机，不联网、不上传。
+ 功能：自动抓取通知中的取件码 / 取餐码 / 货架号；按驿站归类去重；悬浮球角标与待取清单；复制、标记已取、批量清理；手动添加与剪贴板识别；自定义匹配关键词与保留天数；超期高亮提醒。
+ 本包为 rootless 无根版（iOS 15 – 16，Dopamine / palera1n）；roothide 隐根环境请改装「取件快码 Assit · 隐根」。源码不含硬编码 /var/jb 路径，同一份源码可产出两种包。
+ 隐私：全部解析与存储都在本机完成，不请求网络、不上传任何内容。
+Architecture: iphoneos-arm64
+Version: 1.0.0
+Installed-Size: 132
+Icon: https://cick.github.io/assist-repo/icons/com.assitdev.qujiankuaima.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.assitdev.qujiankuaima.sileo.json
+Filename: debs/com.assitdev.qujiankuaima_1.0.0_iphoneos-arm64.deb
+Size: 27532
+MD5sum: 466fabec13f9441749bc53e6555928e4
+SHA256: 1c7a748b9b343e342f8efa0408398af610295b5d332197c2015ab89cc4d0c71e
+
 Package: com.dev.callassiststatusbar
 Name: 顶栏时间Assit
 Version: 0.9.143

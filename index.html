@@ -36,7 +36,7 @@
     <img id="repoicon" src="icon.png" alt="icon" onerror="this.style.display='none'">
     <div>
       <h1>Assist 越狱源</h1>
-      <p class="sub" id="repo-sub">顶栏时间Assit · 钉钉助手 · 转转 / 找靓机筛选 等越狱插件分发源</p>
+      <p class="sub" id="repo-sub">顶栏时间Assit · 钉钉助手 · 转转 / 找靓机筛选 · 取件快码 Assit 等越狱插件分发源（rootless / roothide）</p>
     </div>
   </header>
 
@@ -103,6 +103,31 @@
   </div>
 
   <div class="card">
+    <div class="pkg">
+      <img class="icon" src="icons/com.assitdev.qujiankuaima.png" alt="取件快码 Assit">
+      <div>
+        <h2>取件快码 Assit <span class="ver">v1.0.0</span> · 无根</h2>
+        <div class="desc">把散落在短信 / 微信 / 菜鸟 / 丰巢等通知里的取件码，在本机解析后收进桌面悬浮球：
+          按驿站归类去重、点一下复制、左滑标记已取、剪贴板识别、新码横幅。
+          不联网、不上传。适用于 rootless 无根（Dopamine / palera1n）。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="pkg">
+      <img class="icon" src="icons/com.assitdev.qujiankuaima.roothide.png" alt="取件快码 Assit 隐根">
+      <div>
+        <h2>取件快码 Assit · 隐根 <span class="ver">v1.0.0</span></h2>
+        <div class="desc">同一份源码的 roothide 原生构建（arm64e，包内无 /var/jb 前缀）。
+          与无根包互斥，隐根环境（Dopamine-RootHide）装这一个即可。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="depictions/assets/qujiankuaima-banner.jpg" alt="取件快码 Assit"
+         style="width:100%;display:block;border-radius:14px;margin-bottom:14px">
     <img src="depictions/assets/dingtalk-banner.jpg" alt="钉钉助手"
          style="width:100%;display:block;border-radius:14px;margin-bottom:18px">
     <div class="btns">
@@ -114,7 +139,7 @@
 
   <p class="hint">
     添加源地址（在客户端「添加源」里粘贴）：<br>
-    <code id="repo-url">https://your-domain.example/assist-repo/</code>
+    <code id="repo-url">https://cick.github.io/assist-repo/</code>
   </p>
   <p class="hint">
     本页按钮会自动按当前访问域名拼接链接。把整个 <code>assist-repo/</code> 目录作为静态站点托管（GitHub Pages / Cloudflare Pages / 任意 Nginx）即可。

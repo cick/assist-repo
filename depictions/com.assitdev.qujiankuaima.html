@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>取件快码 Assit</title>
+<style>
+  body { background:#fff; color:#111; font:14px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+         margin:0; padding-bottom:30px; -webkit-font-smoothing:antialiased; }
+  header { padding:26px 16px 20px; text-align:center; border-bottom:1px solid #e3e3e3; }
+  header .ico { width:78px; height:78px; margin:0 auto 12px; display:block; border-radius:18px;
+                box-shadow:0 6px 18px rgba(30,105,235,.28); }
+  header h1 { margin:0; font-size:22px; font-weight:700; }
+  header p { margin:5px 0 0; color:#8a8a8a; font-size:13px; }
+  main { padding:0 16px; }
+  h2 { font-size:17px; font-weight:700; margin:24px 0 10px; padding-bottom:6px; border-bottom:1px solid #e3e3e3; }
+  p { margin:0 0 10px; }
+  ul { margin:0 0 10px; padding-left:20px; }
+  li { margin:0 0 8px; }
+  .hero { display:block; width:100%; border-radius:14px; margin:16px 0 4px; }
+  .shots { display:block; width:100%; max-width:420px; margin:14px auto 0; border-radius:14px;
+           box-shadow:0 4px 18px rgba(0,0,0,.12); }
+  .card { background:#f5f8ff; border:1px solid #dce8ff; border-radius:12px; padding:14px 16px; margin:12px 0; }
+  .tag { display:inline-block; background:#e8f1ff; color:#1e69eb; border-radius:6px;
+         padding:2px 8px; font-size:12px; font-weight:600; margin:0 6px 6px 0; }
+  code { background:#eef1f5; border-radius:5px; padding:1px 5px; font-size:12.5px; word-break:break-all; }
+  .warn { background:#fff8e6; border:1px solid #ffe2a8; border-radius:12px; padding:12px 14px;
+          margin:14px 0; font-size:13px; color:#7a5a00; }
+  .muted { color:#8a8a8a; }
+  footer { margin-top:26px; text-align:center; color:#a0a0a0; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <img class="ico" src="../icons/com.assitdev.qujiankuaima.png" alt="取件快码 Assit">
+  <h1>取件快码 Assit</h1>
+  <p>取件码，一只悬浮球就够了 · v1.0.0 · AssitDev</p>
+</header>
+
+<main>
+  <img class="hero" src="assets/qujiankuaima-banner.jpg" alt="取件快码 Assit">
+
+  <p>短信、微信、菜鸟、丰巢、取餐通知……取件码散落在各处，到驿站前总要翻半天。
+  <b>取件快码 Assit</b> 在通知到达时于本机解析出取件码 / 取餐码 / 货架号，按驿站归类去重，
+  收进桌面悬浮球；到店点开就能看，点一下复制，左滑标记已取。</p>
+
+  <div class="card">
+    <span class="tag">本机解析</span><span class="tag">不联网</span><span class="tag">不上传</span>
+    <span class="tag">rootless 无根</span><span class="tag">roothide 隐根</span>
+  </div>
+
+  <h2>它做什么</h2>
+  <ul>
+    <li><b>自动抓码</b>：Hook SpringBoard 的通知投递，把标题 / 副标题 / 正文拼起来做正则解析，识别「取件码：A8274」「货架 3-2-1056」「凭 668812 取件」等常见写法；支持自定义关键词。</li>
+    <li><b>按驿站归类</b>：自动识别菜鸟驿站、丰巢、中通 / 圆通 / 申通 / 韵达 / 极兔、美团 / 饿了么等来源，提取地址，同一码 + 同一驿站自动去重。</li>
+    <li><b>悬浮球 + 角标</b>：桌面可拖动吸附的蓝色小球，红点显示待取数量；点一下展开面板，长按临时隐藏（可在设置里恢复）。</li>
+    <li><b>待取清单</b>：点条目即复制取件码，左滑可「标记已取 / 恢复待取 / 删除」；超过 24 小时未取的码会橙色高亮。</li>
+    <li><b>手动补录</b>：面板底部可手动添加，或「粘贴识别」从剪贴板文本里一次抓出所有码。</li>
+    <li><b>新码横幅</b>：抓到新码时在屏幕顶部弹一条 4 秒横幅，不用专门去翻通知。</li>
+    <li><b>设置</b>：总开关、悬浮球、自动抓码、横幅提醒、保留天数（1–90 天）、悬浮球透明度、自定义匹配关键词，全部在插件面板内完成。</li>
+  </ul>
+
+  <img class="shots" src="assets/qujiankuaima-shot-1.png" alt="取件码列表面板">
+
+  <h2>怎么用</h2>
+  <ol>
+    <li>安装后 <b>注销 / Respring</b>，桌面右侧出现「码」悬浮球。</li>
+    <li>之后收到取件短信或 App 通知，码会自动进列表（顶部横幅提示）。</li>
+    <li>到店点开悬浮球 → 点一下码即复制 → 取完左滑标记已取。</li>
+    <li>需要调整规则，进面板第三页「设置」。</li>
+  </ol>
+
+  <img class="shots" src="assets/qujiankuaima-shot-2.png" alt="新码横幅与设置页">
+
+  <h2>兼容性</h2>
+  <ul>
+    <li>iOS 15 – 16，注入 <code>com.apple.springboard</code>。</li>
+    <li><b>无根 rootless</b>（Dopamine / palera1n）：安装本包 <code>取件快码 Assit</code>，架构 <code>iphoneos-arm64</code>，包内路径 <code>/var/jb/…</code>。</li>
+    <li><b>隐根 roothide</b>（Dopamine-RootHide）：请改装本源的 <code>取件快码 Assit · 隐根</code>，架构 <code>iphoneos-arm64e</code>，原生构建、包内无 <code>/var/jb</code> 前缀。</li>
+    <li>源码不硬编码任何越狱根路径，文件读写只走 <code>NSHomeDirectory()</code> 与 <code>NSUserDefaults</code>，同一份源码可产出两种包。</li>
+  </ul>
+
+  <div class="warn">
+    ⚠️ 两个包互斥（已声明 <code>Conflicts</code>），<b>只装与你越狱环境对应的那一个</b>。
+    已在隐根环境、但不方便换包时，也可以用 RootHide Patcher 转换无根包；原生隐根包更推荐。
+  </div>
+
+  <h2>隐私与声明</h2>
+  <p>所有解析、归类、存储都在本机完成，数据保存在 <code>~/Library/Application Support/QujianKuaiMa/codes.plist</code>，
+  插件不请求任何网络权限、不上传任何内容、不读取其它 App 沙盒，也不修改原通知。卸载即删除本机记录。</p>
+  <p class="muted">本插件为个人学习研究产物，仅供自己设备使用，请勿用于商业用途。</p>
+
+  <footer>取件快码 Assit v1.0.0 · Author AssitDev · Assist Repo</footer>
+</main>
+</body>
+</html>

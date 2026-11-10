@@ -33,8 +33,8 @@ LABEL = "Assist"
 SUITE = "stable"
 CODENAME = "stable"
 COMPONENTS = "main"
-ARCHS = "iphoneos-arm64"
-DESCRIPTION = "顶栏时间Assit、钉钉助手、转转 / 找靓机筛选等越狱插件的分发源（iOS 15–16 · rootless）。"
+ARCHS = "iphoneos-arm64 iphoneos-arm64e"
+DESCRIPTION = "顶栏时间Assit、钉钉助手、转转 / 找靓机筛选、取件快码 Assit 等越狱插件的分发源（iOS 15–16 · rootless / roothide）。"
 
 # ── 详情页（Depiction）───────────────────────────────────────────────
 # 地址要和最终托管的根 URL 一致（结尾不要带 /）。
