@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>转转筛选</title>
+<style>
+  body {
+    background: #fff; color: #000;
+    font: 14px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    margin: 0; padding-bottom: 28px; -webkit-font-smoothing: antialiased;
+  }
+  header { padding: 26px 16px 20px; text-align: center; border-bottom: 1px solid #e3e3e3; }
+  header .ico {
+    width: 76px; height: 76px; margin: 0 auto 12px; display: block;
+    border-radius: 18px; box-shadow: 0 6px 18px rgba(255,90,45,.28);
+  }
+  header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+  header p  { margin: 4px 0 0; color: #8a8a8a; font-size: 13px; }
+  main { padding: 0 16px; }
+  h2 {
+    font-size: 17px; font-weight: 700; margin: 24px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid #e3e3e3;
+  }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 20px; }
+  li { margin: 0 0 8px; }
+  .muted { color: #8a8a8a; }
+  .ver { color: #ff5a2d; font-weight: 600; }
+  .card {
+    background: #f7f8fa; border: 1px solid #e6e8ec; border-radius: 12px;
+    padding: 14px 16px; margin: 12px 0;
+  }
+  code {
+    background: #eef1f5; border-radius: 5px; padding: 1px 5px;
+    font-size: 12.5px; word-break: break-all;
+  }
+  .warn {
+    background: #fff8e6; border: 1px solid #ffe2a8; border-radius: 12px;
+    padding: 12px 14px; margin: 14px 0; font-size: 13px; color: #7a5a00;
+  }
+  footer { margin-top: 26px; text-align: center; color: #a0a0a0; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <img class="ico" src="../icons/com.hang.zzzj.png" alt="转转筛选">
+  <h1>转转筛选</h1>
+  <p>转转 App 悬浮球 · 搜索结果翻页抓全 + 多条件筛选</p>
+</header>
+
+<main>
+  <p>给「转转」App 挂一个悬浮球，长按悬浮球（或点面板「开始抓取」）自动翻页把当前搜索结果抓到底，
+  悬浮球上实时显示已抓条数；抓完自动列出全部商品，按机型 / 内存 / 电池 / 系统版本 / 成色筛选，
+  支持价格排序、复制链接、在 App 内打开详情页。数据只保存在本机内存，不上传任何服务器。</p>
+
+  <h2>它做什么</h2>
+  <ul>
+    <li><b>悬浮球交互</b>：点一下只展开面板；<b>长按悬浮球</b>或点面板「开始抓取」才真正去抓，不会误抓，开始时会震动两下提示。</li>
+    <li><b>自动翻页</b>：抓取的是本机自己请求的搜索接口响应，配合自动翻页把列表翻到底，停手靠「7 秒无新数据」判断，不会漏页也不会卡死。</li>
+    <li><b>三分类</b>：手机 / 平板 / Mac 三个分类，各自的字段与筛选项互不干扰；Mac 的「内存」是运行内存，手机平板的「内存」是存储容量。</li>
+    <li><b>筛选与排序</b>：按机型 / 内存 / 电池 / 系统版本 / 成色筛选，一键切「价格低→高」「价格高→低」。</li>
+    <li><b>复制与打开</b>：列表带行号，可复制单条链接、复制行号、一键复制全部链接，也能在 App 内直接打开对应商品详情。</li>
+  </ul>
+
+  <h2>怎么用</h2>
+  <div class="card">
+    <p><b>1.</b> 打开转转 App，搜索任意关键词，屏幕边缘出现悬浮球。</p>
+    <p><b>2.</b> <b>长按悬浮球</b>（或点开面板后点「开始抓取」），手机会震两下表示开始抓取。</p>
+    <p><b>3.</b> 抓完点悬浮球展开面板，选分类、设条件、切价格排序；点行可复制链接或打开详情。</p>
+  </div>
+
+  <h2>兼容性</h2>
+  <p>适用 <span class="ver">iOS 15 – 16</span> · rootless 越狱（Dopamine 等）。
+  注入目标：<code>com.wuba.zhuanzhuan</code>。仅在转转 App 内生效，不影响其它 App。</p>
+
+  <div class="warn">
+    <b>说明</b>：本插件为逆向学习产物，仅供个人研究使用。抓取的数据仅保存在本机内存，
+    请遵守相关平台规则，勿用于商业或批量搬运。
+  </div>
+
+  <footer>仅供学习研究 · 请在 24 小时内自行删除</footer>
+</main>
+</body>
+</html>

@@ -34,7 +34,7 @@ SUITE = "stable"
 CODENAME = "stable"
 COMPONENTS = "main"
 ARCHS = "iphoneos-arm64"
-DESCRIPTION = "顶栏时间Assit（CallAssistStatusBar）、钉钉助手等越狱插件的分发源。"
+DESCRIPTION = "顶栏时间Assit、钉钉助手、转转 / 找靓机筛选等越狱插件的分发源（iOS 15–16 · rootless）。"
 
 # ── 详情页（Depiction）───────────────────────────────────────────────
 # 地址要和最终托管的根 URL 一致（结尾不要带 /）。

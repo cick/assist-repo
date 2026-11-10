@@ -187,3 +187,53 @@ Filename: debs/com.devd.ahss_0.0.1_iphoneos-arm64.deb
 Size: 136634
 MD5sum: 2a8d681744b2372d8b9d6af330bfb47d
 SHA256: a182ae7ff8c5181d071f5ee1af5daa5d80404721f17a34483d12d3bf977d4b0b
+
+Package: com.hang.zlj
+Name: 找靓机筛选
+Description: 找靓机 App 搜索 / 列表筛选助手
+ 搜索后长按悬浮球（或点面板「开始抓取」）按页拉全结果，悬浮球实时显示已抓条数；
+ 抓完按机型 / 内存 / 电池 / 系统版本 / 成色筛选，支持价格低→高、高→低排序。
+ .
+ 「点行查看本条数据」：成色 / 功能 / 外观 N 项使用痕迹与列表完全同源（来自找靓机验机报告），
+ 不会出现「列表 95 新、点开网页 99 新」的错位；「网页详情」走带登录态的内置 WKWebView。
+ .
+ 首页推荐流不抓不入库，仅在搜索后手动触发；数据只保存在本机内存。
+Maintainer: AssitDev
+Author: AssitDev
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Architecture: iphoneos-arm64
+Version: 0.0.18
+Installed-Size: 836
+Icon: https://cick.github.io/assist-repo/icons/com.hang.zlj.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.hang.zlj.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.hang.zlj.sileo.json
+Filename: debs/com.hang.zlj_0.0.18_iphoneos-arm64.deb
+Size: 172726
+MD5sum: e8df541d5c932b5f830f4e73dd2c726b
+SHA256: 86d95fdc79054d539c6545b7581c19203f91f447e97c6843f7605c412dbe08a1
+
+Package: com.hang.zzzj
+Name: 转转筛选
+Description: 转转 App 搜索 / 列表筛选助手
+ 长按悬浮球（或点面板「开始抓取」）自动翻页抓全当前搜索结果，悬浮球上实时显示已抓条数；
+ 抓完自动列出全部商品，按机型 / 内存 / 电池 / 系统版本 / 成色筛选，支持价格低→高、高→低排序。
+ .
+ 支持单条复制链接、单条打开详情页、行号显示与一键复制全部链接；
+ 手机 / 平板 / Mac 三分类，各分类字段与筛选项互不干扰。
+ .
+ 全部数据只保存在本机内存，不上传任何第三方服务器。
+Maintainer: AssitDev
+Author: AssitDev
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Architecture: iphoneos-arm64
+Version: 0.0.39
+Installed-Size: 516
+Icon: https://cick.github.io/assist-repo/icons/com.hang.zzzj.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.hang.zzzj.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.hang.zzzj.sileo.json
+Filename: debs/com.hang.zzzj_0.0.39_iphoneos-arm64.deb
+Size: 88786
+MD5sum: bc27536a203ef04c29e1f0efd1d57165
+SHA256: ccf3abcbd4bcf7300ee56c06551886b1cc950c6b5044c70439d311a8450d7724

@@ -1,0 +1,88 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "tintColor": "#FF5A2D",
+  "tabs": [
+    {
+      "tabname": "Details",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionSubheaderView",
+          "title": "转转 App 悬浮球 · 搜索结果翻页抓全 + 多条件筛选"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "给「转转」App 挂一个悬浮球，长按悬浮球（或点面板「开始抓取」）自动翻页把当前搜索结果抓到底，悬浮球上实时显示已抓条数；抓完自动列出全部商品，按机型 / 内存 / 电池 / 系统版本 / 成色筛选，支持价格排序、复制链接、在 App 内打开详情页。数据只保存在本机内存，不上传任何服务器。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "它做什么"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "• **悬浮球交互**：点一下只展开面板；**长按悬浮球**或点面板「开始抓取」才真正去抓，不会误抓，开始时会震动两下提示。\n• **自动翻页**：抓的是本机自己请求的搜索接口响应，配合自动翻页把列表翻到底，停手靠「7 秒无新数据」判断，不会漏页也不会卡死。\n• **三分类**：手机 / 平板 / Mac，各自字段与筛选项互不干扰；Mac 的「内存」是运行内存，手机平板的「内存」是存储容量。\n• **筛选与排序**：按机型 / 内存 / 电池 / 系统版本 / 成色筛选，一键切「价格低→高」「价格高→低」。\n• **复制与打开**：列表带行号，可复制单条链接、复制行号、一键复制全部链接，也能在 App 内直接打开对应商品详情。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "怎么用"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "1. 打开转转 App，搜索任意关键词，屏幕边缘出现悬浮球。\n2. **长按悬浮球**（或点开面板后点「开始抓取」），手机会震两下表示开始抓取。\n3. 抓完点悬浮球展开面板，选分类、设条件、切价格排序；点行可复制链接或打开详情。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "兼容性"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "适用 **iOS 15 – 16** · rootless 越狱（Dopamine 等）。注入目标：`com.wuba.zhuanzhuan`。仅在转转 App 内生效，不影响其它 App。"
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "0.0.39"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "兼容性",
+          "text": "iOS 15 – 16 · rootless"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "注入目标",
+          "text": "com.wuba.zhuanzhuan"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "隐私",
+          "text": "数据仅存本机内存，不上传"
+        }
+      ]
+    },
+    {
+      "tabname": "Changelog",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.0.39",
+          "text": "长按开始抓取时震动两下，明确提示「已开始抓取」；新增价格从低到高 / 从高到低排序；列表行号显示与复制行号；手机 / 平板 / Mac 三分类，字段与筛选项互不干扰。"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.0.38",
+          "text": "列表行号显示；冷启动后已抓数据自动追加行号。"
+        }
+      ]
+    }
+  ]
+}

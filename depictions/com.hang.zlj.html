@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>找靓机筛选</title>
+<style>
+  body {
+    background: #fff; color: #000;
+    font: 14px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    margin: 0; padding-bottom: 28px; -webkit-font-smoothing: antialiased;
+  }
+  header { padding: 26px 16px 20px; text-align: center; border-bottom: 1px solid #e3e3e3; }
+  header .ico {
+    width: 76px; height: 76px; margin: 0 auto 12px; display: block;
+    border-radius: 18px; box-shadow: 0 6px 18px rgba(226,58,58,.26);
+  }
+  header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+  header p  { margin: 4px 0 0; color: #8a8a8a; font-size: 13px; }
+  main { padding: 0 16px; }
+  h2 {
+    font-size: 17px; font-weight: 700; margin: 24px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid #e3e3e3;
+  }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 20px; }
+  li { margin: 0 0 8px; }
+  .muted { color: #8a8a8a; }
+  .ver { color: #e23a3a; font-weight: 600; }
+  .card {
+    background: #f7f8fa; border: 1px solid #e6e8ec; border-radius: 12px;
+    padding: 14px 16px; margin: 12px 0;
+  }
+  code {
+    background: #eef1f5; border-radius: 5px; padding: 1px 5px;
+    font-size: 12.5px; word-break: break-all;
+  }
+  .warn {
+    background: #fff8e6; border: 1px solid #ffe2a8; border-radius: 12px;
+    padding: 12px 14px; margin: 14px 0; font-size: 13px; color: #7a5a00;
+  }
+  footer { margin-top: 26px; text-align: center; color: #a0a0a0; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <img class="ico" src="../icons/com.hang.zlj.png" alt="找靓机筛选">
+  <h1>找靓机筛选</h1>
+  <p>找靓机 App 悬浮球 · 搜索列表拉全 + 验机报告同源显示</p>
+</header>
+
+<main>
+  <p>给「找靓机」App 挂一个悬浮球，搜索后长按悬浮球（或点面板「开始抓取」）按页把搜索结果拉全，
+  悬浮球实时显示已抓条数；抓完按机型 / 内存 / 电池 / 系统版本 / 成色筛选，支持价格排序与复制链接。
+  首页推荐流不抓不入库，只在你主动触发时抓当前搜索结果。</p>
+
+  <h2>它做什么</h2>
+  <ul>
+    <li><b>悬浮球交互</b>：点一下只展开面板；<b>长按悬浮球</b>或点面板「开始抓取」才真正去抓，开始时会震动两下提示。</li>
+    <li><b>按页拉全</b>：搜索后手动触发，按页向下拉取直到没有新数据，条数实时显示在悬浮球上。</li>
+    <li><b>点行看本条</b>：成色 / 功能 / 外观 N 项使用痕迹与列表<b>完全同源</b>（都来自找靓机验机报告），
+        不会再出现「列表写 95 新、点开网页变 99 新」的错位。</li>
+    <li><b>筛选与排序</b>：按机型 / 内存 / 电池 / 系统版本 / 成色筛选，一键切「价格低→高」「价格高→低」。</li>
+    <li><b>复制与打开</b>：「网页详情」走带登录态的内置 WKWebView，可复制单条链接或一键复制全部。</li>
+  </ul>
+
+  <h2>怎么用</h2>
+  <div class="card">
+    <p><b>1.</b> 打开找靓机 App，搜索想要的关键词，屏幕边缘出现悬浮球。</p>
+    <p><b>2.</b> <b>长按悬浮球</b>（或点开面板后点「开始抓取」），手机会震两下表示开始抓取。</p>
+    <p><b>3.</b> 抓完点悬浮球展开面板，设筛选条件、切价格排序；点行查看本条数据，或复制链接。</p>
+  </div>
+
+  <h2>兼容性</h2>
+  <p>适用 <span class="ver">iOS 15 – 16</span> · rootless 越狱（Dopamine 等）。
+  注入目标：<code>zhaoliangji</code>。仅在找靓机 App 内生效，不影响其它 App。</p>
+
+  <div class="warn">
+    <b>说明</b>：本插件为逆向学习产物，仅供个人研究使用。抓取的数据仅保存在本机内存，
+    请遵守相关平台规则，勿用于商业或批量搬运。
+  </div>
+
+  <footer>仅供学习研究 · 请在 24 小时内自行删除</footer>
+</main>
+</body>
+</html>

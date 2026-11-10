@@ -1,0 +1,83 @@
+{
+  "minVersion": "0.1",
+  "class": "DepictionTabView",
+  "tintColor": "#E23A3A",
+  "tabs": [
+    {
+      "tabname": "Details",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionSubheaderView",
+          "title": "找靓机 App 悬浮球 · 搜索列表拉全 + 验机报告同源显示"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "给「找靓机」App 挂一个悬浮球，搜索后长按悬浮球（或点面板「开始抓取」）按页把搜索结果拉全，悬浮球实时显示已抓条数；抓完按机型 / 内存 / 电池 / 系统版本 / 成色筛选，支持价格排序与复制链接。首页推荐流不抓不入库，只在你主动触发时抓当前搜索结果。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "它做什么"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "• **悬浮球交互**：点一下只展开面板；**长按悬浮球**或点面板「开始抓取」才真正去抓，开始时会震动两下提示。\n• **按页拉全**：搜索后手动触发，按页向下拉取直到没有新数据，条数实时显示在悬浮球上。\n• **点行看本条**：成色 / 功能 / 外观 N 项使用痕迹与列表**完全同源**（都来自找靓机验机报告），不会再出现「列表写 95 新、点开网页变 99 新」的错位。\n• **筛选与排序**：按机型 / 内存 / 电池 / 系统版本 / 成色筛选，一键切「价格低→高」「价格高→低」。\n• **复制与打开**：「网页详情」走带登录态的内置 WKWebView，可复制单条链接或一键复制全部。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "怎么用"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "1. 打开找靓机 App，搜索想要的关键词，屏幕边缘出现悬浮球。\n2. **长按悬浮球**（或点开面板后点「开始抓取」），手机会震两下表示开始抓取。\n3. 抓完点悬浮球展开面板，设筛选条件、切价格排序；点行查看本条数据，或复制链接。"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "兼容性"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "适用 **iOS 15 – 16** · rootless 越狱（Dopamine 等）。注入目标：`zhaoliangji`。仅在找靓机 App 内生效，不影响其它 App。"
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "0.0.18"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "兼容性",
+          "text": "iOS 15 – 16 · rootless"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "注入目标",
+          "text": "zhaoliangji"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "隐私",
+          "text": "数据仅存本机内存，不上传"
+        }
+      ]
+    },
+    {
+      "tabname": "Changelog",
+      "class": "DepictionStackView",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.0.18",
+          "text": "新增「点行查看本条数据」：成色 / 功能 / 外观 N 项使用痕迹与列表完全同源（找靓机验机报告），解决「列表 95 新、点开网页 99 新」的错位；「网页详情」仍走带登录态的内置 WKWebView。长按开始抓取震动两下；支持价格从低到高 / 从高到低排序。"
+        }
+      ]
+    }
+  ]
+}
