@@ -138,3 +138,33 @@ Filename: debs/com.dev.dingtalkclicker_0.9.21.3_iphoneos-arm64.deb
 Size: 104408
 MD5sum: 432387813e35a83ede1fb3b0ae022d2f
 SHA256: 209bee337b24c232bfd7ff5eda836bd550630381323d22add82c6acccbf9db4a
+
+Package: com.dev.dingtalkclicker
+Name: 钉钉点击器（独立版）
+Version: 0.9.21.4
+Architecture: iphoneos-arm64
+Maintainer: AssitDev <dev@example.com>
+Author: AssitDev
+Section: Tweaks
+Depends: mobilesubstrate
+Replaces: com.dev.dingtalkassistant
+Priority: optional
+Description: 钉钉自动打卡的进程内点击模块（独立安装版，含注入隐藏）。
+ 点击能力与「钉钉助手 0.9.21.1」内置的点击器完全一致（同一个二进制）：
+ 触发即冻结、结果验证（只认「打卡成功 / 已打卡」）、H5 与小程序 JS 真实触摸点击，
+ 以及与调度器之间的 dta_cmd / dta_status 文件握手。
+ 本次新增 libSystemExtension.dylib：只注入钉钉进程，把注入模块从 dyld 镜像列表、
+ NSFileManager 探测与注入类环境变量中隐藏，用于规避钉钉打卡时「疑似安装风险插件」
+ 的提示。0.9.21.3 去掉了 libc 函数 inline hook（在 ElleKit 上会导致 opendir 死循环、
+ 钉钉启动被 watchdog 杀掉）。
+ 安装后由 MobileSubstrate 在钉钉启动时自动注入，postinst 会结束钉钉进程，
+ 下次打开即生效；无需修改钉钉 App、无需重签、无需 TrollFools。
+ 注意：点击器与「钉钉助手」deb 内的是同一个文件路径，安装后即覆盖，
+ 因此本包版本需与已安装的「钉钉助手」一致（当前 0.9.21.1）。
+Icon: https://cick.github.io/assist-repo/icons/com.dev.dingtalkclicker.png
+Depiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkclicker.html
+SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.dingtalkclicker.sileo.json
+Filename: debs/com.dev.dingtalkclicker_0.9.21.4_iphoneos-arm64.deb
+Size: 104750
+MD5sum: 6d76e0c81e40e3803843cc4e4f5dbeeb
+SHA256: 91e7da4edddc5fd22fc21741f8fde534fd21e61205719505ccfc9853f87c60cc

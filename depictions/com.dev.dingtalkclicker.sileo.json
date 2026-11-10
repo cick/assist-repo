@@ -66,7 +66,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "0.9.21.3"
+          "text": "0.9.21.4"
         },
         {
           "class": "DepictionTableTextView",
@@ -87,6 +87,11 @@
         {
           "class": "DepictionHeaderView",
           "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.4",
+          "text": "隐藏范围扩到 /private/preboot：Dopamine 的 libellekit 与 TweakInject 影像真实路径都在 preboot 下，0.9.21.3 只匹配 MobileSubstrate，漏掉了这些。"
         },
         {
           "class": "DepictionTableTextView",
