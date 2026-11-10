@@ -93,7 +93,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "0.9.21.1"
+          "text": "0.9.21.5"
         },
         {
           "class": "DepictionTableTextView",
@@ -114,6 +114,11 @@
         {
           "class": "DepictionHeaderView",
           "title": "更新日志"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "v0.9.21.5",
+          "text": "修「进入安全模式」：助手的拉起回调里有未捕获的 ObjC 异常，导致 SpringBoard abort。新增 libAppSupport.dylib 给回调整体加异常兜底，桌面不再崩，也不会再连带把悬浮球和定时打卡一起搞失效。"
         },
         {
           "class": "DepictionTableTextView",
