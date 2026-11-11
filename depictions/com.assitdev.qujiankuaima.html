@@ -10,66 +10,71 @@
  img.banner{width:100%;border-radius:14px;display:block}
  .card{background:#fff;border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:0 3px 14px rgba(40,80,74,.06)}
  .callout{background:#fff8ec;border-left:4px solid #e8a94b;border-radius:8px;padding:12px 14px;margin:14px 0}
+ .ok{background:#eef9f4;border-left:4px solid #38b48b;border-radius:8px;padding:12px 14px;margin:14px 0}
  .muted{color:#7c8b89;font-size:13px}
  code{background:#eef3f1;border-radius:4px;padding:1px 5px;font-size:13px}
- li{margin:5px 0} .shots{display:block;width:78%;max-width:320px;margin:16px auto;border-radius:16px;box-shadow:0 6px 22px rgba(30,70,64,.14)}
+ li{margin:5px 0} .shots{display:block;width:72%;max-width:300px;margin:16px auto;border-radius:16px;box-shadow:0 6px 22px rgba(30,70,64,.14)}
  footer{margin-top:30px;text-align:center;color:#a3b0ae;font-size:12px}
 </style></head><body><div class="wrap">
  <h1>取件快码 Assit</h1>
- <p class="sub">三个身份码 · 六个查件入口 · v2.0.0 · AssitDev</p>
+ <p class="sub">1.0 抓码清单 + 2.0 查件面板 · 合并版 v3.0.0 · AssitDev</p>
  <img class="banner" src="assets/qujiankuaima-banner.jpg" alt="取件快码 Assit">
  
- <h2>这次按原帖截图重做</h2>
+ <h2>这一版做了两件事</h2>
+ <div class="card"><p><b>① 把 1.0 和 2.0 合到一起。</b>
+   2.0 按你给的截图做了「三个身份码 + 六个查件入口」；1.0 做的是「通知里自动抓出取件码、收进清单」。
+   两套都有用，v3.0.0 合成一个包：桌面 App 三个 Tab —— <b>查件</b>、<b>取件码</b>、<b>自检</b>。</p>
+   <p class="muted">取件码支持按驿站归类去重、点一下复制、左滑标记已取 / 删除、搜索、手动添加、剪贴板识别；
+   新码到达时有顶部横幅。数据只写本机 plist，不联网、不上传。</p></div>
+ <div class="ok"><p><b>② 修桌面图标。</b> 2.0 的安装脚本只跑了 <code>uicache -p 单个路径</code>，
+   在 Dopamine 上经常不足以重建 rootless App 的注册；官方的修复动作是 <code>uicache -a</code> 全量刷新
+   （Dopamine → 设置 → 操作 →「刷新越狱应用」）。v3.0.0 两种都跑，还补全了 App 的
+   <code>CFBundleSupportedPlatforms</code> 等注册元数据，并把每一步结果写进安装日志 ——
+   App 的「自检」Tab 能直接看到，不用再猜。</p></div>
  <div class="card">
-   <p>之前那版是我读不到 52pojie 原帖时、按「通知抓码」猜出来的，方向完全错了。你给的截图把功能说清楚了：
-   这是一个<b>取件聚合面板</b> —— 把各电商 App 里的身份码和待取包裹入口收在一页，点一下直达。</p>
-   <p class="muted">v2.0.0 从界面到功能按截图重做：三个身份码、六个查件入口、底部设置，一个不少。
-   同时把交付形态改成<b>桌面 App</b>，不再依赖「注入 SpringBoard 是否成功」才能看到东西。</p>
+   <img class="shots" src="assets/qujiankuaima-shot-1.png" alt="查件 Tab">
+   <img class="shots" src="assets/qujiankuaima-shot-3.png" alt="取件码 Tab">
+   <img class="shots" src="assets/qujiankuaima-shot-2.png" alt="设置页">
+   <p class="muted" style="text-align:center">查件 Tab　/　取件码 Tab　/　设置页（示意图，非原帖素材）</p>
  </div>
- <div class="card">
-   <img class="shots" src="assets/qujiankuaima-shot-1.png" alt="主界面：身份码与查件入口">
-   <img class="shots" src="assets/qujiankuaima-shot-2.png" alt="设置页：入口链接与注入自检">
-   <p class="muted" style="text-align:center">左：主界面　右：设置页（示意图，非原帖素材）</p>
- </div>
- <h2>功能</h2>
+ <h2>三个入口，互不依赖</h2>
  <div class="card"><ul>
-   <li><b>三个身份码</b>：淘宝身份码、拼多多身份码（驿站扫码出示）、京东身份码（订单内查看）。</li>
-   <li><b>六个查件入口</b>：淘宝待取、拼多多待取（查看待取包裹）；京东待取、抖音待取、快手待取、得物待取（查看订单物流）。</li>
-   <li><b>点一下直达</b>：通过各 App 的 URL Scheme 跳转；每个入口的链接都能在「设置」里改成完整深链。</li>
-   <li><b>桌面 App + 悬浮球 + iOS 设置页</b>：三处共享同一份偏好。App 是主入口，悬浮球只是可选快捷方式。</li>
-   <li><b>兜底</b>：未安装对应 App 或链接失效时，提供「复制链接 / 打开网页版」。</li>
-   <li><b>注入自检</b>：App 设置页里能看到 dylib 有没有被加载，不用再靠猜。</li>
- </ul></div>
+   <li><b>桌面 App（主入口）</b>：<code>QujianKuaiMa.app</code>，绿色「码」图标，三个 Tab。不依赖插件注入。</li>
+   <li><b>SpringBoard 悬浮球</b>：点一下<b>直接展开内置面板</b>（待取取件码 + 九个查件入口），
+       <b>不再需要先唤起桌面 App</b>。所以就算图标没注册成功，插件功能照样能用。</li>
+   <li><b>iOS「设置」里的插件页</b>：开关悬浮球 / 自动抓码 / 横幅、保留天数、自定义关键词、九个入口链接。</li>
+ </ul>
+ <p class="muted">三处共享同一份偏好与同一份取件码数据，改动通过 Darwin 通知即时同步。</p></div>
  <h2>怎么用</h2>
  <div class="card"><ol>
-   <li>Sileo 升级到 <b>2.0.0</b>；安装脚本会自动执行 <code>uicache</code> 注册桌面 App、刷新偏好并 Respring。</li>
-   <li>桌面出现绿色的「码」图标 → 点开就是截图里那张界面。</li>
-   <li>点任意入口直达对应 App；进「设置」可改每个入口的链接、开关悬浮球、查看注入状态。</li>
-   <li>注入正常时桌面右侧还有「码」悬浮球，点一下唤起 App。</li>
+   <li>Sileo 刷新源 → 升级到 <b>3.0.0</b>。安装脚本自动执行 <code>uicache -a</code>、<code>uicache -p</code>、刷新偏好并 Respring。</li>
+   <li>桌面出现绿色「码」图标，点开就是合并后的界面。</li>
+   <li>收到含取件码的通知 → 自动进「取件码」Tab；也可以手动添加或粘贴识别。</li>
+   <li>点查件入口直达对应 App；「设置」里可改成完整深链。</li>
  </ol></div>
- <h2>装完看不到？</h2>
+ <h2>桌面图标还是没出现？</h2>
  <div class="card">
-   <p><b>桌面图标没出现：</b>确认 Sileo 已安装里是 2.0.0；在 Dopamine 点一次「重启 SpringBoard」；
-   仍不行就在终端执行 <code>uicache -p /var/jb/Applications/QujianKuaiMa.app</code>，
-   或到 Dopamine 设置里点「刷新越狱应用」。</p>
-   <p><b>悬浮球没出现：</b>确认 <code>ElleKit</code> 已装、Dopamine 的「插件注入」已开启；
-   App 设置页的「插件注入」自检会直接告诉你 dylib 有没有加载。</p>
-   <p class="muted"><b>桌面 App 能打开 = 功能已经到位。</b>悬浮球是可选增强，不影响主功能；
-   这一版就是为了避免「装成功却什么也看不到」才把主入口做成独立 App。</p>
+   <p><b>先确认包升级成功</b>：Sileo 已安装里搜「取件快码」，版本应为 <b>3.0.0</b>，包名 <code>com.assitdev.qujiankuaima</code>。</p>
+   <p><b>再刷新注册</b>：Dopamine → 设置 → 操作 →「<b>刷新越狱应用</b>」，然后「重启 SpringBoard」。
+   这是 rootless 图标消失时官方给的动作，等价于 <code>uicache -a</code>。</p>
+   <p><b>终端手动执行</b>（root）：<code>uicache -a &amp;&amp; killall -9 SpringBoard</code>。
+   App 的「自检」Tab 右上角可以一键复制这条命令。</p>
+   <p><b>看日志</b>：如果能打开 App，切到「自检」Tab，里面显示安装脚本每一步的返回码；
+   显示 <code>uicache NOT FOUND</code> 就说明环境里找不到 uicache，需手动刷新。</p>
+   <p class="muted"><b>就算图标始终不出现</b>：悬浮球面板（需 ElleKit 注入开启）与 iOS 设置页仍然可用；
+   取件码清单也可以在悬浮球面板里查看和复制。这一版刻意不再把功能全押在「图标能不能显示」上。</p>
  </div>
  <h2>关于跳转链接</h2>
- <div class="card">
-   <p>默认填的是各 App 的 URL Scheme（打开首页）：<code>taobao://</code>、<code>pinduoduo://</code>、
-   <code>openapp.jdmobile://</code>、<code>snssdk1128://</code>、<code>kwai://</code>、<code>dewu://</code>。</p>
-   <p>各厂商「身份码 / 待取包裹」页的深链路径不公开、也会随版本变，所以设置里允许你填完整链接；
-   填了就直达那一页。插件不读取任何账号信息，也不主动联网（只有你点「打开网页版」时才会用 Safari 打开）。</p>
- </div>
+ <div class="card"><p>默认填的是各 App 的 URL Scheme（打开首页）：<code>taobao://</code>、<code>pinduoduo://</code>、
+   <code>openapp.jdmobile://</code>、<code>snssdk1128://</code>、<code>kwai://</code>、<code>dewu://</code>。
+   各厂商「身份码 / 待取包裹」页的深链路径不公开、也会随版本变，设置里允许填完整链接；填了就直达。
+   未安装对应 App 或链接失效时，提供「复制链接 / 打开网页版」兜底。</p></div>
  <h2>兼容性</h2>
  <div class="card"><ul><li><b>无根 rootless</b>（Dopamine / palera1n）：<b>本包</b>，架构 <code>iphoneos-arm64</code>，包内路径 <code>/var/jb/…</code>。</li><li><b>隐根 roothide</b>：请改装本源的「取件快码 Assit · 隐根」。</li>
-   <li>包名 <code>com.assitdev.qujiankuaima</code>，iOS 15+；两个包互斥，只装对应环境的那一个。</li>
+   <li>iOS 15+；两个包互斥，只装对应环境的那一个。</li>
  </ul></div>
  <h2>隐私与声明</h2>
  <div class="card"><p class="muted">全部功能在本机完成，不采集、不上传任何数据；界面与图标均为重绘，未使用原帖素材。
  本插件为个人学习研究产物，仅供自己设备使用，请勿用于商业用途。</p></div>
- <footer>取件快码 Assit v2.0.0 · Author AssitDev · Assist Repo</footer>
+ <footer>取件快码 Assit v3.0.0 · Author AssitDev · Assist Repo</footer>
 </div></body></html>

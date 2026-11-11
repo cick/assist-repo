@@ -5,6 +5,7 @@
 
 #import "QKMBubble.h"
 #import "QKMConfig.h"
+#import "QKMPanel.h"
 
 static UIWindow *QKMHostWindow(void) {
     if (@available(iOS 13.0, *)) {
@@ -69,8 +70,8 @@ static UIWindow *QKMHostWindow(void) {
 }
 
 - (void)tapped {
-    NSURL *u = [NSURL URLWithString:QKMAppScheme];
-    if (u) [[UIApplication sharedApplication] openURL:u options:@{} completionHandler:nil];
+    // 直接展开内置面板，不再依赖桌面 App 是否被 uicache 注册成功
+    [[QKMPanel shared] toggle];
 }
 
 - (void)panned:(UIPanGestureRecognizer *)g {

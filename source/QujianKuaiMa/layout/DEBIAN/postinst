@@ -1,11 +1,22 @@
 #!/bin/sh
 # 取件快码 Assit — Author: AssitDev
-# 安装 / 升级后注册桌面 App、刷新偏好缓存并注销 SpringBoard。
+# 安装 / 升级后：注册桌面 App、刷新偏好缓存、Respring。
+#
+# v3.0.0 修复：2.0 只跑了 `uicache -p <单个路径>`，在 Dopamine 上常常不足以
+# 重建 rootless App 的注册（官方修复动作是 `uicache -a` 全量刷新，见
+# Dopamine → 设置 → 操作 →「刷新越狱应用」）。这里两种都跑，并把每一步
+# 的结果写进日志，桌面 App 的「自检」Tab 会直接显示，方便定位问题。
+
+DIR="/var/mobile/Library/Application Support/QujianKuaiMa"
+mkdir -p "$DIR" 2>/dev/null || true
+LOG="$DIR/install.log"
+echo "=== 取件快码 Assit 3.0.0 postinst $(date) ===" > "$LOG" 2>&1
+
+# 1. 定位 App（rootless / roothide / rootful 都覆盖）
 APP=""
 for p in /var/jb/Applications/QujianKuaiMa.app /Applications/QujianKuaiMa.app; do
   [ -d "$p" ] && APP="$p" && break
 done
-# roothide：包内路径映射到随机 jbroot，用 jbroot 命令或全盘查找兜底
 if [ -z "$APP" ] && command -v jbroot >/dev/null 2>&1; then
   p="$(jbroot 2>/dev/null)/Applications/QujianKuaiMa.app"
   [ -d "$p" ] && APP="$p"
@@ -13,15 +24,54 @@ fi
 if [ -z "$APP" ]; then
   APP="$(find /var -maxdepth 9 -type d -name QujianKuaiMa.app 2>/dev/null | head -1)"
 fi
-if [ -n "$APP" ]; then
-  if command -v uicache >/dev/null 2>&1; then
-    uicache -p "$APP" >/dev/null 2>&1 || true
-  elif [ -x /var/jb/usr/bin/uicache ]; then
-    /var/jb/usr/bin/uicache -p "$APP" >/dev/null 2>&1 || true
-  elif command -v jbroot >/dev/null 2>&1 && [ -x "$(jbroot)/usr/bin/uicache" ]; then
-    "$(jbroot)/usr/bin/uicache" -p "$APP" >/dev/null 2>&1 || true
-  fi
+echo "APP=$APP" >> "$LOG"
+
+# 2. 定位 uicache（dpkg postinst 的 PATH 里通常没有 /var/jb/usr/bin）
+UICACHE=""
+for c in /var/jb/usr/bin/uicache /usr/bin/uicache /usr/local/bin/uicache; do
+  [ -x "$c" ] && UICACHE="$c" && break
+done
+if [ -z "$UICACHE" ] && command -v jbroot >/dev/null 2>&1; then
+  c="$(jbroot 2>/dev/null)/usr/bin/uicache"
+  [ -x "$c" ] && UICACHE="$c"
 fi
+if [ -z "$UICACHE" ] && command -v uicache >/dev/null 2>&1; then
+  UICACHE="$(command -v uicache)"
+fi
+echo "UICACHE=$UICACHE" >> "$LOG"
+
+# 3. 真正注册
+if [ -n "$UICACHE" ]; then
+  # ① Dopamine 官方动作：全量重建越狱 App 注册（可能耗时 1-2 分钟）
+  "$UICACHE" -a >> "$LOG" 2>&1
+  RC_A=$?
+  echo "uicache -a rc=$RC_A" >> "$LOG"
+
+  # ② 再单独注册本 App（部分版本只认 -p）
+  if [ -n "$APP" ]; then
+    "$UICACHE" -p "$APP" >> "$LOG" 2>&1
+    echo "uicache -p $APP rc=$?" >> "$LOG"
+  fi
+
+  # ③ 老版 uicache 不认 -a 时，无参数即全量刷新
+  if [ "$RC_A" -ne 0 ]; then
+    "$UICACHE" >> "$LOG" 2>&1
+    echo "uicache (no args) rc=$?" >> "$LOG"
+  fi
+else
+  echo "uicache NOT FOUND — 请在 Dopamine → 设置 → 操作 →「刷新越狱应用」手动执行一次" >> "$LOG"
+fi
+
+# 4. 确保 App 与日志对 mobile 可读
+if [ -n "$APP" ]; then
+  chmod 755 "$APP" "$APP/QujianKuaiMa" >> "$LOG" 2>&1 || true
+  chmod 644 "$APP/Info.plist" >> "$LOG" 2>&1 || true
+fi
+chmod 755 "$DIR" 2>/dev/null || true
+chmod 644 "$LOG" 2>/dev/null || true
+
 killall -HUP cfprefsd >/dev/null 2>&1 || true
 killall -9 SpringBoard >/dev/null 2>&1 || true
+echo "=== done ===" >> "$LOG"
+chmod 644 "$LOG" 2>/dev/null || true
 exit 0

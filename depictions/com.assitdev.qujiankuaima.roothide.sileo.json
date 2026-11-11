@@ -10,30 +10,33 @@
       "views": [
         {
           "class": "DepictionSubheaderView",
-          "title": "三个身份码 · 六个查件入口",
+          "title": "1.0 抓码 + 2.0 查件 · 合并版",
           "useBoldText": true,
           "useBottomMargin": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "按原帖截图 1:1 还原的**取件聚合面板**：三个身份码（淘宝 / 拼多多 / 京东）、六个查件入口（淘宝 / 拼多多 / 京东 / 抖音 / 快手 / 得物），点一下直达对应 App。\n\nv2.0.0 起主入口是**桌面 App**，不依赖插件注入就能用；悬浮球与 iOS 设置页是可选增强。\n\n> **这是 roothide 隐根专用包**（`iphoneos-arm64e`）。无根用户请改装标准包「取件快码 Assit」。",
+          "markdown": "**1.0 抓码清单 + 2.0 查件面板，合并成一个包。**\n\n桌面 App 三个 Tab：**查件**（三个身份码 / 六个查件入口）、**取件码**（通知自动抓码、归类去重、复制 / 已取 / 删除 / 搜索 / 剪贴板识别）、**自检**（注入状态与 uicache 安装日志）。\n\nv3.0.0 同时修复了桌面图标不显示：安装脚本改为 `uicache -a` 全量重建 + `uicache -p` 单包注册，并补全 App 注册元数据。悬浮球点击直接展开内置面板，不再依赖桌面图标。\n\n> **这是 roothide 隐根专用包**（`iphoneos-arm64e`）。无根用户请改装标准包「取件快码 Assit」。",
           "useRawFormat": true
         },
         {
           "class": "DepictionScreenshotsView",
+          "itemCornerRadius": 10,
+          "itemSize": "{160, 284}",
           "screenshots": [
             {
               "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-1.png",
-              "accessibilityText": "主界面：三个身份码与六个查件入口"
+              "accessibilityText": "查件 Tab：三个身份码与六个查件入口"
+            },
+            {
+              "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-3.png",
+              "accessibilityText": "取件码 Tab：通知抓码清单"
             },
             {
               "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-shot-2.png",
-              "accessibilityText": "设置页：入口链接与注入自检"
+              "accessibilityText": "设置页：入口链接与注入状态"
             }
-          ],
-          "itemSize": "{160, 284.6}",
-          "itemCornerRadius": 10,
-          "itemSpacing": 12
+          ]
         },
         {
           "class": "DepictionSpacerView",
@@ -41,20 +44,11 @@
         },
         {
           "class": "DepictionHeaderView",
-          "title": "这次按原帖截图重做"
+          "title": "这一版做了两件事"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "之前那版是读不到原帖时按「通知抓码」猜的，方向错了。这一版从界面到功能按截图重做，并把主入口改成独立 App，避免「装成功却什么也看不到」。",
-          "useRawFormat": true
-        },
-        {
-          "class": "DepictionHeaderView",
-          "title": "功能"
-        },
-        {
-          "class": "DepictionMarkdownView",
-          "markdown": "- **三个身份码**：淘宝 / 拼多多（驿站扫码出示）、京东（订单内查看）\n- **六个查件入口**：淘宝待取、拼多多待取（查看待取包裹）；京东 / 抖音 / 快手 / 得物待取（查看订单物流）\n- 每个入口的跳转链接都能在「设置」里改成完整深链\n- 桌面 App + SpringBoard 悬浮球 + iOS 设置页，三处共享偏好\n- 没装对应 App 或链接失效时，可复制链接 / 打开网页版\n- App 设置页里可查看「插件注入」自检状态",
+          "markdown": "- **三个身份码**：淘宝 / 拼多多（驿站扫码出示）、京东（订单内查看）\n- **六个查件入口**：淘宝 / 拼多多待取（包裹）；京东 / 抖音 / 快手 / 得物待取（订单物流）\n- **通知抓码**：本机正则解析取件码 / 取餐码 / 货架号（如 `3-2-1056`），按驿站归类去重\n- **清单管理**：点一下复制、左滑标记已取 / 删除、搜索、手动添加、剪贴板识别、新码横幅\n- **三个入口**：桌面 App、SpringBoard 悬浮球内置面板、iOS 设置页，共享同一份数据\n- 每个入口的跳转链接可自定义，未装对应 App 时可复制链接 / 打开网页版\n- 本地 plist 存储，不联网、不上传",
           "useRawFormat": true
         },
         {
@@ -63,16 +57,16 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "1. Sileo 升级到 **2.0.0**，安装脚本自动 `uicache` 注册桌面 App 并 Respring\n2. 桌面出现绿色「码」图标，点开就是主界面\n3. 点入口直达对应 App；「设置」里可改链接、开关悬浮球\n4. 注入正常时桌面还有「码」悬浮球，点一下唤起 App",
+          "markdown": "1. Sileo 刷新源 → 升级到 **3.0.0**，安装脚本自动 `uicache -a` 并 Respring\n2. 桌面出现绿色「码」图标，点开是三个 Tab\n3. 收到含取件码的通知会自动进「取件码」；也可手动添加 / 剪贴板识别\n4. 悬浮球点一下直接展开内置面板（不依赖图标注册）",
           "useRawFormat": true
         },
         {
           "class": "DepictionHeaderView",
-          "title": "装完看不到？"
+          "title": "桌面图标还是没出现？"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**桌面图标没出现**：确认已装 2.0.0 → 在 Dopamine 点「重启 SpringBoard」→ 仍不行可在终端执行 `uicache -p /var/jb/Applications/QujianKuaiMa.app`，或用 Dopamine 设置里的「刷新越狱应用」。\n\n**悬浮球没出现**：确认 `ElleKit` 已装、Dopamine「插件注入」已开启；App 设置页的注入自检会说明 dylib 有没有加载。\n\n> 桌面 App 能打开就说明功能已经到位，悬浮球只是可选快捷入口。",
+          "markdown": "**确认升级成功**：Sileo 已安装里版本应为 `3.0.0`。\n\n**刷新注册**：Dopamine → 设置 → 操作 →「**刷新越狱应用**」，再点「重启 SpringBoard」。这是 rootless 图标消失时官方给的动作，等价于 `uicache -a`。\n\n**终端手动**（root）：`uicache -a && killall -9 SpringBoard`，App 自检页可一键复制。\n\n**看日志**：App 的「自检」Tab 会显示安装脚本每一步返回码；若显示 `uicache NOT FOUND`，说明环境里找不到 uicache，需手动刷新。\n\n> 桌面图标即便始终不出现，悬浮球面板与 iOS 设置页仍可用 —— 这一版不再把功能押在图标上。",
           "useRawFormat": true
         },
         {
@@ -81,7 +75,7 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "默认填的是各 App 的 URL Scheme（打开首页）：`taobao://`、`pinduoduo://`、`openapp.jdmobile://`、`snssdk1128://`、`kwai://`、`dewu://`。\n\n各厂商「身份码 / 待取包裹」页的深链路径不公开且会变，设置里可以自己填完整链接，填了就直达。插件不读取账号信息、不主动联网。",
+          "markdown": "默认填的是各 App 的 URL Scheme（打开首页）：`taobao://`、`pinduoduo://`、`openapp.jdmobile://`、`snssdk1128://`、`kwai://`、`dewu://`。\n\n各厂商「身份码 / 待取包裹」页的深链路径不公开且会变，设置里可自己填完整链接。插件不读取账号信息、不主动联网。",
           "useRawFormat": true
         },
         {
@@ -90,7 +84,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "2.0.0"
+          "text": "3.0.0"
         },
         {
           "class": "DepictionTableTextView",
@@ -115,13 +109,13 @@
       "views": [
         {
           "class": "DepictionSubheaderView",
-          "title": "2.0.0（roothide）",
+          "title": "3.0.0（roothide）",
           "useBoldText": true,
           "useBottomMargin": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "### 2.0.0\n\n- **按原帖截图重做功能**：三个身份码 + 六个查件入口 + 设置页，替换掉方向错误的「通知抓码」实现\n- 新增**桌面 App**（`QujianKuaiMa.app`，uicache 注册），不依赖 tweak 注入即可使用\n- 悬浮球改为点击唤起 App；新增 App 内「插件注入」自检\n- 每个入口的跳转链接可在 App 设置页 / iOS 设置页自定义，带网页版兜底\n- 全新绿色图标、横幅与界面示意图\n\n---\n\n### 1.0.1 / 1.0.0\n\n早期版本（通知抓码方向），已被 2.0.0 取代。",
+          "markdown": "### 3.0.0\n\n- **合并 1.0 + 2.0**：抓码清单与查件面板合进同一个包，桌面 App 三个 Tab（查件 / 取件码 / 自检）\n- **修复桌面图标不显示**：postinst 增加 `uicache -a` 全量重建（Dopamine 官方动作）、多路径查找 uicache、全程写安装日志；Info.plist 补 `CFBundleSupportedPlatforms` 与构建元数据\n- 新增「自检」Tab：注入状态 + 安装日志 + 一键复制手动修复命令\n- 悬浮球改为点击展开**内置面板**（待取码 + 九个入口），不再依赖桌面 App 是否注册成功\n- 通知抓码改用 Objective-C runtime swizzle，dylib **不再链接 CydiaSubstrate**，减少注入失败点\n- App 与 SpringBoard 共用同一份 plist，Darwin 通知即时同步\n- 新增第三张界面示意图；设置页补抓码开关 / 保留天数 / 自定义关键词\n\n---\n\n### 2.0.0 / 1.0.x\n\n2.0.0 按原帖截图做查件面板（桌面 App 主入口）；1.0.x 为通知抓码方向。两者已被 3.0.0 合并取代。",
           "useRawFormat": true
         }
       ]

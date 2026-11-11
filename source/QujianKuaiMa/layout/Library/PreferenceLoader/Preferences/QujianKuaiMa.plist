@@ -19,7 +19,9 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>运行状态</string>
+			<string>功能开关</string>
+			<key>footerText</key>
+			<string>改动会即时同步到 SpringBoard，无需手动注销。</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -32,6 +34,62 @@
 			<true/>
 			<key>label</key>
 			<string>桌面悬浮球</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>autoCapture</string>
+			<key>default</key>
+			<true/>
+			<key>label</key>
+			<string>通知自动抓码</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>bannerEnabled</string>
+			<key>default</key>
+			<true/>
+			<key>label</key>
+			<string>新码顶部横幅</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>keepDays</string>
+			<key>label</key>
+			<string>保留天数</string>
+			<key>placeholder</key>
+			<string>7</string>
+			<key>PostNotification</key>
+			<string>com.assitdev.qujiankuaima.prefsChanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.assitdev.qujiankuaima</string>
+			<key>key</key>
+			<string>customKeywords</string>
+			<key>label</key>
+			<string>自定义关键词</string>
+			<key>placeholder</key>
+			<string>用逗号分隔</string>
 			<key>PostNotification</key>
 			<string>com.assitdev.qujiankuaima.prefsChanged</string>
 		</dict>
@@ -183,9 +241,11 @@
 			<key>label</key>
 			<string>关于</string>
 			<key>footerText</key>
-			<string>取件快码 Assit v2.0.0 · Author AssitDev
+			<string>取件快码 Assit v3.0.0 · Author AssitDev
 
-桌面「取件快码」App 是主入口，点开即可使用，不依赖插件注入；悬浮球由注入 SpringBoard 的 dylib 提供，需要 ElleKit 与插件注入开启。两处设置共享同一份偏好。</string>
+桌面「取件快码」App 是主入口（三个 Tab：查件 / 取件码 / 自检）。
+若桌面图标没出现，v3.0.0 的安装脚本已执行 uicache -a；仍不行请在 Dopamine → 设置 → 操作 →「刷新越狱应用」，或终端以 root 执行 uicache -a &amp;&amp; killall -9 SpringBoard。
+App 的「自检」Tab 会显示安装日志。悬浮球面板不依赖桌面图标。</string>
 		</dict>
 	</array>
 </dict>

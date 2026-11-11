@@ -54,7 +54,7 @@ static UIColor *QKMGray(void)  { return [UIColor colorWithRed:0.55  green:0.60  
 - (NSString *)tableView:(UITableView *)t titleForFooterInSection:(NSInteger)s {
     if (s == 0) return @"悬浮球由注入 SpringBoard 的插件显示。若状态为「未注入」，说明当前没有注销 / 未开启插件注入，但桌面 App 仍可正常使用。";
     if (s == 1) return @"默认填的是各 App 的 URL Scheme（打开首页）。如果你知道对应「身份码 / 待取包裹」页面的完整深链，可以直接粘进来，点按该入口就会直达。";
-    return @"取件快码 Assit v2.0.0 · Author AssitDev\n按原帖截图功能重做：三个身份码、六个查件入口。";
+    return @"取件快码 Assit v3.0.0 · Author AssitDev\n合并版：三个身份码、六个查件入口 + 通知抓码清单。";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)t cellForRowAtIndexPath:(NSIndexPath *)ip {
@@ -92,7 +92,7 @@ static UIColor *QKMGray(void)  { return [UIColor colorWithRed:0.55  green:0.60  
         c.textLabel.textColor = QKMGreen();
     } else {
         c.textLabel.text = @"版本";
-        c.detailTextLabel.text = @"2.0.0 · AssitDev";
+        c.detailTextLabel.text = @"3.0.0 · AssitDev";
         c.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return c;

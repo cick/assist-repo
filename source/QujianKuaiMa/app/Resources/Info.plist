@@ -16,10 +16,12 @@
 	<string>取件快码</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.0</string>
+	<string>3.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.0</string>
+	<string>3.0.0</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -27,6 +29,7 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>AppIcon60x60</string>
+				<string>Icon</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -52,6 +55,7 @@
 		<string>kwai</string>
 		<string>dewu</string>
 		<string>poizon</string>
+		<string>qujiankuaima</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -76,5 +80,23 @@
 	<string>UIStatusBarStyleDefault</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>iPhoneOS</string>
+	</array>
+	<key>DTPlatformName</key>
+	<string>iphoneos</string>
+	<key>DTPlatformVersion</key>
+	<string>16.4</string>
+	<key>DTPlatformBuild</key>
+	<string>20E238</string>
+	<key>DTSDKName</key>
+	<string>iphoneos16.4</string>
+	<key>DTSDKBuild</key>
+	<string>20E238</string>
+	<key>DTXcode</key>
+	<string>1400</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
 </dict>
 </plist>
