@@ -1,0 +1,25 @@
+{
+  "class": "FeaturedBannersView",
+  "itemSize": "{263, 148}",
+  "itemCornerRadius": 10,
+  "banners": [
+    {
+      "title": "钉钉助手",
+      "package": "com.dev.dingtalkassistant",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalk-banner.jpg",
+      "displayText": false
+    },
+    {
+      "title": "取件快码 Assit",
+      "package": "com.assitdev.qujiankuaima",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-banner.jpg",
+      "displayText": false
+    },
+    {
+      "title": "钉钉点击器",
+      "package": "com.dev.dingtalkclicker",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalkclicker-banner.jpg",
+      "displayText": false
+    }
+  ]
+}
