@@ -10,15 +10,33 @@
       "displayText": false
     },
     {
+      "title": "钉钉点击器",
+      "package": "com.dev.dingtalkclicker",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalkclicker-banner.jpg",
+      "displayText": false
+    },
+    {
       "title": "取件快码 Assit",
       "package": "com.assitdev.qujiankuaima",
       "url": "https://cick.github.io/assist-repo/depictions/assets/qujiankuaima-banner.jpg",
       "displayText": false
     },
     {
-      "title": "钉钉点击器",
-      "package": "com.dev.dingtalkclicker",
-      "url": "https://cick.github.io/assist-repo/depictions/assets/dingtalkclicker-banner.jpg",
+      "title": "顶栏时间Assit",
+      "package": "com.dev.callassiststatusbar",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/statusbar-banner.jpg",
+      "displayText": false
+    },
+    {
+      "title": "爱回收助手",
+      "package": "com.devd.ahss",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/ahss-banner.jpg",
+      "displayText": false
+    },
+    {
+      "title": "转转筛选",
+      "package": "com.hang.zzzj",
+      "url": "https://cick.github.io/assist-repo/depictions/assets/zzzj-banner.jpg",
       "displayText": false
     }
   ]
