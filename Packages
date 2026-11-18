@@ -52,7 +52,7 @@ SHA256: 073f9c2f710a1914310cd9832e4df155694df5b831c1e2b4df4d98a007a87929
 
 Package: com.dev.callassiststatusbar
 Name: 顶栏时间Assit
-Version: 0.9.144
+Version: 0.9.145
 Architecture: iphoneos-arm64
 Maintainer: AssitDev <dev@example.com>
 Section: Tweaks
@@ -83,10 +83,10 @@ Description: 仿「电话助手」状态栏与图标模块的越狱插件，仅�
  本插件为逆向学习产物，请于 24 小时内自行删除，请勿用于商业用途。
 Depiction: https://cick.github.io/assist-repo/depictions/com.dev.callassiststatusbar.html
 SileoDepiction: https://cick.github.io/assist-repo/depictions/com.dev.callassiststatusbar.sileo.json
-Filename: debs/com.dev.callassiststatusbar_0.9.144_iphoneos-arm64.deb
-Size: 1133400
-MD5sum: 4387d00caba28765020728e8ec44f21e
-SHA256: 32704a1227ee342ab4aed8a27de36dc5121ad74b62a506d495ea126f6f7a6606
+Filename: debs/com.dev.callassiststatusbar_0.9.145_iphoneos-arm64.deb
+Size: 1140342
+MD5sum: 13185b1b175a979d9949b7cbb4e6a913
+SHA256: 29ad035403f81f0d6abbd3006cacb2df1a2c8a17d838c2f586e72a984116564e
 
 Package: com.dev.dingtalkassistant
 Name: 钉钉助手
